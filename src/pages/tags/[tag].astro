@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import PostCard from '../../components/PostCard.astro';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog');
+  
+  const rawTags = Array.from(new Set(allPosts.flatMap(post => post.data.tags || [])));
+
+  return rawTags
+    .filter(tag => tag && typeof tag === 'string' && tag.trim() !== '')
+    .map(tag => ({
+      params: { tag: tag.replace(/\//g, '-') },
+      props: { originalTag: tag },
+    }));
+}
+
+const { originalTag } = Astro.props;
+const { tag } = Astro.params;
+
+const displayTag = originalTag || tag;
+const allPosts = await getCollection('blog');
+
+const tagPosts = allPosts
+  .filter(post => post.data.tags?.some(t => t === displayTag || t.replace(/\//g, '-') === tag))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title={`🏷️ ${displayTag} 标签汇总 - 猫太博客`}>
+  <div class="flex flex-col gap-6 md:flex-row">
+    <Sidebar />
+
+    <div class="flex-1 flex flex-col gap-6">
+      <div class="rounded-3xl border-2 border-pink-200/80 bg-gradient-to-r from-pink-100/70 via-purple-100/50 to-sky-100/70 p-6 sm:p-8 shadow-pastel-glow backdrop-blur-md dark:border-purple-800/60 dark:from-purple-950/60 dark:to-pink-950/40">
+        <div class="flex items-center gap-4">
+          <span class="text-4xl filter drop-shadow-md">🏷️</span>
+          <div>
+            <h1 class="text-2xl sm:text-3xl font-black text-[#3C2C26] dark:text-pink-100">
+              标签：{displayTag}
+            </h1>
+            <p class="mt-1 text-xs sm:text-sm font-bold text-pink-600 dark:text-pink-300">
+              关联 <span class="font-mono text-base font-black">{tagPosts.length}</span> 篇精选文章
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-5">
+        {tagPosts.map(post => (
+          <PostCard
+            title={post.data.title}
+            description={post.data.description}
+            date={post.data.pubDate.toISOString().slice(0, 10)}
+            category={post.data.category}
+            readTime={post.data.readTime}
+            slug={post.slug}
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

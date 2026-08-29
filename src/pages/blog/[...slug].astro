@@ -1,0 +1,138 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import TOC from '../../components/TOC.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await post.render();
+
+const siteUrl = 'https://maotaiblog.com';
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+
+// 代理/网络相关主题关键词
+const proxyKeywords = ['测评', '教程', '机场', '网络', 'clash', 'sing-box', 'iplc', 'bgp', '白皮书', '排查', '解锁', 'faq', '节点'];
+
+// 判断当前文章是否属于代理/网络加速相关分类或标签
+const isProxyRelated = proxyKeywords.some(keyword => {
+  const categoryMatch = post.data.category?.toLowerCase().includes(keyword.toLowerCase());
+  const tagMatch = post.data.tags?.some(tag => tag.toLowerCase().includes(keyword.toLowerCase()));
+  return categoryMatch || tagMatch;
+});
+
+// JSON-LD FAQPage 结构化标记代码
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "2026年翻墙机场怎么选最稳定？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "建议优先选择采用 IPLC 或 IEPL 内网专线架构的机场，这类线路不经过公网防火墙，晚高峰时段丢包率低且延迟稳定。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "什么是原生 IP？为什么解锁 ChatGPT 需要它？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "原生 IP 是指 IP 注册地与服务器机房物理所在地一致的 IP。OpenAI 等服务对数据中心 IP 封控严格，使用原生住宅 IP 能大幅降低被封禁风险。"
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={`${post.data.title} - 猫太博客`} description={post.data.description}>
+  <!-- Open Graph & Meta Tags 与 JSON-LD 直接以 slot="head" 传入模板，绝不包含嵌套 <head> 标签 -->
+  <link slot="head" rel="canonical" href={canonicalURL} />
+  <meta slot="head" property="og:title" content={post.data.title} />
+  <meta slot="head" property="og:description" content={post.data.description} />
+  <meta slot="head" property="og:type" content="article" />
+  <meta slot="head" property="og:url" content={canonicalURL} />
+  <meta slot="head" property="og:image" content={`${siteUrl}/gallery/retro-cat-girl.jpg`} />
+  <meta slot="head" name="twitter:card" content="summary_large_image" />
+  <meta slot="head" name="twitter:title" content={post.data.title} />
+  <meta slot="head" name="twitter:description" content={post.data.description} />
+  <meta slot="head" name="twitter:image" content={`${siteUrl}/gallery/retro-cat-girl.jpg`} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+
+  <div class="flex flex-col gap-6 lg:flex-row items-start">
+    <!-- 左侧边栏 -->
+    <Sidebar />
+
+    <!-- 中间 Markdown 内容主区 -->
+    <article class="flex-1 card-pastel p-5 sm:p-8 w-full min-w-0">
+      <header class="border-b border-pink-100 dark:border-purple-900/60 pb-4 mb-5">
+        <div class="flex items-center gap-2 text-xs font-bold text-[#7A6860] dark:text-pink-200/80 mb-2 flex-wrap">
+          <span class="rounded-full bg-pink-100 px-3 py-0.5 font-bold text-pink-600 dark:bg-purple-900/80 dark:text-pink-200">
+            🌸 {post.data.category}
+          </span>
+          <span>•</span>
+          <span>📅 发布于: {post.data.pubDate.toISOString().slice(0, 10)}</span>
+          <span>•</span>
+          <!-- 📅 数据更新时效性 Banner -->
+          <span class="text-emerald-600 dark:text-emerald-400 font-extrabold">
+            🔄 数据最后更新于：2026年8月28日
+          </span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-black text-[#3C2C26] dark:text-pink-100 leading-tight">
+          {post.data.title}
+        </h1>
+      </header>
+
+      <!-- 文章 Markdown 正文 -->
+      <div class="prose dark:prose-invert max-w-none text-base leading-relaxed">
+        <Content />
+      </div>
+
+      <!-- 仅当文章属于网络/代理/教程/测评等相关分类时才渲染底部机场推荐 Banner -->
+      {isProxyRelated && (
+        <div class="mt-8 rounded-2xl border border-pink-200/80 bg-gradient-to-r from-pink-100/60 to-purple-100/50 p-5 shadow-sm dark:border-purple-800 dark:from-purple-950/60 dark:to-pink-950/40">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl filter drop-shadow-md">🏆</span>
+            <div>
+              <h3 class="text-base font-black text-[#3C2C26] dark:text-pink-100">
+                不知道如何挑选适合自己的线路与机场？
+              </h3>
+              <p class="mt-0.5 text-xs font-medium text-[#7A6860] dark:text-pink-200/90">
+                查看 24/7 探针实测的最新选购对比表：
+                <a href="/rank" class="inline-flex items-center gap-1 font-black text-pink-600 dark:text-pink-300 underline hover:text-pink-700 ml-1">
+                  <span>👉 2026 最新高性价比梯子推荐对比大表</span>
+                  <span>➔</span>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+    </article>
+
+    <!-- 右侧 Sticky 悬浮目录导航 (TOC) -->
+    <TOC headings={headings} />
+  </div>
+</BaseLayout>
+
+<style is:global>
+  .prose h1 { @apply text-2xl font-black mt-6 mb-3 text-[#3C2C26] dark:text-pink-100 border-b border-pink-100 dark:border-purple-900/60 pb-2; }
+  .prose h2 { @apply text-xl font-black mt-6 mb-2.5 text-[#3C2C26] dark:text-pink-100; }
+  .prose h3 { @apply text-lg font-bold mt-4 mb-2 text-[#3C2C26] dark:text-pink-100; }
+  .prose p { @apply text-base leading-relaxed mb-4 text-[#3C2C26] dark:text-pink-100 font-medium; }
+  .prose ul, .prose ol { @apply pl-5 mb-4 list-disc text-base text-[#3C2C26] dark:text-pink-100; }
+  .prose blockquote { @apply border-l-4 border-pink-300 bg-pink-50/60 dark:bg-purple-900/40 p-3.5 rounded-r-xl my-4 text-xs md:text-sm text-[#7A6860] dark:text-pink-200/90 font-medium; }
+  .prose pre { @apply bg-[#1A1523] text-pink-100 p-4 rounded-xl overflow-x-auto text-sm my-4 border border-purple-800/60 font-mono; }
+  .prose table { @apply w-full text-xs md:text-sm border-collapse my-4 border border-pink-200/60 dark:border-purple-800/60 rounded-xl overflow-hidden shadow-sm; }
+  .prose th, .prose td { @apply border border-pink-200/60 dark:border-purple-800/60 p-3 text-left; }
+  .prose th { @apply bg-pink-100/70 dark:bg-purple-900/80 font-black text-[#3C2C26] dark:text-pink-100; }
+  .prose img { @apply rounded-xl shadow-md my-3; loading: lazy; }
+</style>

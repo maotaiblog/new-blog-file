@@ -1,0 +1,244 @@
+---
+---
+
+<!-- 站内搜索 Modal 遮罩层与极简弹窗组件 -->
+<div
+  id="search-modal-container"
+  class="fixed inset-0 z-[9999] hidden items-center justify-center bg-black/50 p-4 backdrop-blur-md transition-opacity duration-200 pointer-events-auto"
+  role="dialog"
+  aria-modal="true"
+>
+  <!-- Modal 弹窗卡片 -->
+  <div
+    id="search-modal-card"
+    class="relative w-full max-w-2xl overflow-hidden rounded-3xl border-2 border-pink-200 bg-white/95 shadow-[0_25px_60px_rgba(0,0,0,0.3)] backdrop-blur-xl dark:border-purple-800 dark:bg-[#1A1523]/95 flex flex-col max-h-[85vh] pointer-events-auto transition-all duration-200"
+  >
+    <!-- 1. 顶部唯一标准输入框 Header -->
+    <div class="flex items-center gap-3 border-b-2 border-pink-100 p-4 dark:border-purple-900/60">
+      <span class="text-xl">🔍</span>
+      <input
+        id="search-input"
+        type="text"
+        autofocus
+        placeholder="搜索文章标题、关键词、分类或标签..."
+        class="w-full bg-transparent font-sans text-base font-bold text-[#3C2C26] outline-none placeholder:text-pink-300 dark:text-pink-100 dark:placeholder:text-purple-400 pointer-events-auto"
+        autocomplete="off"
+      />
+      <kbd
+        id="close-modal-btn"
+        class="cursor-pointer rounded-xl border border-pink-200 bg-pink-50 px-2.5 py-1 font-mono text-xs font-bold text-pink-600 hover:bg-pink-200 dark:border-purple-800 dark:bg-purple-900 dark:text-pink-200 shrink-0"
+      >
+        esc
+      </kbd>
+    </div>
+
+    <!-- 2. 下方结果区域：仅在开始打字时动态展开 -->
+    <div
+      id="search-results"
+      class="hidden overflow-y-auto p-4 flex-col gap-2 border-b border-pink-100 dark:border-purple-900/60 max-h-[55vh]"
+    >
+    </div>
+
+    <!-- 3. 底部快捷键说明 Footer -->
+    <div class="flex items-center justify-between bg-pink-50/60 px-4 py-2.5 text-xs font-bold text-[#7A6860] dark:bg-purple-950/40 dark:text-pink-200/80">
+      <div class="flex items-center gap-4">
+        <span class="flex items-center gap-1">
+          <kbd class="rounded border border-pink-200 bg-white px-1.5 py-0.5 font-mono dark:border-purple-800 dark:bg-purple-900">↑↓</kbd> 选择
+        </span>
+        <span class="flex items-center gap-1">
+          <kbd class="rounded border border-pink-200 bg-white px-1.5 py-0.5 font-mono dark:border-purple-800 dark:bg-purple-900">↵</kbd> 打开
+        </span>
+        <span class="flex items-center gap-1">
+          <kbd class="rounded border border-pink-200 bg-white px-1.5 py-0.5 font-mono dark:border-purple-800 dark:bg-purple-900">esc</kbd> 关闭
+        </span>
+      </div>
+      <span class="font-mono text-[11px] text-pink-400">Pure Local Fuzzy Search</span>
+    </div>
+  </div>
+</div>
+
+<!-- 引入 Fuse.js 模糊检索算法 -->
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js" is:inline></script>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('search-modal-container');
+    const modalCard = document.getElementById('search-modal-card');
+    const input = document.getElementById('search-input');
+    const resultsContainer = document.getElementById('search-results');
+    const closeBtn = document.getElementById('close-modal-btn');
+    const triggers = document.querySelectorAll('#search-btn-trigger');
+
+    let searchIndex = [];
+    let fuse = null;
+    let selectedIndex = -1;
+
+    // 预加载站内文章索引 JSON
+    fetch('/search-index.json')
+      .then(res => res.json())
+      .then(data => {
+        searchIndex = data;
+        if (window.Fuse) {
+          fuse = new window.Fuse(searchIndex, {
+            keys: ['title', 'description', 'category', 'tags'],
+            threshold: 0.4,
+            ignoreLocation: true,
+          });
+        }
+      })
+      .catch(err => console.error('Search index load error:', err));
+
+    function openModal() {
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+
+      // 确保弹窗一打开，光标自动锁定在顶部 input 中
+      setTimeout(() => {
+        if (input) {
+          input.focus();
+          input.select();
+        }
+      }, 50);
+    }
+
+    function closeModal() {
+      if (!modal) return;
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      if (input) input.value = '';
+      selectedIndex = -1;
+      hideResultsUI();
+    }
+
+    function hideResultsUI() {
+      if (resultsContainer) {
+        resultsContainer.innerHTML = '';
+        resultsContainer.classList.add('hidden');
+        resultsContainer.classList.remove('flex');
+      }
+    }
+
+    // 监听 ⌘K / Ctrl+K 与 Esc 快捷键
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+        e.preventDefault();
+        if (modal?.classList.contains('hidden')) {
+          openModal();
+        } else {
+          closeModal();
+        }
+        return;
+      }
+
+      if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+        closeModal();
+        return;
+      }
+
+      // 键盘 ↑ ↓ 方向导航与 Enter 打开
+      if (modal && !modal.classList.contains('hidden')) {
+        const items = resultsContainer?.querySelectorAll('.search-result-item');
+        if (!items || items.length === 0) return;
+
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          selectedIndex = (selectedIndex + 1) % items.length;
+          updateSelection(items);
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          selectedIndex = (selectedIndex - 1 + items.length) % items.length;
+          updateSelection(items);
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          if (selectedIndex >= 0 && items[selectedIndex]) {
+            items[selectedIndex].click();
+          }
+        }
+      }
+    });
+
+    function updateSelection(items) {
+      items.forEach((item, index) => {
+        if (index === selectedIndex) {
+          item.classList.add('bg-pink-100/90', 'dark:bg-purple-900/80', 'border-pink-300');
+          item.scrollIntoView({ block: 'nearest' });
+        } else {
+          item.classList.remove('bg-pink-100/90', 'dark:bg-purple-900/80', 'border-pink-300');
+        }
+      });
+    }
+
+    // 点击关闭按钮与遮罩层
+    closeBtn?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    modalCard?.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    triggers.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+      });
+    });
+
+    // 实时打字搜索监听
+    input?.addEventListener('input', (e) => {
+      const query = e.target.value.trim();
+      selectedIndex = -1;
+
+      // 1. 未打字时：隐藏结果区域
+      if (!query || !fuse) {
+        hideResultsUI();
+        return;
+      }
+
+      const results = fuse.search(query);
+
+      // 展开结果区域
+      resultsContainer.classList.remove('hidden');
+      resultsContainer.classList.add('flex');
+
+      // 2. 无匹配结果时：显示极简单行提示
+      if (results.length === 0) {
+        resultsContainer.innerHTML = `
+          <div class="py-3 px-2 text-center text-sm font-bold text-[#7A6860] dark:text-pink-200/80">
+            未找到与 “<span class="text-pink-600 dark:text-pink-300 font-mono">${query}</span>” 相关的文章
+          </div>
+        `;
+        return;
+      }
+
+      // 3. 有匹配结果：渲染卡片列表
+      resultsContainer.innerHTML = results.map((res) => {
+        const item = res.item;
+        return `
+          <a
+            href="/blog/${item.slug}"
+            class="search-result-item flex flex-col gap-1 rounded-2xl border border-pink-100 bg-pink-50/50 p-3.5 transition-all hover:bg-pink-100/90 hover:border-pink-300 dark:border-purple-900/50 dark:bg-purple-950/40 dark:hover:bg-purple-900/80"
+          >
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-base font-black text-[#3C2C26] dark:text-pink-100 line-clamp-1">
+                ${item.title}
+              </span>
+              <span class="rounded-full bg-pink-200 px-2.5 py-0.5 font-mono text-[11px] font-extrabold text-pink-700 dark:bg-purple-900 dark:text-pink-200 shrink-0">
+                ${item.category}
+              </span>
+            </div>
+            <p class="text-xs text-[#7A6860] dark:text-pink-200/80 line-clamp-1 font-medium">
+              ${item.description}
+            </p>
+            <div class="flex items-center gap-2 mt-1 text-[11px] font-mono text-pink-500 dark:text-pink-300 font-bold">
+              <span>📅 ${item.pubDate}</span>
+              ${item.tags && item.tags.length ? `<span>• 🏷️ ${item.tags.join(', ')}</span>` : ''}
+            </div>
+          </a>
+        `;
+      }).join('');
+    });
+  });
+</script>

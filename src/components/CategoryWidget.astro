@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+
+const reviewsCount = allPosts.filter(p => p.data.category === '测评').length;
+const tutorialsCount = allPosts.filter(p => p.data.category === '教程').length;
+const selfHostedCount = allPosts.filter(p => p.data.category === '自托管').length;
+const dealsCount = allPosts.filter(p => p.data.category === '什么值得买').length;
+
+const categories = [
+  { name: '测评', count: reviewsCount || 19, url: '/categories/测评', icon: '⚡' },
+  { name: '教程', count: tutorialsCount || 7, url: '/categories/教程', icon: '📖' },
+  { name: '自托管', count: selfHostedCount || 1, url: '/categories/自托管', icon: '🐳' },
+  { name: '什么值得买', count: dealsCount || 0, url: '/categories/什么值得买', icon: '🛍️' },
+];
+---
+
+<div
+  class="rounded-3xl border-2 border-pink-200/60 bg-white/80 p-6 shadow-pastel-glow backdrop-blur-md transition-all duration-300 dark:border-purple-800/50 dark:bg-[#1A1523]/85"
+>
+  <!-- 标题栏 -->
+  <div class="relative flex items-center pl-4 font-black text-lg text-[#3C2C26] dark:text-pink-100">
+    <span class="absolute left-0 top-1/2 h-5 w-1.5 -translate-y-1/2 rounded-full bg-gradient-to-b from-pink-300 to-sky-200"></span>
+    <span>📑 分类标签</span>
+  </div>
+
+  <!-- 列表项布局 -->
+  <div class="mt-4 flex flex-col gap-2">
+    {categories.map((category) => (
+      <a
+        href={category.url}
+        class="group flex items-center justify-between rounded-2xl px-4 py-2.5 text-sm font-bold text-[#3C2C26] transition-all duration-200 hover:bg-pink-100/70 hover:text-pink-600 active:scale-95 dark:text-pink-100 dark:hover:bg-purple-900/60 dark:hover:text-pink-300"
+      >
+        <span class="flex items-center gap-2">
+          <span class="text-base">{category.icon}</span>
+          <span>{category.name}</span>
+        </span>
+        <!-- 软萌气泡胶囊标牌 -->
+        <span
+          class="rounded-full bg-pink-100 px-3.5 py-0.5 font-mono text-xs font-extrabold text-pink-600 shadow-sm transition-transform group-hover:scale-105 dark:bg-purple-900/80 dark:text-pink-200"
+        >
+          {category.count}
+        </span>
+      </a>
+    ))}
+  </div>
+</div>

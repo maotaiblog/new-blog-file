@@ -1,0 +1,324 @@
+<!DOCTYPE html><html lang="zh-CN" class="dark"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- 强制全量浏览器更新二次元少女 Favicon 图标 --><link rel="icon" type="image/png" href="/favicon.png?v=2"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2"><link rel="apple-touch-icon" href="/favicon.png?v=2"><title>【官方终极版】机场评测与定量打分体系白皮书 (2026 v4.2 标准版) - 猫太博客</title><meta name="description" content="网络性能实验室 2026 年最新发布的权威机场评测与定量打分体系白皮书 v4.2 完整版。包含全 7 章核心评估维度、TCP/UDP 丢包率、Jitter 抖动计算公式、IP 欺诈分、协议打分矩阵与一票否决机制。"><!-- Open Graph (OG) 默认标签 --><meta property="og:title" content="【官方终极版】机场评测与定量打分体系白皮书 (2026 v4.2 标准版) - 猫太博客"><meta property="og:description" content="网络性能实验室 2026 年最新发布的权威机场评测与定量打分体系白皮书 v4.2 完整版。包含全 7 章核心评估维度、TCP/UDP 丢包率、Jitter 抖动计算公式、IP 欺诈分、协议打分矩阵与一票否决机制。"><meta property="og:type" content="website"><meta property="og:image" content="https://catblog.example.com/gallery/retro-cat-girl.jpg"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="https://catblog.example.com/blog/airport-evaluation-whitepaper-full-2026/"><meta property="og:title" content="【官方终极版】机场评测与定量打分体系白皮书 (2026 v4.2 标准版)"><meta property="og:description" content="网络性能实验室 2026 年最新发布的权威机场评测与定量打分体系白皮书 v4.2 完整版。包含全 7 章核心评估维度、TCP/UDP 丢包率、Jitter 抖动计算公式、IP 欺诈分、协议打分矩阵与一票否决机制。"><meta property="og:type" content="article"><meta property="og:url" content="https://catblog.example.com/blog/airport-evaluation-whitepaper-full-2026/"><meta property="og:image" content="https://catblog.example.com/gallery/retro-cat-girl.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="【官方终极版】机场评测与定量打分体系白皮书 (2026 v4.2 标准版)"><meta name="twitter:description" content="网络性能实验室 2026 年最新发布的权威机场评测与定量打分体系白皮书 v4.2 完整版。包含全 7 章核心评估维度、TCP/UDP 丢包率、Jitter 抖动计算公式、IP 欺诈分、协议打分矩阵与一票否决机制。"><meta name="twitter:image" content="https://catblog.example.com/gallery/retro-cat-girl.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"2026年翻墙机场怎么选最稳定？","acceptedAnswer":{"@type":"Answer","text":"建议优先选择采用 IPLC 或 IEPL 内网专线架构的机场，这类线路不经过公网防火墙，晚高峰时段丢包率低且延迟稳定。"}},{"@type":"Question","name":"什么是原生 IP？为什么解锁 ChatGPT 需要它？","acceptedAnswer":{"@type":"Answer","text":"原生 IP 是指 IP 注册地与服务器机房物理所在地一致的 IP。OpenAI 等服务对数据中心 IP 封控严格，使用原生住宅 IP 能大幅降低被封禁风险。"}}]}</script><link rel="stylesheet" href="/_astro/about.MFlcR0mO.css">
+<style>.prose h1{margin-top:1.5rem;margin-bottom:.75rem;border-bottom-width:1px;--tw-border-opacity: 1;border-color:rgb(252 231 243 / var(--tw-border-opacity, 1));padding-bottom:.5rem;font-size:1.5rem;line-height:2rem;font-weight:900;--tw-text-opacity: 1;color:rgb(60 44 38 / var(--tw-text-opacity, 1))}.prose h1:is(.dark *){border-color:#581c8799;--tw-text-opacity: 1;color:rgb(252 231 243 / var(--tw-text-opacity, 1))}.prose h2{margin-top:1.5rem;margin-bottom:.625rem;font-size:1.25rem;line-height:1.75rem;font-weight:900;--tw-text-opacity: 1;color:rgb(60 44 38 / var(--tw-text-opacity, 1))}.prose h2:is(.dark *){--tw-text-opacity: 1;color:rgb(252 231 243 / var(--tw-text-opacity, 1))}.prose h3{margin-top:1rem;margin-bottom:.5rem;font-size:1.125rem;line-height:1.75rem;font-weight:700;--tw-text-opacity: 1;color:rgb(60 44 38 / var(--tw-text-opacity, 1))}.prose h3:is(.dark *){--tw-text-opacity: 1;color:rgb(252 231 243 / var(--tw-text-opacity, 1))}.prose p{margin-bottom:1rem;font-size:1rem;line-height:1.5rem;font-weight:500;line-height:1.625;--tw-text-opacity: 1;color:rgb(60 44 38 / var(--tw-text-opacity, 1))}.prose p:is(.dark *){--tw-text-opacity: 1;color:rgb(252 231 243 / var(--tw-text-opacity, 1))}.prose ul,.prose ol{margin-bottom:1rem;list-style-type:disc;padding-left:1.25rem;font-size:1rem;line-height:1.5rem;--tw-text-opacity: 1;color:rgb(60 44 38 / var(--tw-text-opacity, 1))}.prose ul:is(.dark *),.prose ol:is(.dark *){--tw-text-opacity: 1;color:rgb(252 231 243 / var(--tw-text-opacity, 1))}.prose blockquote{margin-top:1rem;margin-bottom:1rem;border-top-right-radius:.75rem;border-bottom-right-radius:.75rem;border-left-width:4px;--tw-border-opacity: 1;border-color:rgb(249 168 212 / var(--tw-border-opacity, 1));background-color:#fdf2f899;padding:.875rem;font-size:.75rem;line-height:1rem;font-weight:500;--tw-text-opacity: 1;color:rgb(122 104 96 / var(--tw-text-opacity, 1))}.prose blockquote:is(.dark *){background-color:#581c8766;color:#fbcfe8e6}@media (min-width: 768px){.prose blockquote{font-size:.875rem;line-height:1.25rem}}.prose pre{margin-top:1rem;margin-bottom:1rem;overflow-x:auto;border-radius:.75rem;border-width:1px;border-color:#6b21a899;--tw-bg-opacity: 1;background-color:rgb(26 21 35 / var(--tw-bg-opacity, 1));padding:1rem;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-size:.875rem;line-height:1.25rem;--tw-text-opacity: 1;color:rgb(252 231 243 / var(--tw-text-opacity, 1))}.prose table{margin-top:1rem;margin-bottom:1rem;width:100%;border-collapse:collapse;overflow:hidden;border-radius:.75rem;border-width:1px;border-color:#fbcfe899;font-size:.75rem;line-height:1rem;--tw-shadow: 0 1px 2px 0 rgb(0 0 0 / .05);--tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.prose table:is(.dark *){border-color:#6b21a899}@media (min-width: 768px){.prose table{font-size:.875rem;line-height:1.25rem}}.prose th,.prose td{border-width:1px;border-color:#fbcfe899;padding:.75rem;text-align:left}.prose th:is(.dark *),.prose td:is(.dark *){border-color:#6b21a899}.prose th{background-color:#fce7f3b3;font-weight:900;--tw-text-opacity: 1;color:rgb(60 44 38 / var(--tw-text-opacity, 1))}.prose th:is(.dark *){background-color:#581c87cc;--tw-text-opacity: 1;color:rgb(252 231 243 / var(--tw-text-opacity, 1))}.prose img{margin-top:.75rem;margin-bottom:.75rem;border-radius:.75rem;--tw-shadow: 0 4px 6px -1px rgb(0 0 0 / .1), 0 2px 4px -2px rgb(0 0 0 / .1);--tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow);loading:lazy}
+</style><script type="module" src="/_astro/hoisted.CSx5YW7_.js"></script></head> <body class="min-h-screen flex flex-col bg-[var(--bg-color)] text-[var(--text-main)]"> <!-- 1. 顶部导航栏 --> <header class="sticky top-0 z-50 w-full px-4 pt-3" data-astro-cid-5blmo7yk> <nav class="mx-auto flex h-18 max-w-7xl items-center justify-between rounded-full border-2 border-pink-200/60 bg-white/80 px-6 py-2 shadow-[0_10px_30px_rgba(255,183,178,0.3)] backdrop-blur-md transition-all duration-300 dark:border-purple-800/50 dark:bg-[#1A1523]/85" data-astro-cid-5blmo7yk> <!-- Logo 区域 --> <a href="/" class="flex items-center gap-3 transition-transform duration-200 active:scale-95 group" data-astro-cid-5blmo7yk> <div class="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border-2 border-pink-300 bg-gradient-to-tr from-pink-300 to-sky-200 shadow-md shadow-pink-300/40 group-hover:rotate-12 transition-transform" data-astro-cid-5blmo7yk> <img src="/logo.png" alt="猫太博客 Logo" class="h-full w-full object-cover object-center" data-astro-cid-5blmo7yk> </div> <div class="flex flex-col" data-astro-cid-5blmo7yk> <span class="text-xl font-black tracking-wider text-[#3C2C26] dark:text-pink-100 flex items-center gap-1" data-astro-cid-5blmo7yk> <span data-astro-cid-5blmo7yk>猫太博客</span> <span class="text-sm text-pink-400" data-astro-cid-5blmo7yk>🌸</span> </span> <span class="text-[11px] font-mono tracking-widest text-pink-400 dark:text-pink-300 font-bold" data-astro-cid-5blmo7yk>
+90s ANIME AESTHETIC
+</span> </div> </a> <!-- 桌面端导航栏 --> <div class="hidden items-center gap-2 md:flex" data-astro-cid-5blmo7yk> <!-- 固化柱页 /rank 推荐榜单 --> <a href="/rank" class="nav-pastel-item bg-pink-100/90 text-pink-600 dark:bg-purple-900/80 dark:text-pink-200 font-black shadow-sm" data-astro-cid-5blmo7yk> <span data-astro-cid-5blmo7yk>🏆 机场推荐榜单</span> </a> <!-- 单级链接 --> <a href="/" class="nav-pastel-item" data-astro-cid-5blmo7yk> <span data-astro-cid-5blmo7yk>🎀 主页</span> </a> <a href="/about" class="nav-pastel-item" data-astro-cid-5blmo7yk> <span data-astro-cid-5blmo7yk>✨ 关于</span> </a> <!-- 下拉菜单：💌 归档 (已删掉 2025 年归档按钮) --> <div class="group relative" data-astro-cid-5blmo7yk> <button class="nav-pastel-item" data-astro-cid-5blmo7yk> <span data-astro-cid-5blmo7yk>💌 归档</span> <span class="text-xs transition-transform duration-200 group-hover:rotate-180" data-astro-cid-5blmo7yk>▾</span> </button> <div class="invisible absolute left-0 top-full pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100" data-astro-cid-5blmo7yk> <div class="w-52 rounded-2xl border-2 border-pink-200/80 bg-white/95 p-2.5 shadow-pastel-glow backdrop-blur-lg dark:border-purple-800 dark:bg-[#1A1523]/95 flex flex-col gap-1" data-astro-cid-5blmo7yk> <a href="/archives/2026" class="dropdown-pastel-item" data-astro-cid-5blmo7yk>
+📅 2026 年归档
+</a> <a href="/archives" class="dropdown-pastel-item" data-astro-cid-5blmo7yk>
+🗓️ 全部时间轴
+</a> <div class="my-1 h-[1px] bg-pink-100 dark:bg-purple-900" data-astro-cid-5blmo7yk></div> <a href="/tags" class="dropdown-pastel-item" data-astro-cid-5blmo7yk>
+🏷️ 标签云
+</a> </div> </div> </div> <!-- 下拉菜单：更多 (已删掉 友链、番剧、服务 按钮) --> <div class="group relative" data-astro-cid-5blmo7yk> <button class="nav-pastel-item" data-astro-cid-5blmo7yk> <span data-astro-cid-5blmo7yk>🌙 更多</span> <span class="text-xs transition-transform duration-200 group-hover:rotate-180" data-astro-cid-5blmo7yk>▾</span> </button> <div class="invisible absolute left-0 top-full pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100" data-astro-cid-5blmo7yk> <div class="w-52 rounded-2xl border-2 border-pink-200/60 bg-white/95 p-2 shadow-pastel-glow backdrop-blur-lg dark:border-purple-800 dark:bg-[#1A1523]/95 flex flex-col gap-1" data-astro-cid-5blmo7yk> <a href="/gallery" class="dropdown-pastel-item font-black text-pink-600 bg-pink-50 dark:bg-purple-900/60 dark:text-pink-200" data-astro-cid-5blmo7yk>
+🖼️ 治愈系图库
+</a> <a href="/apple-id" class="dropdown-pastel-item font-black text-purple-600 dark:text-purple-300" data-astro-cid-5blmo7yk>
+🍎 免费 Apple ID
+</a> </div> </div> </div> <!-- 💬 论坛外链 (指定 Telegram 社群外链) --> <a href="https://t.me/+KMqGQjOeRY1hNjY1" target="_blank" rel="noopener noreferrer" class="nav-pastel-item font-black text-pink-600 hover:text-pink-700" data-astro-cid-5blmo7yk> <span data-astro-cid-5blmo7yk>💬 论坛</span> <span class="text-xs text-pink-400" data-astro-cid-5blmo7yk>↗</span> </a> </div> <!-- 右侧功能按键 --> <div class="flex items-center gap-2" data-astro-cid-5blmo7yk> <!-- Dark mode 切换按键 --> <button id="theme-toggle-btn" class="flex h-10 w-10 items-center justify-center rounded-full border border-pink-200 bg-pink-50/70 text-pink-600 transition-all hover:bg-pink-100 active:scale-90 dark:border-purple-800 dark:bg-purple-950/60 dark:text-pink-300 dark:hover:bg-purple-900" aria-label="切换主题" data-astro-cid-5blmo7yk> <span class="text-base dark:hidden" data-astro-cid-5blmo7yk>☀️</span> <span class="text-base hidden dark:inline" data-astro-cid-5blmo7yk>🌙</span> </button> <!-- 搜索触发按键 --> <button id="search-btn-trigger" class="flex items-center gap-2 rounded-full border border-pink-200 bg-pink-50/70 px-4 py-2 text-sm font-bold text-pink-700 transition-all hover:bg-pink-100 active:scale-95 dark:border-purple-800 dark:bg-purple-950/60 dark:text-pink-300 dark:hover:bg-purple-900" aria-label="搜索" data-astro-cid-5blmo7yk> <span class="text-base" data-astro-cid-5blmo7yk>🔍</span> <span class="hidden sm:inline" data-astro-cid-5blmo7yk>搜索...</span> <kbd class="hidden rounded-full border border-pink-300 bg-white px-2 font-mono text-[10px] text-pink-400 sm:inline dark:border-purple-700 dark:bg-purple-900 dark:text-pink-200" data-astro-cid-5blmo7yk>⌘K</kbd> </button> <!-- 移动端汉堡包按钮 --> <button id="mobile-menu-btn" class="flex h-10 w-10 items-center justify-center rounded-full text-pink-600 transition-colors hover:bg-pink-100 active:scale-90 md:hidden dark:text-pink-300 dark:hover:bg-purple-900" aria-label="切换菜单" data-astro-cid-5blmo7yk> <span class="text-lg" data-astro-cid-5blmo7yk>☰</span> </button> </div> </nav> <!-- 移动端抽屉导航面板 --> <div id="mobile-menu-panel" class="mt-2 hidden rounded-3xl border-2 border-pink-200/80 bg-white/95 p-4 shadow-pastel-glow backdrop-blur-xl md:hidden dark:border-purple-800 dark:bg-[#1A1523]/95" data-astro-cid-5blmo7yk> <div class="flex flex-col gap-1.5" data-astro-cid-5blmo7yk> <a href="/rank" class="mobile-nav-pastel-item text-pink-600 font-black" data-astro-cid-5blmo7yk>🏆 机场推荐榜单</a> <a href="https://t.me/+KMqGQjOeRY1hNjY1" target="_blank" rel="noopener noreferrer" class="mobile-nav-pastel-item font-black text-pink-600" data-astro-cid-5blmo7yk>💬 论坛社群 ↗</a> <a href="/gallery" class="mobile-nav-pastel-item font-black" data-astro-cid-5blmo7yk>🖼️ 治愈系图库</a> <a href="/apple-id" class="mobile-nav-pastel-item" data-astro-cid-5blmo7yk>🍎 免费 Apple ID</a> <a href="/" class="mobile-nav-pastel-item" data-astro-cid-5blmo7yk>🎀 主页</a> <a href="/archives" class="mobile-nav-pastel-item" data-astro-cid-5blmo7yk>💌 文章时间归档</a> <a href="/tags" class="mobile-nav-pastel-item" data-astro-cid-5blmo7yk>🏷️ 标签云</a> <a href="/about" class="mobile-nav-pastel-item" data-astro-cid-5blmo7yk>✨ 关于</a> </div> </div> </header>   <!-- 2. 核心主体内容区域 (flex-1 自动撑开视口高度) --> <main class="mx-auto flex-1 w-full max-w-7xl px-4 pt-6 pb-12">              <div class="flex flex-col gap-6 lg:flex-row items-start"> <!-- 左侧边栏 --> <aside class="flex w-full flex-col gap-4 md:w-[17.5rem] md:shrink-0"> <div class="group relative flex flex-col items-center rounded-3xl border-2 border-pink-200/60 bg-white/80 p-6 shadow-pastel-glow backdrop-blur-md transition-all duration-300 hover:shadow-[0_15px_35px_rgba(255,183,178,0.45)] dark:border-purple-800/50 dark:bg-[#1A1523]/85"> <!-- 拍立得贴纸风格头像区域 --> <div class="polaroid-frame relative"> <div class="h-32 w-32 overflow-hidden rounded-lg bg-pink-100"> <img src="/gallery/retro-cat-girl.jpg" alt="猫太博客 90s 复古动漫头像" class="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-110"> </div> <div class="absolute inset-0 flex items-center justify-center bg-pink-400/20 opacity-0 backdrop-blur-[2px] transition-all duration-300 group-hover:opacity-100 rounded-lg"> <span class="text-3xl filter drop-shadow-md">🎀</span> </div> </div> <!-- 个人信息 --> <h2 class="mt-4 text-2xl font-black tracking-wide text-[#3C2C26] dark:text-pink-100 flex items-center gap-1.5"> <span>猫太博客</span> <span class="text-lg">🐔</span> </h2> <!-- 蜜桃粉中心短指示条 --> <div class="my-2.5 h-1.5 w-12 rounded-full bg-gradient-to-r from-pink-300 to-sky-200 shadow-sm"></div> <!-- 签名 --> <p class="text-center font-mono text-sm italic font-semibold text-[#7A6860] dark:text-pink-200/80">
+"𝙄𝙩'𝙨 𝙩𝙝𝙚 𝙤𝙣𝙡𝙮 𝙉𝙀𝙀𝙏 𝙩𝙝𝙞𝙣𝙜 𝙩𝙤 𝙙𝙤…"
+</p> <!-- 社交按钮 (已替换为指定的 Telegram 论坛群组外链) --> <div class="mt-5 flex items-center gap-4"> <a href="https://t.me/+KMqGQjOeRY1hNjY1" target="_blank" rel="noopener noreferrer" class="flex h-11 w-11 items-center justify-center rounded-full border border-pink-200 bg-pink-50 text-pink-600 shadow-sm transition-all duration-200 hover:bg-pink-300 hover:text-white active:scale-90 dark:border-purple-700 dark:bg-purple-900/60 dark:text-pink-200 dark:hover:bg-purple-700" aria-label="Telegram 论坛社群"> <span class="text-lg">✈️</span> </a> <a href="https://t.me/+KMqGQjOeRY1hNjY1" target="_blank" rel="noopener noreferrer" class="flex h-11 w-11 items-center justify-center rounded-full border border-sky-200 bg-sky-50 text-sky-600 shadow-sm transition-all duration-200 hover:bg-sky-200 hover:text-sky-900 active:scale-90 dark:border-purple-700 dark:bg-purple-900/60 dark:text-sky-200 dark:hover:bg-purple-700" aria-label="💬 论坛"> <span class="text-lg">💬</span> </a> </div> </div> <div class="rounded-3xl border-2 border-pink-200/60 bg-white/80 p-6 shadow-pastel-glow backdrop-blur-md transition-all duration-300 dark:border-purple-800/50 dark:bg-[#1A1523]/85"> <!-- 标题栏 --> <div class="relative flex items-center pl-4 font-black text-lg text-[#3C2C26] dark:text-pink-100"> <span class="absolute left-0 top-1/2 h-5 w-1.5 -translate-y-1/2 rounded-full bg-gradient-to-b from-pink-300 to-sky-200"></span> <span>📑 分类标签</span> </div> <!-- 列表项布局 --> <div class="mt-4 flex flex-col gap-2"> <a href="/categories/测评" class="group flex items-center justify-between rounded-2xl px-4 py-2.5 text-sm font-bold text-[#3C2C26] transition-all duration-200 hover:bg-pink-100/70 hover:text-pink-600 active:scale-95 dark:text-pink-100 dark:hover:bg-purple-900/60 dark:hover:text-pink-300"> <span class="flex items-center gap-2"> <span class="text-base">⚡</span> <span>测评</span> </span> <!-- 软萌气泡胶囊标牌 --> <span class="rounded-full bg-pink-100 px-3.5 py-0.5 font-mono text-xs font-extrabold text-pink-600 shadow-sm transition-transform group-hover:scale-105 dark:bg-purple-900/80 dark:text-pink-200"> 19 </span> </a><a href="/categories/教程" class="group flex items-center justify-between rounded-2xl px-4 py-2.5 text-sm font-bold text-[#3C2C26] transition-all duration-200 hover:bg-pink-100/70 hover:text-pink-600 active:scale-95 dark:text-pink-100 dark:hover:bg-purple-900/60 dark:hover:text-pink-300"> <span class="flex items-center gap-2"> <span class="text-base">📖</span> <span>教程</span> </span> <!-- 软萌气泡胶囊标牌 --> <span class="rounded-full bg-pink-100 px-3.5 py-0.5 font-mono text-xs font-extrabold text-pink-600 shadow-sm transition-transform group-hover:scale-105 dark:bg-purple-900/80 dark:text-pink-200"> 8 </span> </a><a href="/categories/自托管" class="group flex items-center justify-between rounded-2xl px-4 py-2.5 text-sm font-bold text-[#3C2C26] transition-all duration-200 hover:bg-pink-100/70 hover:text-pink-600 active:scale-95 dark:text-pink-100 dark:hover:bg-purple-900/60 dark:hover:text-pink-300"> <span class="flex items-center gap-2"> <span class="text-base">🐳</span> <span>自托管</span> </span> <!-- 软萌气泡胶囊标牌 --> <span class="rounded-full bg-pink-100 px-3.5 py-0.5 font-mono text-xs font-extrabold text-pink-600 shadow-sm transition-transform group-hover:scale-105 dark:bg-purple-900/80 dark:text-pink-200"> 1 </span> </a><a href="/categories/什么值得买" class="group flex items-center justify-between rounded-2xl px-4 py-2.5 text-sm font-bold text-[#3C2C26] transition-all duration-200 hover:bg-pink-100/70 hover:text-pink-600 active:scale-95 dark:text-pink-100 dark:hover:bg-purple-900/60 dark:hover:text-pink-300"> <span class="flex items-center gap-2"> <span class="text-base">🛍️</span> <span>什么值得买</span> </span> <!-- 软萌气泡胶囊标牌 --> <span class="rounded-full bg-pink-100 px-3.5 py-0.5 font-mono text-xs font-extrabold text-pink-600 shadow-sm transition-transform group-hover:scale-105 dark:bg-purple-900/80 dark:text-pink-200"> 0 </span> </a> </div> </div> </aside> <!-- 中间 Markdown 内容主区 --> <article class="flex-1 card-pastel p-5 sm:p-8 w-full min-w-0"> <header class="border-b border-pink-100 dark:border-purple-900/60 pb-4 mb-5"> <div class="flex items-center gap-2 text-xs font-bold text-[#7A6860] dark:text-pink-200/80 mb-2 flex-wrap"> <span class="rounded-full bg-pink-100 px-3 py-0.5 font-bold text-pink-600 dark:bg-purple-900/80 dark:text-pink-200">
+🌸 教程 </span> <span>•</span> <span>📅 发布于: 2026-08-25</span> <span>•</span> <!-- 📅 数据更新时效性 Banner --> <span class="text-emerald-600 dark:text-emerald-400 font-extrabold">
+🔄 数据最后更新于：2026年8月28日
+</span> </div> <h1 class="text-2xl sm:text-3xl font-black text-[#3C2C26] dark:text-pink-100 leading-tight"> 【官方终极版】机场评测与定量打分体系白皮书 (2026 v4.2 标准版) </h1> </header> <!-- 文章 Markdown 正文 --> <div class="prose dark:prose-invert max-w-none text-base leading-relaxed"> <h1 id="-机场评测与定量打分体系白皮书2026-v42-标准版">📘 机场评测与定量打分体系白皮书（2026 v4.2 标准版）</h1>
+<blockquote>
+<p><strong>版本</strong>：v4.2 | <strong>更新日期</strong>：2026年08月 | <strong>发布机构</strong>：网络性能实验室</p>
+</blockquote>
+<hr>
+<div style="background: rgba(255, 255, 255, 0.9); border: 2px solid #fbcfe8; border-radius: 16px; padding: 20px; margin-bottom: 28px; box-shadow: 0 10px 25px rgba(255,183,178,0.25);">
+  <h3 style="margin-top: 0; margin-bottom: 12px; color: #3C2C26; font-size: 1.1rem; font-weight: 900;">📌 目录导航 (点击直达与本页跳转)</h3>
+  <ul style="list-style: none; padding-left: 0; margin: 0; line-height: 2.3;">
+    <li>
+      <strong>第一章：评测宣言与 E-E-A-T 独立性声明</strong>
+      <a href="#chapter-1" style="background: #fef3c7; color: #d97706; padding: 3px 10px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold; margin-left: 8px;">👉 本页跳转</a>
+      <a href="/blog/airport-evaluation-whitepaper-part1-2026/" style="background: #dbeafe; color: #2563eb; padding: 3px 10px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold; margin-left: 4px;">📖 直达 Part 1 详尽卷</a>
+    </li>
+    <li>
+      <strong>第二章：维度一·线路质量与网络性能（权重 35%）</strong>
+      <a href="#chapter-2" style="background: #fef3c7; color: #d97706; padding: 3px 10px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold; margin-left: 8px;">👉 本页跳转</a>
+      <a href="/blog/airport-evaluation-whitepaper-part1-2026/#第二章维度一线路质量与网络性能权重-35" style="background: #dbeafe; color: #2563eb; padding: 3px 10px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold; margin-left: 4px;">📖 直达 Part 1 详尽卷</a>
+    </li>
+    <li>
+      <strong>第三章：维度二·IP 纯净度与解锁能力（权重 25%）</strong>
+      <a href="#chapter-3" style="background: #fef3c7; color: #d97706; padding: 3px 10px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold; margin-left: 8px;">👉 本页跳转</a>
+      <a href="/blog/airport-evaluation-whitepaper-part2-2026/" style="background: #dbeafe; color: #2563eb; padding: 3px 10px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold; margin-left: 4px;">📖 直达 Part 2 详尽卷</a>
+    </li>
+    <li>
+      <strong>第四章：维度三·晚高峰抗压与 SLA 稳定性（权重 20%）</strong>
+      <a href="#chapter-4" style="background: #fef3c7; color: #d97706; padding: 3px 10px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold; margin-left: 8px;">👉 本页跳转</a>
+      <a href="/blog/airport-evaluation-whitepaper-part2-2026/#第四章维度三晚高峰抗压与-sla-稳定性权重-20" style="background: #dbeafe; color: #2563eb; padding: 3px 10px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold; margin-left: 4px;">📖 直达 Part 2 详尽卷</a>
+    </li>
+    <li>
+      <strong>第五章：维度四·商业风险与财务健康度（权重 10%）</strong>
+      <a href="#chapter-5" style="background: #fef3c7; color: #d97706; padding: 3px 10px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold; margin-left: 8px;">👉 本页跳转</a>
+      <a href="/blog/airport-evaluation-whitepaper-part3-2026/" style="background: #dbeafe; color: #2563eb; padding: 3px 10px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold; margin-left: 4px;">📖 直达 Part 3 详尽卷</a>
+    </li>
+    <li>
+      <strong>第六章：维度五·客服响应与售后体系（权重 10%）</strong>
+      <a href="#chapter-6" style="background: #fef3c7; color: #d97706; padding: 3px 10px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold; margin-left: 8px;">👉 本页跳转</a>
+      <a href="/blog/airport-evaluation-whitepaper-part3-2026/#第六章维度五客服响应与售后体系权重-10" style="background: #dbeafe; color: #2563eb; padding: 3px 10px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold; margin-left: 4px;">📖 直达 Part 3 详尽卷</a>
+    </li>
+    <li>
+      <strong>第七章：综合打分数学模型与一票否决机制</strong>
+      <a href="#chapter-7" style="background: #fef3c7; color: #d97706; padding: 3px 10px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold; margin-left: 8px;">👉 本页跳转</a>
+      <a href="/blog/airport-evaluation-whitepaper-part3-2026/#第七章综合打分数学模型与一票否决机制" style="background: #dbeafe; color: #2563eb; padding: 3px 10px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold; margin-left: 4px;">📖 直达 Part 3 终章</a>
+    </li>
+  </ul>
+</div>
+<hr>
+<h2 id="chapter-1">第一章：评测宣言与 E-E-A-T 独立性声明</h2>
+<h3 id="11-为什么我们需要建立这套定量打分体系">1.1 为什么我们需要建立这套定量打分体系？</h3>
+<p>当前网络代理与机场评测行业存在严重的**“信息不对称”与“利益驱动失真”**。市面上大量所谓的“机场推荐榜单”本质上是基于返利佣金（Affiliate Marketing）的高低进行排序的。部分服务商通过短期高倍率超售、购买劣质直连线路拼凑低价套餐，诱导用户年付后频繁跑路或服务质量断崖式下跌。</p>
+<p>为了打破这种乱象，本博客正式建立**《机场定量打分体系白皮书》**。我们摒弃任何主观印象描述（如“速度飞快”、“丝滑顺畅”等模糊词汇），完全基于 <strong>24/7 自动化网络探针、TCP/UDP 丢包统计、IP 欺诈库 API 以及多路吞吐量实测数据</strong> 进行量化评分。</p>
+<h3 id="12-商业独立性与利益冲突回避声明">1.2 商业独立性与利益冲突回避声明</h3>
+<p>为了确保评测结果的绝对客观与公正，本实验室遵守以下三项铁律：</p>
+<ol>
+<li><strong>匿名自费采购</strong>：所有参与评测的机场套餐均由测试员使用全新账号匿名购买，绝不接受服务商提供的“专用测试节点”或“定制高优先线路”。</li>
+<li><strong>权重透明不可买断</strong>：综合得分完全由公开的数学公式自动计算生成，任何商业合作或广告投放均无法干预或修改评分结果。</li>
+<li><strong>黑名单公开曝光</strong>：凡存在虚假宣传（如将公网中转伪称为 IPLC 专线）、恶意日志审计泄露用户隐私、或存在跑路前夕大额促销行为的服务商，将永久列入《风险避坑黑名单》并扣除全部评分。</li>
+</ol>
+<hr>
+<h2 id="chapter-2">第二章：维度一·线路质量与网络性能（权重 35%）</h2>
+<p>网络性能是衡量代理服务质量的基石。在我们的评分模型中，线路质量占总分值的 <strong>35%</strong>。</p>
+<h3 id="21-延迟rtt与抖动jitter评估">2.1 延迟（RTT）与抖动（Jitter）评估</h3>
+<p>单纯的 ICMP Ping 值不能代表实际上网体验。我们使用自研的 <code>TcpPing</code> 工具对节点进行持续 72 小时的连续探测：</p>
+<p>$$Jitter = \frac{1}{N-1} \sum_{i=1}^{N-1} \vert{}RTT_{i+1} - RTT_{i}\vert{}$$</p>
+<ul>
+<li><strong>合格标准</strong>：香港/东京节点 Jitter（抖动） $&#x3C; 5\text{ms}$；美东/欧洲节点 Jitter $&#x3C; 15\text{ms}$。</li>
+<li><strong>扣分项</strong>：若 Jitter 超过 $30\text{ms}$，说明线路存在严重路由绕路或出口节点拥堵，直接扣除该维度 20% 的分数。</li>
+</ul>
+<h3 id="22-247-丢包率packet-loss实测">2.2 24/7 丢包率（Packet Loss）实测</h3>
+<p>丢包是导致网页加载缓慢、视频卡顿和游戏掉线的根本原因。我们分别在**空闲期（10:00-12:00）<strong>与</strong>晚高峰（20:00-23:00）**向节点发起 TCP 握手数据包测试：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>[测试指标] 丢包率 (Packet Loss) 评分阶梯：</span></span>
+<span class="line"><span>- 丢包率 &#x3C; 0.5%   ：100 分（专线级品质，游戏无感知）</span></span>
+<span class="line"><span>- 0.5% - 2.0%     ：85 分 （优质中转，4K 视频秒开）</span></span>
+<span class="line"><span>- 2.0% - 5.0%     ：60 分 （普通公网，高峰期偶有卡顿）</span></span>
+<span class="line"><span>- > 5.0%          ：0 分  （劣质线路/严重超售，判定为不合格）</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="chapter-3">第三章：维度二·IP 纯净度与解锁能力（权重 25%）</h2>
+<h3 id="31-机房-ip-vs-原生住宅-ip-底层识别机制">3.1 机房 IP vs 原生住宅 IP 底层识别机制</h3>
+<p>评估节点出口的 ASN 归属。机房 IP（Hosting/DataCenter）在 AI/流媒体风控引擎中信任度低；而原生住宅 IP（ISP/Residential）拥有最高的白名单信任等级。</p>
+<h3 id="32-ip-欺诈分-ip-fraud-score-测定">3.2 IP 欺诈分 (IP Fraud Score) 测定</h3>
+<p>结合 IPQS 与 Scamalytics 风险库，欺诈分 $&#x3C; 15$ 分为原生极佳，$\ge 50$ 分认定为高危被封黑名单节点。</p>
+<h3 id="33-ai-平台与-4k-流媒体解封测试">3.3 AI 平台与 4K 流媒体解封测试</h3>
+<p>测试对 OpenAI/Claude 的 Access Denied 拦截率及 WebRTC 防泄露机制，同时检验 Netflix/Disney+ 是否能无阻碍播放区域非自制独占剧集。</p>
+<hr>
+<h2 id="chapter-4">第四章：维度三·晚高峰抗压与 SLA 稳定性（权重 20%）</h2>
+<h3 id="41-晚高峰带宽衰减率-d_peak-计算模型">4.1 晚高峰带宽衰减率 $D_{peak}$ 计算模型</h3>
+<p>衡量黄金晚高峰（20:00-23:00）与非高峰时段的单线程吞吐衰减：</p>
+<p>$$D_{peak} = \frac{S_{day} - S_{peak}}{S_{day}} \times 100%$$</p>
+<ul>
+<li><strong>评判标准</strong>：$D_{peak} \le 10%$ 为顶级专线满分；$> 50%$ 判定为严重超售故障。</li>
+</ul>
+<h3 id="42-协议阵列抗-qos-打分矩阵">4.2 协议阵列抗 QoS 打分矩阵</h3>
+<p>评估 Shadowsocks、Trojan-GFW、VLESS-XTLS-Reality、Hysteria 2 及 TUIC v5 的传输效率与 UDP 弱网冲阻能力。</p>
+<hr>
+<h2 id="chapter-5">第五章：维度四·商业风险与财务健康度（权重 10%）</h2>
+<h3 id="51-成本超售倒推模型">5.1 成本超售倒推模型</h3>
+<p>从 1Gbps 独享专线（月租 ￥3.5万~5万）倒推服务商超售比：</p>
+<p>$$R_{over} = \frac{\sum_{i=1}^{N} C_i}{B_{total}}$$</p>
+<h3 id="52-域名与运营资产历史审计">5.2 域名与运营资产历史审计</h3>
+<p>审查域名注册年限、WHOIS 隐蔽度、DNSSEC 部署及 Telegram 社区历史建频道轨迹，识别换皮跑路风险。</p>
+<hr>
+<h2 id="chapter-6">第六章：维度五·客服响应与售后体系（权重 10%）</h2>
+<h3 id="61-工单首响应时间-sla">6.1 工单首响应时间 SLA</h3>
+<p>测定客服工单首响应时间（FRT）：$&#x3C; 30$ 分钟为 Tier 1 极速，$> 24$ 小时为无售后评级。</p>
+<h3 id="62-状态透明度与通告机制">6.2 状态透明度与通告机制</h3>
+<p>评估是否挂载独立的 Uptime Status 面板以及线路故障 15 分钟内响应通告率。</p>
+<hr>
+<h2 id="chapter-7">第七章：综合打分数学模型与一票否决机制</h2>
+<h3 id="71-五维加权计算公式">7.1 五维加权计算公式</h3>
+<p>受测服务商最终综合得分 $S_{total}$（满分 100 分）：</p>
+<p>$$S_{total} = \left( 0.35 \times S_{network} \right) + \left( 0.25 \times S_{ip_clean} \right) + \left( 0.20 \times S_{sla} \right) + \left( 0.10 \times S_{finance} \right) + \left( 0.10 \times S_{support} \right) - P_{penalty}$$</p>
+<h3 id="72-一票否决清零规则">7.2 一票否决清零规则</h3>
+<p>凡存在<strong>虚假宣传 IPLC 专线</strong>、<strong>跑路前大促销</strong>、<strong>恶意明文记录泄露隐私</strong>或<strong>TG 群禁言剔除正当维权用户</strong>行为，直接触发黑名单并归零得分（$S_{total} = 0$）。</p> </div> <!-- 仅当文章属于网络/代理/教程/测评等相关分类时才渲染底部机场推荐 Banner --> <div class="mt-8 rounded-2xl border border-pink-200/80 bg-gradient-to-r from-pink-100/60 to-purple-100/50 p-5 shadow-sm dark:border-purple-800 dark:from-purple-950/60 dark:to-pink-950/40"> <div class="flex items-center gap-3"> <span class="text-2xl filter drop-shadow-md">🏆</span> <div> <h3 class="text-base font-black text-[#3C2C26] dark:text-pink-100">
+不知道如何挑选适合自己的线路与机场？
+</h3> <p class="mt-0.5 text-xs font-medium text-[#7A6860] dark:text-pink-200/90">
+查看 24/7 探针实测的最新选购对比表：
+<a href="/rank" class="inline-flex items-center gap-1 font-black text-pink-600 dark:text-pink-300 underline hover:text-pink-700 ml-1"> <span>👉 2026 最新高性价比梯子推荐对比大表</span> <span>➔</span> </a> </p> </div> </div> </div> </article> <!-- 右侧 Sticky 悬浮目录导航 (TOC) --> <aside class="toc-sidebar sticky top-24 hidden lg:block w-72 shrink-0 self-start"><div class="rounded-2xl border border-pink-200/80 bg-white/95 p-4 shadow-pastel-glow backdrop-blur-md dark:border-purple-800/60 dark:bg-[#1A1523]/95"><!-- 头部标题 --><div class="flex items-center justify-between mb-3 border-b border-pink-100 pb-2 dark:border-purple-900/60"><h3 class="text-sm font-black text-[#3C2C26] dark:text-pink-100 flex items-center gap-1.5"><span class="text-base">📋</span><span>此页内容</span></h3><span class="rounded-full bg-pink-100 text-pink-600 px-2 py-0.5 font-mono text-[11px] font-bold dark:bg-purple-900 dark:text-pink-200">
+TOC
+</span></div><!-- 适中字号目录列表 --><nav class="toc-list flex flex-col gap-1 border-l-2 border-pink-100 dark:border-purple-900/60 pl-2 max-h-[65vh] overflow-y-auto"><a href="#11-为什么我们需要建立这套定量打分体系" data-toc-id="11-为什么我们需要建立这套定量打分体系" class="toc-item transition-all duration-200 block truncate rounded-lg py-1 px-2 leading-tight pl-4 text-xs text-[#7A6860] dark:text-pink-200/80 font-medium hover:text-pink-600 dark:hover:text-pink-300 hover:bg-pink-50/80 dark:hover:bg-purple-950/60">1.1 为什么我们需要建立这套定量打分体系？</a><a href="#12-商业独立性与利益冲突回避声明" data-toc-id="12-商业独立性与利益冲突回避声明" class="toc-item transition-all duration-200 block truncate rounded-lg py-1 px-2 leading-tight pl-4 text-xs text-[#7A6860] dark:text-pink-200/80 font-medium hover:text-pink-600 dark:hover:text-pink-300 hover:bg-pink-50/80 dark:hover:bg-purple-950/60">1.2 商业独立性与利益冲突回避声明</a><a href="#21-延迟rtt与抖动jitter评估" data-toc-id="21-延迟rtt与抖动jitter评估" class="toc-item transition-all duration-200 block truncate rounded-lg py-1 px-2 leading-tight pl-4 text-xs text-[#7A6860] dark:text-pink-200/80 font-medium hover:text-pink-600 dark:hover:text-pink-300 hover:bg-pink-50/80 dark:hover:bg-purple-950/60">2.1 延迟（RTT）与抖动（Jitter）评估</a><a href="#22-247-丢包率packet-loss实测" data-toc-id="22-247-丢包率packet-loss实测" class="toc-item transition-all duration-200 block truncate rounded-lg py-1 px-2 leading-tight pl-4 text-xs text-[#7A6860] dark:text-pink-200/80 font-medium hover:text-pink-600 dark:hover:text-pink-300 hover:bg-pink-50/80 dark:hover:bg-purple-950/60">2.2 24/7 丢包率（Packet Loss）实测</a><a href="#31-机房-ip-vs-原生住宅-ip-底层识别机制" data-toc-id="31-机房-ip-vs-原生住宅-ip-底层识别机制" class="toc-item transition-all duration-200 block truncate rounded-lg py-1 px-2 leading-tight pl-4 text-xs text-[#7A6860] dark:text-pink-200/80 font-medium hover:text-pink-600 dark:hover:text-pink-300 hover:bg-pink-50/80 dark:hover:bg-purple-950/60">3.1 机房 IP vs 原生住宅 IP 底层识别机制</a><a href="#32-ip-欺诈分-ip-fraud-score-测定" data-toc-id="32-ip-欺诈分-ip-fraud-score-测定" class="toc-item transition-all duration-200 block truncate rounded-lg py-1 px-2 leading-tight pl-4 text-xs text-[#7A6860] dark:text-pink-200/80 font-medium hover:text-pink-600 dark:hover:text-pink-300 hover:bg-pink-50/80 dark:hover:bg-purple-950/60">3.2 IP 欺诈分 (IP Fraud Score) 测定</a><a href="#33-ai-平台与-4k-流媒体解封测试" data-toc-id="33-ai-平台与-4k-流媒体解封测试" class="toc-item transition-all duration-200 block truncate rounded-lg py-1 px-2 leading-tight pl-4 text-xs text-[#7A6860] dark:text-pink-200/80 font-medium hover:text-pink-600 dark:hover:text-pink-300 hover:bg-pink-50/80 dark:hover:bg-purple-950/60">3.3 AI 平台与 4K 流媒体解封测试</a><a href="#41-晚高峰带宽衰减率-d_peak-计算模型" data-toc-id="41-晚高峰带宽衰减率-d_peak-计算模型" class="toc-item transition-all duration-200 block truncate rounded-lg py-1 px-2 leading-tight pl-4 text-xs text-[#7A6860] dark:text-pink-200/80 font-medium hover:text-pink-600 dark:hover:text-pink-300 hover:bg-pink-50/80 dark:hover:bg-purple-950/60">4.1 晚高峰带宽衰减率 $D_${peak}$ 计算模型</a><a href="#42-协议阵列抗-qos-打分矩阵" data-toc-id="42-协议阵列抗-qos-打分矩阵" class="toc-item transition-all duration-200 block truncate rounded-lg py-1 px-2 leading-tight pl-4 text-xs text-[#7A6860] dark:text-pink-200/80 font-medium hover:text-pink-600 dark:hover:text-pink-300 hover:bg-pink-50/80 dark:hover:bg-purple-950/60">4.2 协议阵列抗 QoS 打分矩阵</a><a href="#51-成本超售倒推模型" data-toc-id="51-成本超售倒推模型" class="toc-item transition-all duration-200 block truncate rounded-lg py-1 px-2 leading-tight pl-4 text-xs text-[#7A6860] dark:text-pink-200/80 font-medium hover:text-pink-600 dark:hover:text-pink-300 hover:bg-pink-50/80 dark:hover:bg-purple-950/60">5.1 成本超售倒推模型</a><a href="#52-域名与运营资产历史审计" data-toc-id="52-域名与运营资产历史审计" class="toc-item transition-all duration-200 block truncate rounded-lg py-1 px-2 leading-tight pl-4 text-xs text-[#7A6860] dark:text-pink-200/80 font-medium hover:text-pink-600 dark:hover:text-pink-300 hover:bg-pink-50/80 dark:hover:bg-purple-950/60">5.2 域名与运营资产历史审计</a><a href="#61-工单首响应时间-sla" data-toc-id="61-工单首响应时间-sla" class="toc-item transition-all duration-200 block truncate rounded-lg py-1 px-2 leading-tight pl-4 text-xs text-[#7A6860] dark:text-pink-200/80 font-medium hover:text-pink-600 dark:hover:text-pink-300 hover:bg-pink-50/80 dark:hover:bg-purple-950/60">6.1 工单首响应时间 SLA</a><a href="#62-状态透明度与通告机制" data-toc-id="62-状态透明度与通告机制" class="toc-item transition-all duration-200 block truncate rounded-lg py-1 px-2 leading-tight pl-4 text-xs text-[#7A6860] dark:text-pink-200/80 font-medium hover:text-pink-600 dark:hover:text-pink-300 hover:bg-pink-50/80 dark:hover:bg-purple-950/60">6.2 状态透明度与通告机制</a><a href="#71-五维加权计算公式" data-toc-id="71-五维加权计算公式" class="toc-item transition-all duration-200 block truncate rounded-lg py-1 px-2 leading-tight pl-4 text-xs text-[#7A6860] dark:text-pink-200/80 font-medium hover:text-pink-600 dark:hover:text-pink-300 hover:bg-pink-50/80 dark:hover:bg-purple-950/60">7.1 五维加权计算公式</a><a href="#72-一票否决清零规则" data-toc-id="72-一票否决清零规则" class="toc-item transition-all duration-200 block truncate rounded-lg py-1 px-2 leading-tight pl-4 text-xs text-[#7A6860] dark:text-pink-200/80 font-medium hover:text-pink-600 dark:hover:text-pink-300 hover:bg-pink-50/80 dark:hover:bg-purple-950/60">7.2 一票否决清零规则</a></nav></div></aside> </div>  </main> <!-- 3. 底部页脚 (必须严格位于 main 之后) --> <footer class="mt-16 border-t border-pink-200/60 bg-white/60 py-8 text-center text-xs text-[#7A6860] backdrop-blur-md dark:border-purple-800/60 dark:bg-[#1A1523]/60 dark:text-pink-200/80"> <div class="mx-auto max-w-7xl px-4 flex flex-col items-center gap-3"> <!-- 固化 SEO 锚点传递链接 --> <div class="flex items-center gap-4 text-xs font-bold"> <a href="/rank" class="text-pink-600 dark:text-pink-300 hover:underline">🏆 2026 最新机场推荐榜单</a> <span>•</span> <a href="/blog/airport-evaluation-whitepaper-full-2026" class="text-pink-600 dark:text-pink-300 hover:underline">📘 机场评测定量打分白皮书</a> <span>•</span> <a href="/blog/agent-troubleshooting-sop-2026" class="text-pink-600 dark:text-pink-300 hover:underline">🚀 节点报错 SOP 排查自救指南</a> </div> <p>© 2026 猫太博客. Built with Astro, Vue & Tailwind CSS.</p> <p class="font-mono text-[11px] text-pink-400">It's the only NEET thing to do…</p> </div> </footer> <!-- 全局 ⌘K 站内搜索 Modal 弹窗 --> <!-- 站内搜索 Modal 遮罩层与极简弹窗组件 --><div id="search-modal-container" class="fixed inset-0 z-[9999] hidden items-center justify-center bg-black/50 p-4 backdrop-blur-md transition-opacity duration-200 pointer-events-auto" role="dialog" aria-modal="true"> <!-- Modal 弹窗卡片 --> <div id="search-modal-card" class="relative w-full max-w-2xl overflow-hidden rounded-3xl border-2 border-pink-200 bg-white/95 shadow-[0_25px_60px_rgba(0,0,0,0.3)] backdrop-blur-xl dark:border-purple-800 dark:bg-[#1A1523]/95 flex flex-col max-h-[85vh] pointer-events-auto transition-all duration-200"> <!-- 1. 顶部唯一标准输入框 Header --> <div class="flex items-center gap-3 border-b-2 border-pink-100 p-4 dark:border-purple-900/60"> <span class="text-xl">🔍</span> <input id="search-input" type="text" autofocus placeholder="搜索文章标题、关键词、分类或标签..." class="w-full bg-transparent font-sans text-base font-bold text-[#3C2C26] outline-none placeholder:text-pink-300 dark:text-pink-100 dark:placeholder:text-purple-400 pointer-events-auto" autocomplete="off"> <kbd id="close-modal-btn" class="cursor-pointer rounded-xl border border-pink-200 bg-pink-50 px-2.5 py-1 font-mono text-xs font-bold text-pink-600 hover:bg-pink-200 dark:border-purple-800 dark:bg-purple-900 dark:text-pink-200 shrink-0">
+esc
+</kbd> </div> <!-- 2. 下方结果区域：仅在开始打字时动态展开 --> <div id="search-results" class="hidden overflow-y-auto p-4 flex-col gap-2 border-b border-pink-100 dark:border-purple-900/60 max-h-[55vh]"></div> <!-- 3. 底部快捷键说明 Footer --> <div class="flex items-center justify-between bg-pink-50/60 px-4 py-2.5 text-xs font-bold text-[#7A6860] dark:bg-purple-950/40 dark:text-pink-200/80"> <div class="flex items-center gap-4"> <span class="flex items-center gap-1"> <kbd class="rounded border border-pink-200 bg-white px-1.5 py-0.5 font-mono dark:border-purple-800 dark:bg-purple-900">↑↓</kbd> 选择
+</span> <span class="flex items-center gap-1"> <kbd class="rounded border border-pink-200 bg-white px-1.5 py-0.5 font-mono dark:border-purple-800 dark:bg-purple-900">↵</kbd> 打开
+</span> <span class="flex items-center gap-1"> <kbd class="rounded border border-pink-200 bg-white px-1.5 py-0.5 font-mono dark:border-purple-800 dark:bg-purple-900">esc</kbd> 关闭
+</span> </div> <span class="font-mono text-[11px] text-pink-400">Pure Local Fuzzy Search</span> </div> </div> </div> <!-- 引入 Fuse.js 模糊检索算法 --> <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script> <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('search-modal-container');
+    const modalCard = document.getElementById('search-modal-card');
+    const input = document.getElementById('search-input');
+    const resultsContainer = document.getElementById('search-results');
+    const closeBtn = document.getElementById('close-modal-btn');
+    const triggers = document.querySelectorAll('#search-btn-trigger');
+
+    let searchIndex = [];
+    let fuse = null;
+    let selectedIndex = -1;
+
+    // 预加载站内文章索引 JSON
+    fetch('/search-index.json')
+      .then(res => res.json())
+      .then(data => {
+        searchIndex = data;
+        if (window.Fuse) {
+          fuse = new window.Fuse(searchIndex, {
+            keys: ['title', 'description', 'category', 'tags'],
+            threshold: 0.4,
+            ignoreLocation: true,
+          });
+        }
+      })
+      .catch(err => console.error('Search index load error:', err));
+
+    function openModal() {
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+
+      // 确保弹窗一打开，光标自动锁定在顶部 input 中
+      setTimeout(() => {
+        if (input) {
+          input.focus();
+          input.select();
+        }
+      }, 50);
+    }
+
+    function closeModal() {
+      if (!modal) return;
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      if (input) input.value = '';
+      selectedIndex = -1;
+      hideResultsUI();
+    }
+
+    function hideResultsUI() {
+      if (resultsContainer) {
+        resultsContainer.innerHTML = '';
+        resultsContainer.classList.add('hidden');
+        resultsContainer.classList.remove('flex');
+      }
+    }
+
+    // 监听 ⌘K / Ctrl+K 与 Esc 快捷键
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+        e.preventDefault();
+        if (modal?.classList.contains('hidden')) {
+          openModal();
+        } else {
+          closeModal();
+        }
+        return;
+      }
+
+      if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+        closeModal();
+        return;
+      }
+
+      // 键盘 ↑ ↓ 方向导航与 Enter 打开
+      if (modal && !modal.classList.contains('hidden')) {
+        const items = resultsContainer?.querySelectorAll('.search-result-item');
+        if (!items || items.length === 0) return;
+
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          selectedIndex = (selectedIndex + 1) % items.length;
+          updateSelection(items);
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          selectedIndex = (selectedIndex - 1 + items.length) % items.length;
+          updateSelection(items);
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          if (selectedIndex >= 0 && items[selectedIndex]) {
+            items[selectedIndex].click();
+          }
+        }
+      }
+    });
+
+    function updateSelection(items) {
+      items.forEach((item, index) => {
+        if (index === selectedIndex) {
+          item.classList.add('bg-pink-100/90', 'dark:bg-purple-900/80', 'border-pink-300');
+          item.scrollIntoView({ block: 'nearest' });
+        } else {
+          item.classList.remove('bg-pink-100/90', 'dark:bg-purple-900/80', 'border-pink-300');
+        }
+      });
+    }
+
+    // 点击关闭按钮与遮罩层
+    closeBtn?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    modalCard?.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    triggers.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+      });
+    });
+
+    // 实时打字搜索监听
+    input?.addEventListener('input', (e) => {
+      const query = e.target.value.trim();
+      selectedIndex = -1;
+
+      // 1. 未打字时：隐藏结果区域
+      if (!query || !fuse) {
+        hideResultsUI();
+        return;
+      }
+
+      const results = fuse.search(query);
+
+      // 展开结果区域
+      resultsContainer.classList.remove('hidden');
+      resultsContainer.classList.add('flex');
+
+      // 2. 无匹配结果时：显示极简单行提示
+      if (results.length === 0) {
+        resultsContainer.innerHTML = `
+          <div class="py-3 px-2 text-center text-sm font-bold text-[#7A6860] dark:text-pink-200/80">
+            未找到与 “<span class="text-pink-600 dark:text-pink-300 font-mono">${query}</span>” 相关的文章
+          </div>
+        `;
+        return;
+      }
+
+      // 3. 有匹配结果：渲染卡片列表
+      resultsContainer.innerHTML = results.map((res) => {
+        const item = res.item;
+        return `
+          <a
+            href="/blog/${item.slug}"
+            class="search-result-item flex flex-col gap-1 rounded-2xl border border-pink-100 bg-pink-50/50 p-3.5 transition-all hover:bg-pink-100/90 hover:border-pink-300 dark:border-purple-900/50 dark:bg-purple-950/40 dark:hover:bg-purple-900/80"
+          >
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-base font-black text-[#3C2C26] dark:text-pink-100 line-clamp-1">
+                ${item.title}
+              </span>
+              <span class="rounded-full bg-pink-200 px-2.5 py-0.5 font-mono text-[11px] font-extrabold text-pink-700 dark:bg-purple-900 dark:text-pink-200 shrink-0">
+                ${item.category}
+              </span>
+            </div>
+            <p class="text-xs text-[#7A6860] dark:text-pink-200/80 line-clamp-1 font-medium">
+              ${item.description}
+            </p>
+            <div class="flex items-center gap-2 mt-1 text-[11px] font-mono text-pink-500 dark:text-pink-300 font-bold">
+              <span>📅 ${item.pubDate}</span>
+              ${item.tags && item.tags.length ? `<span>• 🏷️ ${item.tags.join(', ')}</span>` : ''}
+            </div>
+          </a>
+        `;
+      }).join('');
+    });
+  });
+</script> </body></html> 

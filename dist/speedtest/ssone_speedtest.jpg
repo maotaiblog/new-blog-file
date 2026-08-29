@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900" style="background:#0C0F12;font-family:sans-serif;">
+  <rect width="600" height="900" fill="#0C0F12"/>
+  <text x="300" y="50" fill="#FFFFFF" font-size="22" font-weight="bold" text-anchor="middle">SSONE 机场 - Stair Speedtest MiaoKo</text>
+  <text x="300" y="80" fill="#999999" font-size="14" text-anchor="middle">Performance Analysis (2026-08-22)</text>
+  
+  <rect x="20" y="110" width="560" height="40" fill="#161B22" rx="6"/>
+  <text x="35" y="135" fill="#A3B8CC" font-size="12" font-weight="bold">Index</text>
+  <text x="90" y="135" fill="#A3B8CC" font-size="12" font-weight="bold">Node Name</text>
+  <text x="240" y="135" fill="#A3B8CC" font-size="12" font-weight="bold">Type</text>
+  <text x="300" y="135" fill="#A3B8CC" font-size="12" font-weight="bold">TLS RTT</text>
+  <text x="380" y="135" fill="#A3B8CC" font-size="12" font-weight="bold">Avg Speed</text>
+  <text x="490" y="135" fill="#A3B8CC" font-size="12" font-weight="bold">UDP Type</text>
+
+  
+    <g transform="translate(0, 170)">
+      <rect x="20" y="0" width="560" height="140" fill="#111418" stroke="#222830" rx="8"/>
+      <text x="40" y="75" fill="#FFFFFF" font-size="16" font-weight="bold">1</text>
+      <text x="90" y="75" fill="#FFFFFF" font-size="15" font-weight="bold">SSONE US IEPL 01</text>
+      <text x="240" y="75" fill="#888888" font-size="13">Vless</text>
+      
+      <rect x="295" y="55" width="55" height="28" fill="#1E4620" rx="4"/>
+      <text x="322" y="74" fill="#4ADE80" font-size="13" font-weight="bold" text-anchor="middle">55ms</text>
+      
+      <rect x="375" y="45" width="90" height="48" fill="#1E3A8A" rx="4"/>
+      <text x="420" y="74" fill="#60A5FA" font-size="13" font-weight="bold" text-anchor="middle">180MB/s</text>
+      
+      <text x="525" y="75" fill="#34D399" font-size="12" text-anchor="middle">FullCone</text>
+    </g>
+  
+    <g transform="translate(0, 330)">
+      <rect x="20" y="0" width="560" height="140" fill="#111418" stroke="#222830" rx="8"/>
+      <text x="40" y="75" fill="#FFFFFF" font-size="16" font-weight="bold">2</text>
+      <text x="90" y="75" fill="#FFFFFF" font-size="15" font-weight="bold">SSONE HK 01</text>
+      <text x="240" y="75" fill="#888888" font-size="13">Vless</text>
+      
+      <rect x="295" y="55" width="55" height="28" fill="#1E4620" rx="4"/>
+      <text x="322" y="74" fill="#4ADE80" font-size="13" font-weight="bold" text-anchor="middle">32ms</text>
+      
+      <rect x="375" y="45" width="90" height="48" fill="#1E3A8A" rx="4"/>
+      <text x="420" y="74" fill="#60A5FA" font-size="13" font-weight="bold" text-anchor="middle">320MB/s</text>
+      
+      <text x="525" y="75" fill="#34D399" font-size="12" text-anchor="middle">FullCone</text>
+    </g>
+  
+    <g transform="translate(0, 490)">
+      <rect x="20" y="0" width="560" height="140" fill="#111418" stroke="#222830" rx="8"/>
+      <text x="40" y="75" fill="#FFFFFF" font-size="16" font-weight="bold">3</text>
+      <text x="90" y="75" fill="#FFFFFF" font-size="15" font-weight="bold">SSONE SG 01</text>
+      <text x="240" y="75" fill="#888888" font-size="13">Vless</text>
+      
+      <rect x="295" y="55" width="55" height="28" fill="#1E4620" rx="4"/>
+      <text x="322" y="74" fill="#4ADE80" font-size="13" font-weight="bold" text-anchor="middle">42ms</text>
+      
+      <rect x="375" y="45" width="90" height="48" fill="#1E3A8A" rx="4"/>
+      <text x="420" y="74" fill="#60A5FA" font-size="13" font-weight="bold" text-anchor="middle">290MB/s</text>
+      
+      <text x="525" y="75" fill="#34D399" font-size="12" text-anchor="middle">FullCone</text>
+    </g>
+  
+    <g transform="translate(0, 650)">
+      <rect x="20" y="0" width="560" height="140" fill="#111418" stroke="#222830" rx="8"/>
+      <text x="40" y="75" fill="#FFFFFF" font-size="16" font-weight="bold">4</text>
+      <text x="90" y="75" fill="#FFFFFF" font-size="15" font-weight="bold">SSONE JP 01</text>
+      <text x="240" y="75" fill="#888888" font-size="13">Vless</text>
+      
+      <rect x="295" y="55" width="55" height="28" fill="#1E4620" rx="4"/>
+      <text x="322" y="74" fill="#4ADE80" font-size="13" font-weight="bold" text-anchor="middle">65ms</text>
+      
+      <rect x="375" y="45" width="90" height="48" fill="#1E3A8A" rx="4"/>
+      <text x="420" y="74" fill="#60A5FA" font-size="13" font-weight="bold" text-anchor="middle">240MB/s</text>
+      
+      <text x="525" y="75" fill="#34D399" font-size="12" text-anchor="middle">FullCone</text>
+    </g>
+  
+</svg>

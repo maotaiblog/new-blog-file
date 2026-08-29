@@ -1,0 +1,258 @@
+---
+export interface AppleAccount {
+  id: string;
+  region: string;
+  email: string;
+  password: string;
+  status: 'active' | 'locked' | 'out_of_stock';
+  updated_at: string;
+}
+
+// 示例初始数据 (如果后端接口未挂载时的 Mock Fallback)
+const defaultAccounts: AppleAccount[] = [
+  {
+    id: "1",
+    region: "🇺🇸 美区主账号 #1",
+    email: "us_free_2026_01@catblog.org",
+    password: "Password2026#US",
+    status: "active",
+    updated_at: "2026-08-28 16:30:00"
+  },
+  {
+    id: "2",
+    region: "🇯🇵 日区备用 #2",
+    email: "jp_free_2026_02@catblog.org",
+    password: "Password2026#JP",
+    status: "active",
+    updated_at: "2026-08-28 16:35:00"
+  },
+  {
+    id: "3",
+    region: "🇭🇰 港区专线 #3",
+    email: "hk_free_2026_03@catblog.org",
+    password: "Password2026#HK",
+    status: "active",
+    updated_at: "2026-08-28 16:40:00"
+  }
+];
+---
+
+<div class="account-pool-container w-full max-w-7xl mx-auto font-sans">
+  <!-- Toast 提示框 -->
+  <div id="copy-toast" class="fixed top-6 right-6 z-[9999] hidden items-center gap-2 rounded-2xl border-2 border-emerald-400 bg-white/95 px-4 py-3 text-sm font-black text-emerald-600 shadow-pastel-glow backdrop-blur-xl transition-all dark:bg-[#1A1523]/95 dark:text-emerald-300 dark:border-emerald-500">
+    <span class="text-base">✅</span>
+    <span id="toast-msg">已成功复制到剪贴板！</span>
+  </div>
+
+  <!-- 1. 顶部 Header 状态栏 (浅色柔和马卡龙美学) -->
+  <div class="rounded-3xl border-2 border-pink-200/80 bg-white/95 p-5 sm:p-6 shadow-pastel-glow backdrop-blur-md dark:border-purple-800/60 dark:bg-[#1A1523]/95 mb-6">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-2.5">
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+          </span>
+          <h2 class="text-xl sm:text-2xl font-black text-[#3C2C26] dark:text-pink-100 flex items-center gap-2">
+            <span>🍎 免费美区/外区 Apple ID 共享账号池</span>
+          </h2>
+        </div>
+        <p class="mt-1 text-xs sm:text-sm font-medium text-[#7A6860] dark:text-pink-200/80">
+          探针自动巡检机制维护中 • 实时过滤已锁机账号
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="text-xs font-mono font-bold text-pink-600 bg-pink-100/80 border border-pink-200 px-3 py-1.5 rounded-xl dark:bg-purple-900/80 dark:text-pink-200 dark:border-purple-700" id="last-updated-text">
+          🕒 自动同步：2026-08-28 16:50
+        </span>
+        <button
+          id="refresh-accounts-btn"
+          class="flex items-center gap-1.5 rounded-xl border border-pink-300 bg-pink-500 px-4 py-1.5 text-xs font-black text-white transition-all hover:bg-pink-600 active:scale-95 shadow-sm dark:bg-pink-600 dark:hover:bg-pink-500"
+        >
+          <span class="refresh-icon">🔄</span>
+          <span>刷新账号</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ⚠️ 红字极危警告 Banner (柔和浅红提醒框) -->
+    <div class="mt-4 rounded-2xl border-2 border-rose-300/80 bg-rose-50/90 p-4 backdrop-blur-md dark:bg-rose-950/40 dark:border-rose-800/80">
+      <div class="flex items-start gap-3 text-rose-700 dark:text-rose-300">
+        <span class="text-2xl shrink-0 animate-bounce">🚨</span>
+        <div class="text-xs sm:text-sm font-black leading-relaxed">
+          <p class="text-rose-800 dark:text-rose-200 text-sm sm:text-base mb-1">【严禁从设置 (iCloud) 登录】</p>
+          <p>绝对只能在 <strong class="text-rose-900 underline decoration-rose-400 dark:text-white">App Store 商店页面</strong> 登录此共享账号！若误从系统【设置】登录 iCloud，会导致您的 iPhone 个人手机被云端远程锁机死锁，后果自负！</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 响应式账号卡片网格 (浅色马卡龙卡片) -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="accounts-grid">
+    {defaultAccounts.map(acc => (
+      <div class="account-card relative overflow-hidden rounded-3xl border-2 border-pink-200/80 bg-white/95 p-5 shadow-pastel-glow backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-pink-300 hover:shadow-[0_15px_35px_rgba(255,183,178,0.45)] dark:border-purple-800/60 dark:bg-[#1A1523]/95 flex flex-col justify-between">
+        <div>
+          <!-- 卡片 Header -->
+          <div class="flex items-center justify-between gap-2 border-b border-pink-100 dark:border-purple-900/60 pb-3 mb-3">
+            <span class="rounded-full bg-pink-100 border border-pink-200 px-3 py-1 font-mono text-xs font-black text-pink-600 dark:bg-purple-900 dark:border-purple-700 dark:text-pink-200">
+              {acc.region}
+            </span>
+            <span class="flex items-center gap-1 rounded-full bg-emerald-100 border border-emerald-300 px-2.5 py-0.5 text-[11px] font-mono font-bold text-emerald-700 dark:bg-emerald-950 dark:border-emerald-700 dark:text-emerald-300">
+              <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+              <span>状态正常</span>
+            </span>
+          </div>
+
+          <!-- 账号区域 -->
+          <div class="flex flex-col gap-3">
+            <div class="flex flex-col gap-1">
+              <span class="text-[11px] font-bold text-[#7A6860] dark:text-pink-200/80">Apple ID 账号:</span>
+              <div class="flex items-center justify-between gap-2 rounded-xl bg-pink-50/70 p-2.5 border border-pink-100 dark:bg-purple-950/60 dark:border-purple-900/80">
+                <span class="font-mono text-xs font-black text-[#3C2C26] dark:text-pink-100 truncate">{acc.email}</span>
+                <button
+                  class="copy-btn shrink-0 rounded-lg bg-pink-100 border border-pink-200 px-2.5 py-1 text-[11px] font-extrabold text-pink-600 hover:bg-pink-500 hover:text-white hover:border-pink-500 transition-colors dark:bg-purple-900 dark:border-purple-700 dark:text-pink-200"
+                  data-copy={acc.email}
+                  data-label="账号"
+                >
+                  📋 复制
+                </button>
+              </div>
+            </div>
+
+            <!-- 密码区域 (支持显隐遮罩) -->
+            <div class="flex flex-col gap-1">
+              <span class="text-[11px] font-bold text-[#7A6860] dark:text-pink-200/80">Apple ID 密码:</span>
+              <div class="flex items-center justify-between gap-2 rounded-xl bg-pink-50/70 p-2.5 border border-pink-100 dark:bg-purple-950/60 dark:border-purple-900/80">
+                <input
+                  type="password"
+                  readonly
+                  value={acc.password}
+                  class="password-field bg-transparent font-mono text-xs font-black text-emerald-600 dark:text-emerald-400 outline-none w-full select-all"
+                />
+                <div class="flex items-center gap-1 shrink-0">
+                  <button
+                    class="toggle-pwd-btn rounded-lg bg-pink-100 px-2 py-1 text-[11px] font-bold text-pink-600 hover:bg-pink-200 dark:bg-purple-900 dark:text-pink-200"
+                    title="切换显示/隐藏密码"
+                  >
+                    👁️
+                  </button>
+                  <button
+                    class="copy-btn rounded-lg bg-pink-100 border border-pink-200 px-2.5 py-1 text-[11px] font-extrabold text-pink-600 hover:bg-pink-500 hover:text-white hover:border-pink-500 transition-colors dark:bg-purple-900 dark:border-purple-700 dark:text-pink-200"
+                    data-copy={acc.password}
+                    data-label="密码"
+                  >
+                    📋 复制
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 底部警告角标 -->
+        <div class="mt-4 pt-3 border-t border-pink-100 dark:border-purple-900/40 flex items-center justify-between text-[11px] text-rose-500 font-bold dark:text-rose-400">
+          <span>⚠️ 严禁登陆系统 iCloud</span>
+          <span class="font-mono text-gray-400">Updated 10m ago</span>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- 3. 卡片下方：机场推荐与广告招租模态区块 (柔和浅粉渐变) -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8">
+    <!-- 模态区块 A：机场推荐广告块 -->
+    <div class="rounded-3xl border-2 border-pink-200/80 bg-gradient-to-r from-pink-100/70 via-purple-100/50 to-pink-50/70 p-6 shadow-pastel-glow backdrop-blur-md dark:border-purple-800/60 dark:from-purple-950/80 dark:to-pink-950/40 flex flex-col justify-between">
+      <div>
+        <div class="flex items-center gap-2 mb-2">
+          <span class="text-2xl">🚀</span>
+          <h3 class="text-lg font-black text-[#3C2C26] dark:text-pink-100">外区 Apple ID 配合稳定梯子加速</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-[#7A6860] dark:text-pink-200/80 font-medium leading-relaxed mb-4">
+          成功下载美区 Shadowrocket (小火箭) 或 Quantumult X 后，搭配 IEPL 专线机场，晚高峰 4K 播放与 ChatGPT 极速响应。
+        </p>
+      </div>
+      <a
+        href="/rank"
+        class="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 px-5 py-3 text-xs font-black text-white shadow-md hover:opacity-90 transition-all"
+      >
+        <span>👉 查看 2026 高性价比机场推荐对比大盘</span>
+        <span>➔</span>
+      </a>
+    </div>
+
+    <!-- 模态区块 B：广告招租 / 赞助展示块 -->
+    <div class="rounded-3xl border-2 border-pink-200/80 bg-white/95 p-6 shadow-pastel-glow backdrop-blur-md dark:border-purple-800/60 dark:bg-[#1A1523]/95 flex flex-col justify-between border-dashed">
+      <div>
+        <div class="flex items-center justify-between mb-2">
+          <span class="rounded-full bg-pink-100 border border-pink-200 px-3 py-0.5 font-mono text-[11px] font-bold text-pink-600 dark:bg-purple-900 dark:text-pink-200">SPONSOR</span>
+          <span class="text-xs text-gray-400 font-mono">ADVERTISING</span>
+        </div>
+        <h3 class="text-lg font-black text-[#3C2C26] dark:text-pink-100">📢 优质机场 / 工具广告位招租</h3>
+        <p class="text-xs sm:text-sm text-[#7A6860] dark:text-pink-200/80 font-medium leading-relaxed mt-1">
+          日均数万出海开发者与外区 iOS 用户精准访问，支持横幅 Banner、文字推荐及卡片赞助图层挂载。
+        </p>
+      </div>
+      <div class="mt-4 flex items-center justify-between border-t border-pink-100 dark:border-purple-900/60 pt-3">
+        <span class="text-xs font-bold text-[#7A6860] dark:text-pink-200">联系 Telegram 商务合作：</span>
+        <a href="https://t.me/+KMqGQjOeRY1hNjY1" target="_blank" class="rounded-xl border border-pink-300 bg-pink-50 px-3.5 py-1.5 text-xs font-black text-pink-600 hover:bg-pink-500 hover:text-white transition-all dark:bg-purple-900 dark:text-pink-200">
+          ✈️ 联系 Telegram ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 复制功能逻辑与 Toast 提示
+    const toast = document.getElementById('copy-toast');
+    const toastMsg = document.getElementById('toast-msg');
+
+    function showToast(msg: string) {
+      if (toastMsg) toastMsg.textContent = msg;
+      toast?.classList.remove('hidden');
+      toast?.classList.add('flex');
+      setTimeout(() => {
+        toast?.classList.add('hidden');
+        toast?.classList.remove('flex');
+      }, 2500);
+    }
+
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const text = btn.getAttribute('data-copy') || '';
+        const label = btn.getAttribute('data-label') || '内容';
+        if (text) {
+          navigator.clipboard.writeText(text).then(() => {
+            showToast(`已成功复制 ${label} 到剪贴板！`);
+          }).catch(err => {
+            console.error('Copy error:', err);
+          });
+        }
+      });
+    });
+
+    // 密码显隐切换逻辑
+    document.querySelectorAll('.toggle-pwd-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const input = btn.closest('div')?.parentElement?.querySelector('.password-field') as HTMLInputElement;
+        if (input) {
+          if (input.type === 'password') {
+            input.type = 'text';
+            btn.textContent = '🔒';
+          } else {
+            input.type = 'password';
+            btn.textContent = '👁️';
+          }
+        }
+      });
+    });
+
+    // 刷新账号按键逻辑
+    const refreshBtn = document.getElementById('refresh-accounts-btn');
+    refreshBtn?.addEventListener('click', () => {
+      showToast('正在从 Cloudflare Worker 实时请求最新正常账号...');
+    });
+  });
+</script>

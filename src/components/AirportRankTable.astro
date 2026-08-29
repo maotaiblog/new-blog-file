@@ -1,0 +1,709 @@
+---
+export interface AirportUnlockDetails {
+  chatGPT: boolean;
+  claude: boolean;
+  netflix: boolean;
+  disneyPlus: boolean;
+}
+
+export interface AirportRankItem {
+  id: string;
+  rank: number;
+  name: string;
+  architecture: string;       // 线路架构（IEPL/IPLC/BGP中转/直连）
+  packetLoss: string;         // 晚高峰丢包率（如 <0.1%）
+  startingPrice: string;      // 起步价格（如 "28元"）
+  priceVal: number;           // 数字价格（如 28）
+  traffic: string;            // 起步套餐流量（如 "150G/月"）
+  cheapestPlan: string;       // 合并格式如 "28元 150G/月"
+  protocols: string[];        // 支持协议（如 ["Shadowsocks", "Hysteria 2", "VLESS", "Trojan"]）
+  regions: string[];          // 节点覆盖（如 ["港", "台", "日", "韩", "美", "新加坡"]）
+  unlockDetails: AirportUnlockDetails; // 流媒体与 AI 解锁细分
+  deviceLimit: string;        // 同时在线设备数（如 "无限制" 或 "5 台"）
+  maxSpeed: string;           // 峰值测速带宽（如 "1000Mbps"）
+  paymentMethods: string[];   // 支付方式（如 ["支付宝", "微信", "USDT"]）
+  tags: string[];             // 特点标签（如 ["原生住宅IP", "8K秒开", "低延迟游戏"]）
+  officialUrl: string;        // 从 md 档案提取的真实官网直达外链
+  reviewUrl: string;          // 站内独立测评文章链接
+  change: string;             // 排名升降标识 ("-" | "↑1" | "↑11" | "↓1")
+  universalSub: boolean;      // 通用订阅 (✓ / ✕)
+  noTimeLimit: boolean;       // 不限时 (✓ / ✕)
+  tgGroupUrl?: string;        // TG群组链接
+}
+
+export const airportsData: AirportRankItem[] = [
+  {
+    id: "muguang",
+    rank: 1,
+    name: "暮光加速",
+    architecture: "BGP 高速中转",
+    packetLoss: "<0.1%",
+    startingPrice: "22元",
+    priceVal: 22,
+    traffic: "200GB/月",
+    cheapestPlan: "22元 200GB/月",
+    protocols: ["Shadowsocks", "Trojan"],
+    regions: ["港", "台", "日", "美"],
+    unlockDetails: { chatGPT: true, claude: false, netflix: true, disneyPlus: true },
+    deviceLimit: "3 台",
+    maxSpeed: "1000Mbps",
+    paymentMethods: ["支付宝"],
+    tags: ["老牌稳定", "常规首选", "IEPL专线"],
+    officialUrl: "https://lsitel.worryfreettt.homes/#/?code=SaSZbwak",
+    reviewUrl: "/blog/暮光加速-review",
+    change: "↑8",
+    universalSub: true,
+    noTimeLimit: false
+  },
+  {
+    id: "yinxingren",
+    rank: 2,
+    name: "隐形人 Cloud",
+    architecture: "IEPL 纯专线",
+    packetLoss: "<0.1%",
+    startingPrice: "24元",
+    priceVal: 24,
+    traffic: "144GB/月",
+    cheapestPlan: "24元 144GB/月",
+    protocols: ["Shadowsocks", "Clash", "Hysteria 2"],
+    regions: ["港", "日", "美", "新"],
+    unlockDetails: { chatGPT: true, claude: true, netflix: true, disneyPlus: true },
+    deviceLimit: "1 台",
+    maxSpeed: "1000Mbps",
+    paymentMethods: ["支付宝", "微信", "USDT"],
+    tags: ["全节点不限速", "原生住宅IP", "IEPL专线"],
+    officialUrl: "https://vbfdvfj1.quanqiugttt1.club/#/?code=NKII9ZkH",
+    reviewUrl: "/blog/隐形人-review",
+    change: "↑15",
+    universalSub: true,
+    noTimeLimit: true
+  },
+  {
+    id: "breezenet",
+    rank: 3,
+    name: "微风网络",
+    architecture: "IEPL 纯专线",
+    packetLoss: "<0.1%",
+    startingPrice: "15元",
+    priceVal: 15,
+    traffic: "120GB/月",
+    cheapestPlan: "15元 120GB/月",
+    protocols: ["Shadowsocks", "VLESS", "Trojan"],
+    regions: ["港", "日", "美", "新"],
+    unlockDetails: { chatGPT: true, claude: true, netflix: true, disneyPlus: true },
+    deviceLimit: "无限制",
+    maxSpeed: "1000Mbps",
+    paymentMethods: ["支付宝", "微信", "USDT"],
+    tags: ["IEPL专线", "4K/8K秒开", "高性价比"],
+    officialUrl: "https://wep01.breezenetaff.com/#/?code=JHqHSog8",
+    reviewUrl: "/blog/微风网络-review",
+    change: "↑4",
+    universalSub: true,
+    noTimeLimit: false
+  },
+  {
+    id: "feimao",
+    rank: 4,
+    name: "飞猫云",
+    architecture: "IPLC 企业专线",
+    packetLoss: "<0.1%",
+    startingPrice: "84元",
+    priceVal: 84,
+    traffic: "180GB/月",
+    cheapestPlan: "84元 180GB/月",
+    protocols: ["Shadowsocks", "Clash", "Hysteria 2"],
+    regions: ["港", "台", "日", "韩", "美", "新"],
+    unlockDetails: { chatGPT: true, claude: true, netflix: true, disneyPlus: true },
+    deviceLimit: "无限制",
+    maxSpeed: "2500Mbps",
+    paymentMethods: ["支付宝", "微信", "USDT"],
+    tags: ["原生住宅IP", "IEPL专线", "极速抗封阻"],
+    officialUrl: "https://jkg3cghf.feimaogfttt1.xyz/#/?code=3NlSNiJl",
+    reviewUrl: "/blog/飞猫云-review",
+    change: "↑14",
+    universalSub: true,
+    noTimeLimit: true
+  },
+  {
+    id: "firefly",
+    rank: 5,
+    name: "Firefly 机场",
+    architecture: "IPLC 企业专线",
+    packetLoss: "<0.2%",
+    startingPrice: "25元",
+    priceVal: 25,
+    traffic: "160GB/月",
+    cheapestPlan: "25元 160GB/月",
+    protocols: ["Shadowsocks", "Hysteria 2", "VLESS"],
+    regions: ["港", "台", "日", "韩", "美", "新"],
+    unlockDetails: { chatGPT: true, claude: true, netflix: true, disneyPlus: true },
+    deviceLimit: "5 台",
+    maxSpeed: "1000Mbps",
+    paymentMethods: ["支付宝", "微信", "USDT"],
+    tags: ["原生住宅IP", "全节点不限速", "IEPL专线"],
+    officialUrl: "https://vip02.fireflyaff.com/#/?code=QvtWcNbI",
+    reviewUrl: "/blog/firefly-review",
+    change: "↓4",
+    universalSub: true,
+    noTimeLimit: false
+  },
+  {
+    id: "flyv",
+    rank: 6,
+    name: "FlyV 机场",
+    architecture: "BGP 高速中转",
+    packetLoss: "0.2%",
+    startingPrice: "20元",
+    priceVal: 20,
+    traffic: "220GB/月",
+    cheapestPlan: "20元 220GB/月",
+    protocols: ["Shadowsocks", "Trojan"],
+    regions: ["港", "台", "日", "美"],
+    unlockDetails: { chatGPT: true, claude: true, netflix: true, disneyPlus: false },
+    deviceLimit: "无限制",
+    maxSpeed: "1000Mbps",
+    paymentMethods: ["支付宝", "微信", "USDT"],
+    tags: ["全节点不限速", "自研客户端", "IEPL专线"],
+    officialUrl: "https://rtu23u5.flyvttt.sbs/#/?code=28mmffKv",
+    reviewUrl: "/blog/flyv-review",
+    change: "↓4",
+    universalSub: true,
+    noTimeLimit: false
+  },
+  {
+    id: "ssone",
+    rank: 7,
+    name: "SSONE 机场",
+    architecture: "IEPL 纯专线",
+    packetLoss: "0.2%",
+    startingPrice: "28元",
+    priceVal: 28,
+    traffic: "180GB/月",
+    cheapestPlan: "28元 180GB/月",
+    protocols: ["Shadowsocks", "VLESS", "Trojan"],
+    regions: ["港", "日", "美", "新"],
+    unlockDetails: { chatGPT: true, claude: true, netflix: true, disneyPlus: true },
+    deviceLimit: "无限制",
+    maxSpeed: "1000Mbps",
+    paymentMethods: ["支付宝", "微信", "USDT"],
+    tags: ["自研客户端", "IEPL专线"],
+    officialUrl: "https://m.ssone.io/#/register?code=GeTpX1Qx",
+    reviewUrl: "/blog/ssone-review",
+    change: "↓4",
+    universalSub: true,
+    noTimeLimit: false
+  },
+  {
+    id: "wgetcloud",
+    rank: 8,
+    name: "WgetCloud 机场",
+    architecture: "IPLC 企业专线",
+    packetLoss: "0.2%",
+    startingPrice: "39元",
+    priceVal: 39,
+    traffic: "200GB/月",
+    cheapestPlan: "39元 200GB/月",
+    protocols: ["Shadowsocks", "Trojan", "VLESS"],
+    regions: ["港", "台", "日", "韩", "美", "新"],
+    unlockDetails: { chatGPT: true, claude: true, netflix: true, disneyPlus: true },
+    deviceLimit: "3 台",
+    maxSpeed: "1000Mbps",
+    paymentMethods: ["支付宝", "微信", "USDT"],
+    tags: ["原生住宅IP", "全节点不限速", "自研客户端"],
+    officialUrl: "https://invite.wgetcloud.ltd/auth/register?code=1i8Pgu",
+    reviewUrl: "/blog/wgetcloud-review",
+    change: "↓4",
+    universalSub: true,
+    noTimeLimit: false
+  },
+  {
+    id: "quanqiuyun",
+    rank: 9,
+    name: "全球云 Network",
+    architecture: "IPLC 企业专线",
+    packetLoss: "0.2%",
+    startingPrice: "26元",
+    priceVal: 26,
+    traffic: "200GB/月",
+    cheapestPlan: "26元 200GB/月",
+    protocols: ["Shadowsocks", "Trojan"],
+    regions: ["港", "日", "美", "新"],
+    unlockDetails: { chatGPT: true, claude: true, netflix: true, disneyPlus: true },
+    deviceLimit: "5 台",
+    maxSpeed: "1000Mbps",
+    paymentMethods: ["支付宝", "微信", "USDT"],
+    tags: ["原生住宅IP", "IEPL专线"],
+    officialUrl: "https://vbfdvfj1.quanqiugttt1.club/#/?code=NKII9ZkH",
+    reviewUrl: "/blog/全球云-review",
+    change: "↓4",
+    universalSub: true,
+    noTimeLimit: false
+  },
+  {
+    id: "dageyun",
+    rank: 10,
+    name: "大哥云",
+    architecture: "BGP 高速中转",
+    packetLoss: "0.3%",
+    startingPrice: "19元",
+    priceVal: 19,
+    traffic: "160GB/月",
+    cheapestPlan: "19元 160GB/月",
+    protocols: ["Shadowsocks", "VLESS"],
+    regions: ["港", "台", "日", "美", "新"],
+    unlockDetails: { chatGPT: true, claude: true, netflix: true, disneyPlus: true },
+    deviceLimit: "无限制",
+    maxSpeed: "1000Mbps",
+    paymentMethods: ["支付宝", "微信", "USDT"],
+    tags: ["自研客户端", "IEPL专线"],
+    officialUrl: "https://a03.dgy02.com/#/register?code=X8MBmftq",
+    reviewUrl: "/blog/大哥云-review",
+    change: "-",
+    universalSub: true,
+    noTimeLimit: false
+  },
+  {
+    id: "worryfree",
+    rank: 11,
+    name: "无忧链接",
+    architecture: "IEPL 纯专线",
+    packetLoss: "0.3%",
+    startingPrice: "18元",
+    priceVal: 18,
+    traffic: "150GB/月",
+    cheapestPlan: "18元 150GB/月",
+    protocols: ["Shadowsocks", "Trojan"],
+    regions: ["港", "台", "日", "韩", "美", "新"],
+    unlockDetails: { chatGPT: true, claude: true, netflix: true, disneyPlus: true },
+    deviceLimit: "无限制",
+    maxSpeed: "1000Mbps",
+    paymentMethods: ["支付宝", "微信", "USDT"],
+    tags: ["全节点不限速", "自研客户端", "IEPL专线"],
+    officialUrl: "https://lsitel.worryfreettt.homes/#/?code=SaSZbwak",
+    reviewUrl: "/blog/无忧链接-review",
+    change: "-",
+    universalSub: true,
+    noTimeLimit: false
+  },
+  {
+    id: "tiziyun",
+    rank: 12,
+    name: "梯子云 Cloud",
+    architecture: "IEPL 纯专线",
+    packetLoss: "0.3%",
+    startingPrice: "25元",
+    priceVal: 25,
+    traffic: "180GB/月",
+    cheapestPlan: "25元 180GB/月",
+    protocols: ["Shadowsocks", "VLESS", "Trojan"],
+    regions: ["港", "台", "日", "美", "新"],
+    unlockDetails: { chatGPT: true, claude: true, netflix: true, disneyPlus: true },
+    deviceLimit: "无限制",
+    maxSpeed: "2500Mbps",
+    paymentMethods: ["支付宝", "微信", "USDT"],
+    tags: ["自研客户端", "IEPL专线"],
+    officialUrl: "https://vbfdvfj1.quanqiugttt1.club/#/?code=NKII9ZkH",
+    reviewUrl: "/blog/梯子云-review",
+    change: "↓2",
+    universalSub: true,
+    noTimeLimit: true
+  },
+  {
+    id: "langwang",
+    rank: 13,
+    name: "浪网云 Cloud",
+    architecture: "BGP 高速中转",
+    packetLoss: "0.3%",
+    startingPrice: "30元",
+    priceVal: 30,
+    traffic: "150GB/月",
+    cheapestPlan: "30元 150GB/月",
+    protocols: ["Shadowsocks", "VLESS", "Trojan"],
+    regions: ["港", "日", "美", "新"],
+    unlockDetails: { chatGPT: true, claude: true, netflix: true, disneyPlus: true },
+    deviceLimit: "1 台",
+    maxSpeed: "1000Mbps",
+    paymentMethods: ["支付宝", "微信", "USDT"],
+    tags: ["自研客户端", "IEPL专线"],
+    officialUrl: "https://wep01.breezenetaff.com/#/?code=JHqHSog8",
+    reviewUrl: "/blog/浪网-review",
+    change: "↓2",
+    universalSub: true,
+    noTimeLimit: true
+  },
+  {
+    id: "lingdong",
+    rank: 14,
+    name: "灵动云",
+    architecture: "IEPL 专线 / BGP 中转",
+    packetLoss: "0.3%",
+    startingPrice: "20元",
+    priceVal: 20,
+    traffic: "100GB/月",
+    cheapestPlan: "20元 100GB/月",
+    protocols: ["Trojan", "Shadowsocks"],
+    regions: ["港", "日", "美", "新"],
+    unlockDetails: { chatGPT: true, claude: true, netflix: true, disneyPlus: true },
+    deviceLimit: "无限制",
+    maxSpeed: "1000Mbps",
+    paymentMethods: ["支付宝", "微信", "USDT"],
+    tags: ["IEPL专线", "4K/8K秒开", "低延迟"],
+    officialUrl: "https://yinxing4.lingdongaff.com/#/?code=mW96wgI4",
+    reviewUrl: "/blog/灵动云-review",
+    change: "↓2",
+    universalSub: true,
+    noTimeLimit: true,
+    tgGroupUrl: "https://t.me/+KMqGQjOeRY1hNjY1"
+  },
+  {
+    id: "civetanet",
+    rank: 15,
+    name: "灵猫网络",
+    architecture: "IPLC 企业专线",
+    packetLoss: "1.2%",
+    startingPrice: "85元",
+    priceVal: 85,
+    traffic: "45GB/月",
+    cheapestPlan: "85元 45GB/月",
+    protocols: ["Shadowsocks", "Clash"],
+    regions: ["港", "台", "日", "韩", "美", "新"],
+    unlockDetails: { chatGPT: true, claude: true, netflix: true, disneyPlus: true },
+    deviceLimit: "无限制",
+    maxSpeed: "1000Mbps",
+    paymentMethods: ["支付宝", "微信", "USDT"],
+    tags: ["全节点不限速", "自研客户端", "IEPL专线"],
+    officialUrl: "https://edp01.civetaff.com/#/?code=8n0vbtUD",
+    reviewUrl: "/blog/灵猫网络-review",
+    change: "↓2",
+    universalSub: true,
+    noTimeLimit: false
+  },
+  {
+    id: "saiboyun",
+    rank: 16,
+    name: "赛博云",
+    architecture: "IEPL 专线 / BGP 中转",
+    packetLoss: "1.2%",
+    startingPrice: "3元",
+    priceVal: 3,
+    traffic: "100GB/月",
+    cheapestPlan: "3元 100GB/月",
+    protocols: ["Shadowsocks"],
+    regions: ["港", "日"],
+    unlockDetails: { chatGPT: true, claude: true, netflix: true, disneyPlus: true },
+    deviceLimit: "无限制",
+    maxSpeed: "1000Mbps",
+    paymentMethods: ["支付宝", "微信", "USDT"],
+    tags: ["全节点不限速", "自研客户端", "IEPL专线"],
+    officialUrl: "https://saiboyun.pages.dev/",
+    reviewUrl: "/blog/赛博云-review",
+    change: "↓2",
+    universalSub: true,
+    noTimeLimit: false
+  },
+  {
+    id: "kuajie",
+    rank: 17,
+    name: "跨界云",
+    architecture: "IEPL 专线 / BGP 中转",
+    packetLoss: "1.2%",
+    startingPrice: "20元",
+    priceVal: 20,
+    traffic: "120GB/月",
+    cheapestPlan: "20元 120GB/月",
+    protocols: ["Shadowsocks", "VLESS"],
+    regions: ["港", "台", "日", "美", "新"],
+    unlockDetails: { chatGPT: true, claude: true, netflix: true, disneyPlus: true },
+    deviceLimit: "无限制",
+    maxSpeed: "1000Mbps",
+    paymentMethods: ["支付宝", "微信", "USDT"],
+    tags: ["IEPL专线", "4K/8K秒开", "低延迟"],
+    officialUrl: "https://vip02.kuajieaff.com/#/?code=kTdpCGi9",
+    reviewUrl: "/blog/跨界云-review",
+    change: "↓2",
+    universalSub: true,
+    noTimeLimit: false
+  },
+  {
+    id: "shanyue",
+    rank: 18,
+    name: "闪跃",
+    architecture: "BGP 高速中转",
+    packetLoss: "1.2%",
+    startingPrice: "79元",
+    priceVal: 79,
+    traffic: "160GB/月",
+    cheapestPlan: "79元 160GB/月",
+    protocols: ["Trojan"],
+    regions: ["港", "台", "日", "韩", "美", "新"],
+    unlockDetails: { chatGPT: true, claude: true, netflix: true, disneyPlus: true },
+    deviceLimit: "无限制",
+    maxSpeed: "1000Mbps",
+    paymentMethods: ["支付宝", "微信", "USDT"],
+    tags: ["IEPL专线", "4K/8K秒开", "低延迟"],
+    officialUrl: "https://invite.wgetcloud.ltd/auth/register?code=1i8Pgu",
+    reviewUrl: "/blog/闪跃-review",
+    change: "↓2",
+    universalSub: true,
+    noTimeLimit: false
+  }
+];
+---
+
+<div class="flex flex-col gap-4">
+  <!-- 💥 1. 新增【机场智能选购助手】交互组件 (Airport Filter Widget) -->
+  <div class="rounded-3xl border-2 border-pink-200/80 bg-white/95 p-4 sm:p-5 shadow-pastel-glow backdrop-blur-md dark:border-purple-800/60 dark:bg-[#1A1523]/95 flex flex-col gap-3">
+    <div class="flex items-center justify-between border-b border-pink-100 pb-2.5 dark:border-purple-900/60">
+      <h3 class="text-sm sm:text-base font-black text-[#3C2C26] dark:text-pink-100 flex items-center gap-2">
+        <span class="text-lg">⚡</span>
+        <span>机场智能选购助手与条件筛选器</span>
+      </h3>
+      <span class="rounded-full bg-pink-100 text-pink-600 px-2.5 py-0.5 font-mono text-xs font-black dark:bg-purple-900 dark:text-pink-200">
+        Filter Active
+      </span>
+    </div>
+
+    <!-- 筛选面板 -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs font-bold">
+      <!-- 维度 1：月预算 -->
+      <div class="flex flex-col gap-1.5 bg-pink-50/60 dark:bg-purple-950/40 p-2.5 rounded-2xl border border-pink-100 dark:border-purple-900/40">
+        <span class="text-pink-600 dark:text-pink-300 font-extrabold">💰 月预算：</span>
+        <div class="flex flex-wrap gap-1" id="filter-budget">
+          <button data-val="all" class="filter-btn active-filter">全部</button>
+          <button data-val="under15" class="filter-btn">15元以下</button>
+          <button data-val="15to30" class="filter-btn">15-30元</button>
+          <button data-val="above30" class="filter-btn">30元以上</button>
+        </div>
+      </div>
+
+      <!-- 维度 2：核心需求 -->
+      <div class="flex flex-col gap-1.5 bg-pink-50/60 dark:bg-purple-950/40 p-2.5 rounded-2xl border border-pink-100 dark:border-purple-900/40">
+        <span class="text-pink-600 dark:text-pink-300 font-extrabold">🎯 核心需求：</span>
+        <div class="flex flex-wrap gap-1" id="filter-need">
+          <button data-val="all" class="filter-btn active-filter">全部</button>
+          <button data-val="ai" class="filter-btn">AI解锁</button>
+          <button data-val="4k" class="filter-btn">4K看剧</button>
+          <button data-val="cheap" class="filter-btn">廉价备用</button>
+        </div>
+      </div>
+
+      <!-- 维度 3：线路类型 -->
+      <div class="flex flex-col gap-1.5 bg-pink-50/60 dark:bg-purple-950/40 p-2.5 rounded-2xl border border-pink-100 dark:border-purple-900/40">
+        <span class="text-pink-600 dark:text-pink-300 font-extrabold">🚀 线路类型：</span>
+        <div class="flex flex-wrap gap-1" id="filter-arch">
+          <button data-val="all" class="filter-btn active-filter">全部</button>
+          <button data-val="专线" class="filter-btn">IPLC/IEPL专线</button>
+          <button data-val="BGP" class="filter-btn">BGP中转</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 9 列规范排行榜大盘表格 -->
+  <div class="overflow-x-auto rounded-3xl border-2 border-pink-200/80 bg-white/95 shadow-pastel-glow backdrop-blur-md dark:border-purple-800/60 dark:bg-[#1A1523]/95 p-3 sm:p-5">
+    <table class="w-full text-left text-xs sm:text-sm border-collapse font-sans min-w-[1020px]">
+      <thead>
+        <tr class="border-b-2 border-pink-100 bg-pink-100/70 dark:border-purple-900/60 dark:bg-purple-950/80 text-[#3C2C26] dark:text-pink-100">
+          <th class="p-3.5 font-black">排名 & 机场名称</th>
+          <th class="p-3.5 font-black">线路架构 & 丢包</th>
+          <th class="p-3.5 font-black text-center">官网直达</th>
+          <th class="p-3.5 font-black">订阅价格 / 流量</th>
+          <th class="p-3.5 font-black">支持协议 & 节点</th>
+          <th class="p-3.5 font-black text-center">AI / 流媒体解锁</th>
+          <th class="p-3.5 font-black text-center">设备 / 速度</th>
+          <th class="p-3.5 font-black text-center">测评详情</th>
+          <th class="p-3.5 font-black text-center">变化</th>
+        </tr>
+      </thead>
+      <tbody id="airport-table-body" class="divide-y divide-pink-100/80 dark:divide-purple-900/40">
+        {airportsData.map(item => (
+          <tr
+            class="airport-row hover:bg-pink-50/80 dark:hover:bg-purple-900/40 transition-colors text-[#3C2C26] dark:text-pink-100"
+            data-price={item.priceVal}
+            data-arch={item.architecture}
+            data-ai={item.unlockDetails.chatGPT && item.unlockDetails.claude ? 'true' : 'false'}
+            data-cheap={item.priceVal <= 15 ? 'true' : 'false'}
+          >
+            <!-- 1. 排名 & 机场名称 -->
+            <td class="p-3.5">
+              <div class="flex items-center gap-2.5">
+                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-pink-100 text-pink-600 font-mono font-black text-xs shadow-sm dark:bg-purple-900 dark:text-pink-200 shrink-0">
+                  {item.rank}
+                </span>
+                <div class="flex flex-col">
+                  <a href={item.reviewUrl} class="font-black text-sm sm:text-base hover:text-pink-600 dark:hover:text-pink-300 hover:underline">
+                    {item.name}
+                  </a>
+                  <div class="flex gap-1 mt-1 flex-wrap">
+                    {item.tags.map(tag => (
+                      <span class="rounded bg-pink-50 px-1.5 py-0.5 text-[10px] font-bold text-pink-500 border border-pink-200/60 dark:bg-purple-950 dark:text-pink-300 dark:border-purple-800">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </td>
+
+            <!-- 2. 线路架构 & 丢包率 -->
+            <td class="p-3.5 font-medium">
+              <div class="flex flex-col gap-1">
+                <span class="font-bold text-xs text-pink-600 dark:text-pink-300">{item.architecture}</span>
+                <span class="text-[11px] font-mono text-gray-500 dark:text-gray-400">
+                  晚高峰丢包: <strong class="text-emerald-600 dark:text-emerald-400">{item.packetLoss}</strong>
+                </span>
+              </div>
+            </td>
+
+            <!-- 3. 官网直达外链 -->
+            <td class="p-3.5 text-center font-bold">
+              <a
+                href={item.officialUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1 rounded-full bg-pink-50 border border-pink-200 px-3 py-1 text-xs font-black text-pink-600 hover:bg-pink-200 dark:bg-purple-900 dark:border-purple-700 dark:text-pink-200"
+              >
+                <span>官网</span>
+                <span class="text-[10px]">↗</span>
+              </a>
+            </td>
+
+            <!-- 4. 订阅价格 / 流量 -->
+            <td class="p-3.5 font-mono font-bold text-pink-600 dark:text-pink-300">
+              <div class="flex flex-col">
+                <span class="text-xs sm:text-sm">{item.cheapestPlan}</span>
+                <span class="text-[10px] text-gray-400 font-sans font-medium">
+                  {item.noTimeLimit ? '已支持不限时套餐' : '按月计费套餐'}
+                </span>
+              </div>
+            </td>
+
+            <!-- 5. 支持协议 & 节点覆盖 -->
+            <td class="p-3.5">
+              <div class="flex flex-col gap-1">
+                <div class="flex gap-1 flex-wrap">
+                  {item.protocols.map(p => (
+                    <span class="rounded-full bg-sky-100 px-2 py-0.5 text-[10px] font-mono font-bold text-sky-700 dark:bg-sky-950 dark:text-sky-300">
+                      {p}
+                    </span>
+                  ))}
+                </div>
+                <span class="text-[11px] font-mono text-gray-500 dark:text-gray-400">
+                  覆盖: {item.regions.join(' / ')}
+                </span>
+              </div>
+            </td>
+
+            <!-- 6. AI / 流媒体解锁细分矩阵 -->
+            <td class="p-3.5 text-center">
+              <div class="flex items-center justify-center gap-1.5 text-xs font-mono font-bold">
+                <span title="ChatGPT 解锁" class={item.unlockDetails.chatGPT ? "text-emerald-500" : "text-gray-300"}>
+                  🤖{item.unlockDetails.chatGPT ? '✓' : '✕'}
+                </span>
+                <span title="Claude 解锁" class={item.unlockDetails.claude ? "text-purple-500" : "text-gray-300"}>
+                  🧠{item.unlockDetails.claude ? '✓' : '✕'}
+                </span>
+                <span title="Netflix 4K 解锁" class={item.unlockDetails.netflix ? "text-rose-500" : "text-gray-300"}>
+                  🎬{item.unlockDetails.netflix ? '✓' : '✕'}
+                </span>
+              </div>
+            </td>
+
+            <!-- 7. 设备限制 / 峰值测速 -->
+            <td class="p-3.5 text-center font-mono text-xs">
+              <div class="flex flex-col">
+                <span class="font-bold">{item.maxSpeed}</span>
+                <span class="text-[10px] text-gray-400 font-sans">{item.deviceLimit}</span>
+              </div>
+            </td>
+
+            <!-- 8. 测评详情按钮 -->
+            <td class="p-3.5 text-center">
+              <a href={item.reviewUrl} class="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-pink-400 to-pink-500 px-3.5 py-1 text-xs font-black text-white shadow-sm hover:opacity-90">
+                <span>测评</span>
+                <span class="text-[10px]">➔</span>
+              </a>
+            </td>
+
+            <!-- 9. 变化 -->
+            <td class="p-3.5 text-center font-mono font-black text-xs">
+              {item.change.startsWith('↑') ? (
+                <span class="rounded-full bg-rose-100 text-rose-600 px-2 py-0.5">{item.change}</span>
+              ) : item.change.startsWith('↓') ? (
+                <span class="rounded-full bg-emerald-100 text-emerald-600 px-2 py-0.5">{item.change}</span>
+              ) : (
+                <span class="text-gray-400">-</span>
+              )}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<style>
+  .filter-btn {
+    @apply rounded-xl px-2.5 py-1 text-[11px] font-bold transition-all border border-pink-200 bg-white text-[#7A6860] hover:bg-pink-100 dark:border-purple-800 dark:bg-purple-900 dark:text-pink-200;
+  }
+  .filter-btn.active-filter {
+    @apply bg-pink-500 text-white border-pink-500 shadow-sm dark:bg-pink-600 dark:border-pink-600;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    let currentBudget = 'all';
+    let currentNeed = 'all';
+    let currentArch = 'all';
+
+    const rows = document.querySelectorAll('.airport-row');
+
+    function applyFilters() {
+      rows.forEach(row => {
+        const price = parseFloat(row.getAttribute('data-price') || '0');
+        const arch = row.getAttribute('data-arch') || '';
+        const ai = row.getAttribute('data-ai') === 'true';
+        const cheap = row.getAttribute('data-cheap') === 'true';
+
+        let matchBudget = true;
+        if (currentBudget === 'under15') matchBudget = price <= 15;
+        else if (currentBudget === '15to30') matchBudget = price >= 15 && price <= 30;
+        else if (currentBudget === 'above30') matchBudget = price > 30;
+
+        let matchNeed = true;
+        if (currentNeed === 'ai') matchNeed = ai;
+        else if (currentNeed === 'cheap') matchNeed = cheap;
+
+        let matchArch = true;
+        if (currentArch === '专线') matchArch = arch.includes('专线') || arch.includes('IEPL') || arch.includes('IPLC');
+        else if (currentArch === 'BGP') matchArch = arch.includes('BGP');
+
+        if (matchBudget && matchNeed && matchArch) {
+          (row as HTMLElement).style.display = '';
+        } else {
+          (row as HTMLElement).style.display = 'none';
+        }
+      });
+    }
+
+    function bindGroup(containerId: string, callback: (val: string) => void) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const btns = container.querySelectorAll('.filter-btn');
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          btns.forEach(b => b.classList.remove('active-filter'));
+          btn.classList.add('active-filter');
+          const val = btn.getAttribute('data-val') || 'all';
+          callback(val);
+          applyFilters();
+        });
+      });
+    }
+
+    bindGroup('filter-budget', val => { currentBudget = val; });
+    bindGroup('filter-need', val => { currentNeed = val; });
+    bindGroup('filter-arch', val => { currentArch = val; });
+  });
+</script>

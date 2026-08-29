@@ -1,0 +1,37 @@
+---
+title: "Sing-box 与 Clash Verge 1.9+ 极速导入配置教程"
+description: "详细拆解 Sing-box 核心分流规则集与 Clash Verge Rev 的 TUN 模式开启技巧，实现全平台零感极速冲浪。"
+pubDate: 2026-08-22
+category: "教程"
+tags: ["Sing-box", "Clash", "配置教程"]
+author: "猫太博客"
+readTime: "8分钟"
+---
+
+# 💻 Sing-box 与 Clash Verge 1.9+ 极速导入配置教程
+
+> **简介**：全平台客户端生态在 2026 年迎来了智能化升级。本文将手把手带你配置新一代轻量化核心。
+
+---
+
+## 🛠️ 一、Sing-box 规则集配置示范
+
+```json
+{
+  "dns": {
+    "servers": [
+      { "tag": "google", "address": "8.8.8.8" }
+    ]
+  },
+  "inbounds": [
+    { "type": "tun", "inet4_address": "172.19.0.1/30", "auto_route": true }
+  ]
+}
+```
+
+---
+
+## ⚡ 二、开启 TUN 模式技巧
+
+- **Clash Verge Rev**：在设置中开启 `TUN Mode`，并将 Stack 设置为 `Mixed` 或 `gVisor`。
+- **权限授予**：确保在 Windows/macOS 中授予系统网卡路由写入权限。

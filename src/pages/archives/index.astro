@@ -1,0 +1,108 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+
+const allPosts = await getCollection('blog');
+
+// 按发布时间降序排序
+const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// 按年份分组数据
+const yearGroups = sortedPosts.reduce((groups: Record<string, typeof sortedPosts>, post) => {
+  const year = post.data.pubDate.getFullYear().toString();
+  if (!groups[year]) {
+    groups[year] = [];
+  }
+  groups[year].push(post);
+  return groups;
+}, {});
+
+const years = Object.keys(yearGroups).sort((a, b) => Number(b) - Number(a));
+---
+
+<BaseLayout title="文章时间归档 - 猫太博客" description="按年份与时间轴展现全站所有技术指南、机场测评与白皮书文章。">
+  <div class="flex flex-col gap-6 md:flex-row">
+    <!-- 左侧固定边栏 -->
+    <Sidebar />
+
+    <!-- 右侧时间轴归档区域 -->
+    <div class="flex-1 flex flex-col gap-6">
+      
+      <!-- Banner 标题卡片 -->
+      <div class="rounded-3xl border-2 border-pink-200/80 bg-gradient-to-r from-pink-100/70 via-purple-100/50 to-sky-100/70 p-6 sm:p-8 shadow-pastel-glow backdrop-blur-md dark:border-purple-800/60 dark:from-purple-950/60 dark:to-pink-950/40">
+        <div class="flex items-center gap-4">
+          <span class="text-4xl filter drop-shadow-md">💌</span>
+          <div>
+            <h1 class="text-2xl sm:text-3xl font-black text-[#3C2C26] dark:text-pink-100">
+              文章时间归档目录
+            </h1>
+            <p class="mt-1 text-xs sm:text-sm font-bold text-pink-600 dark:text-pink-300">
+              全站共计收录 <span class="font-mono text-base font-black">{allPosts.length}</span> 篇精选长文
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 快速年份跳转导航 -->
+      <div class="flex items-center gap-3 px-2 flex-wrap">
+        <span class="text-sm font-black text-[#3C2C26] dark:text-pink-100">年份快速导航：</span>
+        {years.map(year => (
+          <a
+            href={`/archives/${year}`}
+            class="rounded-full border border-pink-200 bg-white/90 px-4 py-1 text-xs font-black text-pink-600 shadow-sm transition-all hover:bg-pink-100 hover:scale-105 dark:border-purple-800 dark:bg-purple-900/60 dark:text-pink-200"
+          >
+            📅 {year} 年 ({yearGroups[year].length} 篇)
+          </a>
+        ))}
+      </div>
+
+      <!-- 时间轴 UI (Timeline Container) -->
+      <div class="rounded-3xl border-2 border-pink-200/60 bg-white/90 p-6 sm:p-8 shadow-pastel-glow backdrop-blur-md dark:border-purple-800/50 dark:bg-[#1A1523]/90 flex flex-col gap-8">
+        {years.map(year => (
+          <section class="flex flex-col gap-4">
+            <!-- 年份标题 -->
+            <h2 class="text-xl sm:text-2xl font-black text-[#3C2C26] dark:text-pink-100 flex items-center gap-2 border-b-2 border-pink-100 dark:border-purple-900/60 pb-2">
+              <span>📅 {year} 年</span>
+              <span class="rounded-full bg-pink-100 text-pink-600 px-3 py-0.5 font-mono text-xs font-bold dark:bg-purple-900 dark:text-pink-200">
+                共 {yearGroups[year].length} 篇
+              </span>
+            </h2>
+
+            <!-- 线性时间轴列表 -->
+            <ul class="border-l-2 border-pink-200/80 dark:border-purple-800/80 pl-4 sm:pl-6 ml-2 flex flex-col gap-3.5 list-none">
+              {yearGroups[year].map(post => {
+                const monthDay = post.data.pubDate.toISOString().slice(5, 10);
+                return (
+                  <li class="relative flex items-center gap-3 sm:gap-4 group">
+                    <!-- 时间轴左侧的小卡片点节点 -->
+                    <span class="absolute -left-[23px] sm:-left-[31px] top-1/2 -translate-y-1/2 h-3 w-3 rounded-full border-2 border-pink-300 bg-white group-hover:bg-pink-400 group-hover:scale-125 transition-all dark:bg-purple-950 dark:border-purple-600"></span>
+
+                    <!-- 日期 MM-DD -->
+                    <span class="font-mono text-xs sm:text-sm font-extrabold text-pink-500 dark:text-pink-300 shrink-0">
+                      {monthDay}
+                    </span>
+
+                    <!-- 文章分类胶囊 -->
+                    <span class="rounded-full bg-pink-50 border border-pink-200 px-2.5 py-0.5 font-sans text-[11px] font-bold text-pink-600 dark:bg-purple-950 dark:border-purple-800 dark:text-pink-200 shrink-0 hidden sm:inline">
+                      {post.data.category}
+                    </span>
+
+                    <!-- 文章标题 -->
+                    <a
+                      href={`/blog/${post.slug}`}
+                      class="text-sm sm:text-base font-bold text-[#3C2C26] transition-colors group-hover:text-pink-600 dark:text-pink-100 dark:group-hover:text-pink-300 line-clamp-1"
+                    >
+                      {post.data.title}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</BaseLayout>

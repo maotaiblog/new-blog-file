@@ -1,0 +1,92 @@
+---
+export interface HeadingItem {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: HeadingItem[];
+}
+
+const { headings } = Astro.props;
+
+// 仅保留 h2 和 h3 标题
+const tocItems = headings.filter(h => h.depth === 2 || h.depth === 3);
+---
+
+{tocItems.length > 0 && (
+  <aside class="toc-sidebar sticky top-24 hidden lg:block w-72 shrink-0 self-start">
+    <div class="rounded-2xl border border-pink-200/80 bg-white/95 p-4 shadow-pastel-glow backdrop-blur-md dark:border-purple-800/60 dark:bg-[#1A1523]/95">
+      <!-- 头部标题 -->
+      <div class="flex items-center justify-between mb-3 border-b border-pink-100 pb-2 dark:border-purple-900/60">
+        <h3 class="text-sm font-black text-[#3C2C26] dark:text-pink-100 flex items-center gap-1.5">
+          <span class="text-base">📋</span>
+          <span>此页内容</span>
+        </h3>
+        <span class="rounded-full bg-pink-100 text-pink-600 px-2 py-0.5 font-mono text-[11px] font-bold dark:bg-purple-900 dark:text-pink-200">
+          TOC
+        </span>
+      </div>
+
+      <!-- 适中字号目录列表 -->
+      <nav class="toc-list flex flex-col gap-1 border-l-2 border-pink-100 dark:border-purple-900/60 pl-2 max-h-[65vh] overflow-y-auto">
+        {tocItems.map(item => (
+          <a
+            href={`#${item.slug}`}
+            data-toc-id={item.slug}
+            class={`toc-item transition-all duration-200 block truncate rounded-lg py-1 px-2 leading-tight ${
+              item.depth === 3 
+                ? 'pl-4 text-xs text-[#7A6860] dark:text-pink-200/80 font-medium' 
+                : 'pl-2 text-xs text-[#3C2C26] dark:text-pink-100 font-extrabold'
+            } hover:text-pink-600 dark:hover:text-pink-300 hover:bg-pink-50/80 dark:hover:bg-purple-950/60`}
+          >
+            {item.text}
+          </a>
+        ))}
+      </nav>
+    </div>
+  </aside>
+)}
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tocItems = document.querySelectorAll('.toc-item');
+    if (tocItems.length === 0) return;
+
+    const headingElements: HTMLElement[] = [];
+    tocItems.forEach(item => {
+      const id = item.getAttribute('data-toc-id');
+      if (id) {
+        const el = document.getElementById(id);
+        if (el) headingElements.push(el);
+      }
+    });
+
+    if (headingElements.length === 0) return;
+
+    // IntersectionObserver 高亮监听器
+    const observerOptions = {
+      root: null,
+      rootMargin: '-80px 0px -60% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const activeId = entry.target.id;
+          tocItems.forEach(item => {
+            if (item.getAttribute('data-toc-id') === activeId) {
+              item.classList.add('text-pink-600', 'dark:text-pink-300', 'bg-pink-100/90', 'dark:bg-purple-900/80', 'border-l-3', 'border-pink-500', '-ml-[11px]');
+            } else {
+              item.classList.remove('text-pink-600', 'dark:text-pink-300', 'bg-pink-100/90', 'dark:bg-purple-900/80', 'border-l-3', 'border-pink-500', '-ml-[11px]');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    headingElements.forEach(el => observer.observe(el));
+  });
+</script>

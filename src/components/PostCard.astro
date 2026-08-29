@@ -1,0 +1,50 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  date: string;
+  category: string;
+  readTime: string;
+  slug: string;
+}
+
+const { title, description, date, category, readTime, slug } = Astro.props;
+---
+
+<article
+  class="group flex flex-col justify-between rounded-3xl border-2 border-pink-200/60 bg-white/85 p-7 shadow-pastel-glow backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_15px_35px_rgba(255,183,178,0.45)] dark:border-purple-800/50 dark:bg-[#1A1523]/85"
+>
+  <div>
+    <!-- 分类与时间气泡 (字号整体调大 3 号) -->
+    <div class="flex items-center gap-2.5 text-xs font-extrabold text-[#7A6860] dark:text-pink-200/80">
+      <span class="rounded-full bg-pink-100 px-3.5 py-0.5 font-bold text-pink-600 dark:bg-purple-900/80 dark:text-pink-200">
+        🌸 {category}
+      </span>
+      <span>•</span>
+      <span>📅 {date}</span>
+      <span>•</span>
+      <span>⏱️ {readTime}</span>
+    </div>
+
+    <!-- 文章标题 (字号调大至 2xl) -->
+    <h2 class="mt-3.5 text-2xl font-black tracking-tight text-[#3C2C26] transition-colors group-hover:text-pink-500 dark:text-pink-100 dark:group-hover:text-pink-300 leading-snug">
+      <a href={`/blog/${slug}`}>{title}</a>
+    </h2>
+
+    <!-- 文章摘要 (字号调大至 base) -->
+    <p class="mt-2.5 text-sm md:text-base leading-relaxed text-[#7A6860] line-clamp-2 dark:text-pink-200/90 font-medium">
+      {description}
+    </p>
+  </div>
+
+  <!-- 文章底部按钮区 -->
+  <div class="mt-5 flex items-center justify-between border-t border-pink-100/80 pt-4 dark:border-purple-900/50">
+    <a
+      href={`/blog/${slug}`}
+      class="inline-flex items-center gap-2 rounded-full border border-pink-200 bg-pink-50 px-5 py-2 text-sm font-black text-pink-600 transition-all hover:bg-pink-300 hover:text-white active:scale-95 dark:border-purple-700 dark:bg-purple-900/60 dark:text-pink-200 dark:hover:bg-purple-700"
+    >
+      <span>展开阅读</span>
+      <span class="text-base">→</span>
+    </a>
+  </div>
+</article>

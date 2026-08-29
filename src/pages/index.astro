@@ -1,0 +1,72 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import PostCard from '../components/PostCard.astro';
+
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title="猫太博客 | 90s 复古日漫治愈系">
+  <div class="flex flex-col gap-6 md:flex-row">
+    <!-- 左侧固定边栏 (17.5rem / w-70) -->
+    <Sidebar />
+
+    <!-- 右侧主内容区域 -->
+    <div class="flex-1 flex flex-col gap-6">
+      <!-- 90s 复古漫风浪漫大图 Banner 卡片 -->
+      <div class="overflow-hidden rounded-3xl border-2 border-pink-200/80 bg-white/80 shadow-pastel-glow backdrop-blur-md dark:border-purple-800/60 dark:bg-[#1A1523]/85 group">
+        <div class="relative h-52 sm:h-72 w-full overflow-hidden">
+          <img 
+            src="/gallery/retro-cat-girl.jpg" 
+            alt="90s 复古漫风浪漫插画" 
+            class="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#FDFBF7] via-transparent to-transparent opacity-90 dark:from-[#1A1523]"></div>
+          
+          <div class="absolute bottom-4 left-6 right-6 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl filter drop-shadow-md">🌸</span>
+              <div>
+                <h1 class="text-2xl font-black tracking-wide text-[#3C2C26] dark:text-pink-100 drop-shadow-sm">
+                  欢迎来到猫太博客！
+                </h1>
+                <p class="mt-0.5 text-xs font-bold text-pink-600 dark:text-pink-300">
+                  90s Retro Anime & Soft Pastel Aesthetic
+                </p>
+              </div>
+            </div>
+            <span class="hidden sm:inline-block rounded-full bg-white/90 px-3.5 py-1 text-xs font-extrabold text-pink-500 shadow-md dark:bg-purple-900/90 dark:text-pink-200">
+              🐔 治愈美学
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 文章卡片流 header -->
+      <div class="flex items-center justify-between px-1">
+        <h2 class="text-base font-black text-[#3C2C26] dark:text-pink-100 flex items-center gap-2">
+          <span>🎀 最新技术文章与测评</span>
+          <span class="rounded-full bg-pink-100 text-pink-600 font-mono text-xs px-3 py-0.5 font-bold shadow-sm dark:bg-purple-900 dark:text-pink-200">
+            {sortedPosts.length} 篇
+          </span>
+        </h2>
+      </div>
+
+      <!-- 文章卡片网格 -->
+      <div class="flex flex-col gap-5">
+        {sortedPosts.map(post => (
+          <PostCard
+            title={post.data.title}
+            description={post.data.description}
+            date={post.data.pubDate.toISOString().slice(0, 10)}
+            category={post.data.category}
+            readTime={post.data.readTime}
+            slug={post.slug}
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

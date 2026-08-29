@@ -1,0 +1,198 @@
+---
+---
+
+<header class="sticky top-0 z-50 w-full px-4 pt-3">
+  <nav
+    class="mx-auto flex h-18 max-w-7xl items-center justify-between rounded-full border-2 border-pink-200/60 bg-white/80 px-6 py-2 shadow-[0_10px_30px_rgba(255,183,178,0.3)] backdrop-blur-md transition-all duration-300 dark:border-purple-800/50 dark:bg-[#1A1523]/85"
+  >
+    <!-- Logo 区域 -->
+    <a
+      href="/"
+      class="flex items-center gap-3 transition-transform duration-200 active:scale-95 group"
+    >
+      <div
+        class="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border-2 border-pink-300 bg-gradient-to-tr from-pink-300 to-sky-200 shadow-md shadow-pink-300/40 group-hover:rotate-12 transition-transform"
+      >
+        <img src="/logo.png" alt="猫太博客 Logo" class="h-full w-full object-cover object-center" />
+      </div>
+      <div class="flex flex-col">
+        <span class="text-xl font-black tracking-wider text-[#3C2C26] dark:text-pink-100 flex items-center gap-1">
+          <span>猫太博客</span>
+          <span class="text-sm text-pink-400">🌸</span>
+        </span>
+        <span class="text-[11px] font-mono tracking-widest text-pink-400 dark:text-pink-300 font-bold">
+          90s ANIME AESTHETIC
+        </span>
+      </div>
+    </a>
+
+    <!-- 桌面端导航栏 -->
+    <div class="hidden items-center gap-2 md:flex">
+      <!-- 固化柱页 /rank 推荐榜单 -->
+      <a href="/rank" class="nav-pastel-item bg-pink-100/90 text-pink-600 dark:bg-purple-900/80 dark:text-pink-200 font-black shadow-sm">
+        <span>🏆 机场推荐榜单</span>
+      </a>
+
+      <!-- 单级链接 -->
+      <a href="/" class="nav-pastel-item">
+        <span>🎀 主页</span>
+      </a>
+
+      <a href="/about" class="nav-pastel-item">
+        <span>✨ 关于</span>
+      </a>
+
+      <!-- 下拉菜单：💌 归档 (已删掉 2025 年归档按钮) -->
+      <div class="group relative">
+        <button class="nav-pastel-item">
+          <span>💌 归档</span>
+          <span class="text-xs transition-transform duration-200 group-hover:rotate-180">▾</span>
+        </button>
+        <div
+          class="invisible absolute left-0 top-full pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100"
+        >
+          <div
+            class="w-52 rounded-2xl border-2 border-pink-200/80 bg-white/95 p-2.5 shadow-pastel-glow backdrop-blur-lg dark:border-purple-800 dark:bg-[#1A1523]/95 flex flex-col gap-1"
+          >
+            <a href="/archives/2026" class="dropdown-pastel-item">
+              📅 2026 年归档
+            </a>
+            <a href="/archives" class="dropdown-pastel-item">
+              🗓️ 全部时间轴
+            </a>
+            <div class="my-1 h-[1px] bg-pink-100 dark:bg-purple-900"></div>
+            <a href="/tags" class="dropdown-pastel-item">
+              🏷️ 标签云
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 下拉菜单：更多 (已删掉 友链、番剧、服务 按钮) -->
+      <div class="group relative">
+        <button class="nav-pastel-item">
+          <span>🌙 更多</span>
+          <span class="text-xs transition-transform duration-200 group-hover:rotate-180">▾</span>
+        </button>
+        <div
+          class="invisible absolute left-0 top-full pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100"
+        >
+          <div
+            class="w-52 rounded-2xl border-2 border-pink-200/60 bg-white/95 p-2 shadow-pastel-glow backdrop-blur-lg dark:border-purple-800 dark:bg-[#1A1523]/95 flex flex-col gap-1"
+          >
+            <a href="/gallery" class="dropdown-pastel-item font-black text-pink-600 bg-pink-50 dark:bg-purple-900/60 dark:text-pink-200">
+              🖼️ 治愈系图库
+            </a>
+            <a href="/apple-id" class="dropdown-pastel-item font-black text-purple-600 dark:text-purple-300">
+              🍎 免费 Apple ID
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 💬 论坛外链 (指定 Telegram 社群外链) -->
+      <a
+        href="https://t.me/+KMqGQjOeRY1hNjY1"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="nav-pastel-item font-black text-pink-600 hover:text-pink-700"
+      >
+        <span>💬 论坛</span>
+        <span class="text-xs text-pink-400">↗</span>
+      </a>
+    </div>
+
+    <!-- 右侧功能按键 -->
+    <div class="flex items-center gap-2">
+      <!-- Dark mode 切换按键 -->
+      <button
+        id="theme-toggle-btn"
+        class="flex h-10 w-10 items-center justify-center rounded-full border border-pink-200 bg-pink-50/70 text-pink-600 transition-all hover:bg-pink-100 active:scale-90 dark:border-purple-800 dark:bg-purple-950/60 dark:text-pink-300 dark:hover:bg-purple-900"
+        aria-label="切换主题"
+      >
+        <span class="text-base dark:hidden">☀️</span>
+        <span class="text-base hidden dark:inline">🌙</span>
+      </button>
+
+      <!-- 搜索触发按键 -->
+      <button
+        id="search-btn-trigger"
+        class="flex items-center gap-2 rounded-full border border-pink-200 bg-pink-50/70 px-4 py-2 text-sm font-bold text-pink-700 transition-all hover:bg-pink-100 active:scale-95 dark:border-purple-800 dark:bg-purple-950/60 dark:text-pink-300 dark:hover:bg-purple-900"
+        aria-label="搜索"
+      >
+        <span class="text-base">🔍</span>
+        <span class="hidden sm:inline">搜索...</span>
+        <kbd
+          class="hidden rounded-full border border-pink-300 bg-white px-2 font-mono text-[10px] text-pink-400 sm:inline dark:border-purple-700 dark:bg-purple-900 dark:text-pink-200"
+        >⌘K</kbd>
+      </button>
+
+      <!-- 移动端汉堡包按钮 -->
+      <button
+        id="mobile-menu-btn"
+        class="flex h-10 w-10 items-center justify-center rounded-full text-pink-600 transition-colors hover:bg-pink-100 active:scale-90 md:hidden dark:text-pink-300 dark:hover:bg-purple-900"
+        aria-label="切换菜单"
+      >
+        <span class="text-lg">☰</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- 移动端抽屉导航面板 -->
+  <div
+    id="mobile-menu-panel"
+    class="mt-2 hidden rounded-3xl border-2 border-pink-200/80 bg-white/95 p-4 shadow-pastel-glow backdrop-blur-xl md:hidden dark:border-purple-800 dark:bg-[#1A1523]/95"
+  >
+    <div class="flex flex-col gap-1.5">
+      <a href="/rank" class="mobile-nav-pastel-item text-pink-600 font-black">🏆 机场推荐榜单</a>
+      <a href="https://t.me/+KMqGQjOeRY1hNjY1" target="_blank" rel="noopener noreferrer" class="mobile-nav-pastel-item font-black text-pink-600">💬 论坛社群 ↗</a>
+      <a href="/gallery" class="mobile-nav-pastel-item font-black">🖼️ 治愈系图库</a>
+      <a href="/apple-id" class="mobile-nav-pastel-item">🍎 免费 Apple ID</a>
+      <a href="/" class="mobile-nav-pastel-item">🎀 主页</a>
+      <a href="/archives" class="mobile-nav-pastel-item">💌 文章时间归档</a>
+      <a href="/tags" class="mobile-nav-pastel-item">🏷️ 标签云</a>
+      <a href="/about" class="mobile-nav-pastel-item">✨ 关于</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .nav-pastel-item {
+    @apply flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-extrabold text-[#3C2C26] transition-all duration-200 hover:bg-pink-100/80 hover:text-pink-600 active:scale-95 dark:text-pink-100 dark:hover:bg-purple-900/60 dark:hover:text-pink-300;
+  }
+
+  .dropdown-pastel-item {
+    @apply flex items-center gap-2 rounded-xl px-3.5 py-2.5 text-sm font-bold text-[#3C2C26] transition-colors hover:bg-pink-100 hover:text-pink-600 dark:text-pink-100 dark:hover:bg-purple-900 dark:hover:text-pink-300;
+  }
+
+  .mobile-nav-pastel-item {
+    @apply flex items-center gap-3 rounded-full px-4 py-2.5 text-sm font-extrabold text-[#3C2C26] hover:bg-pink-100 dark:text-pink-100 dark:hover:bg-purple-900;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    const htmlEl = document.documentElement;
+
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+      htmlEl.classList.add('dark');
+    } else {
+      htmlEl.classList.remove('dark');
+    }
+
+    themeBtn?.addEventListener('click', () => {
+      htmlEl.classList.toggle('dark');
+      const currentTheme = htmlEl.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', currentTheme);
+    });
+
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobilePanel = document.getElementById('mobile-menu-panel');
+
+    mobileBtn?.addEventListener('click', () => {
+      mobilePanel?.classList.toggle('hidden');
+    });
+  });
+</script>
