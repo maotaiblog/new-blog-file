@@ -68,7 +68,7 @@ const defaultAccounts: AppleAccount[] = [
         </span>
         <button
           id="refresh-accounts-btn"
-          class="flex items-center gap-1.5 rounded-xl border border-pink-300 bg-pink-500 px-4 py-1.5 text-xs font-black text-white transition-all hover:bg-pink-600 active:scale-95 shadow-sm dark:bg-pink-600 dark:hover:bg-pink-500"
+          class="flex items-center gap-1.5 rounded-xl border border-pink-300 bg-pink-500 px-4 py-1.5 text-xs font-black text-white transition-all hover:bg-pink-600 active:scale-95 shadow-sm dark:bg-pink-600 dark:hover:bg-pink-500 cursor-pointer"
         >
           <span class="refresh-icon">🔄</span>
           <span>刷新账号</span>
@@ -111,7 +111,7 @@ const defaultAccounts: AppleAccount[] = [
               <div class="flex items-center justify-between gap-2 rounded-xl bg-pink-50/70 p-2.5 border border-pink-100 dark:bg-purple-950/60 dark:border-purple-900/80">
                 <span class="font-mono text-xs font-black text-[#3C2C26] dark:text-pink-100 truncate">{acc.email}</span>
                 <button
-                  class="copy-btn shrink-0 rounded-lg bg-pink-100 border border-pink-200 px-2.5 py-1 text-[11px] font-extrabold text-pink-600 hover:bg-pink-500 hover:text-white hover:border-pink-500 transition-colors dark:bg-purple-900 dark:border-purple-700 dark:text-pink-200"
+                  class="copy-btn shrink-0 rounded-lg bg-pink-100 border border-pink-200 px-2.5 py-1 text-[11px] font-extrabold text-pink-600 hover:bg-pink-500 hover:text-white hover:border-pink-500 transition-colors dark:bg-purple-900 dark:border-purple-700 dark:text-pink-200 cursor-pointer"
                   data-copy={acc.email}
                   data-label="账号"
                 >
@@ -132,13 +132,13 @@ const defaultAccounts: AppleAccount[] = [
                 />
                 <div class="flex items-center gap-1 shrink-0">
                   <button
-                    class="toggle-pwd-btn rounded-lg bg-pink-100 px-2 py-1 text-[11px] font-bold text-pink-600 hover:bg-pink-200 dark:bg-purple-900 dark:text-pink-200"
+                    class="toggle-pwd-btn rounded-lg bg-pink-100 border border-pink-200 px-2 py-1 text-[11px] font-bold text-pink-600 hover:bg-pink-200 dark:bg-purple-900 dark:text-pink-200 cursor-pointer"
                     title="切换显示/隐藏密码"
                   >
                     👁️
                   </button>
                   <button
-                    class="copy-btn rounded-lg bg-pink-100 border border-pink-200 px-2.5 py-1 text-[11px] font-extrabold text-pink-600 hover:bg-pink-500 hover:text-white hover:border-pink-500 transition-colors dark:bg-purple-900 dark:border-purple-700 dark:text-pink-200"
+                    class="copy-btn rounded-lg bg-pink-100 border border-pink-200 px-2.5 py-1 text-[11px] font-extrabold text-pink-600 hover:bg-pink-500 hover:text-white hover:border-pink-500 transition-colors dark:bg-purple-900 dark:border-purple-700 dark:text-pink-200 cursor-pointer"
                     data-copy={acc.password}
                     data-label="密码"
                   >
@@ -204,55 +204,94 @@ const defaultAccounts: AppleAccount[] = [
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // 复制功能逻辑与 Toast 提示
+  function initAccountPoolEvents() {
     const toast = document.getElementById('copy-toast');
     const toastMsg = document.getElementById('toast-msg');
 
-    function showToast(msg: string) {
+    function showToast(msg) {
       if (toastMsg) toastMsg.textContent = msg;
-      toast?.classList.remove('hidden');
-      toast?.classList.add('flex');
-      setTimeout(() => {
-        toast?.classList.add('hidden');
-        toast?.classList.remove('flex');
-      }, 2500);
+      if (toast) {
+        toast.classList.remove('hidden');
+        toast.classList.add('flex');
+        setTimeout(() => {
+          toast.classList.add('hidden');
+          toast.classList.remove('flex');
+        }, 2500);
+      }
     }
 
-    document.querySelectorAll('.copy-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const text = btn.getAttribute('data-copy') || '';
-        const label = btn.getAttribute('data-label') || '内容';
-        if (text) {
-          navigator.clipboard.writeText(text).then(() => {
-            showToast(`已成功复制 ${label} 到剪贴板！`);
-          }).catch(err => {
-            console.error('Copy error:', err);
-          });
-        }
-      });
-    });
+    // 全局强力事件委托
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      if (!target) return;
 
-    // 密码显隐切换逻辑
-    document.querySelectorAll('.toggle-pwd-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const input = btn.closest('div')?.parentElement?.querySelector('.password-field') as HTMLInputElement;
+      // 1. 复制按钮响应逻辑
+      const copyBtn = target.closest('.copy-btn');
+      if (copyBtn) {
+        const text = copyBtn.getAttribute('data-copy') || '';
+        const label = copyBtn.getAttribute('data-label') || '内容';
+        if (text) {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(() => {
+              showToast(`已成功复制 ${label} 到剪贴板！`);
+            }).catch(() => {
+              fallbackCopy(text, label);
+            });
+          } else {
+            fallbackCopy(text, label);
+          }
+        }
+        return;
+      }
+
+      // 降级复制文字方法
+      function fallbackCopy(text, label) {
+        try {
+          const textArea = document.createElement('textarea');
+          textArea.value = text;
+          textArea.style.position = 'fixed';
+          textArea.style.opacity = '0';
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textArea);
+          showToast(`已成功复制 ${label} 到剪贴板！`);
+        } catch (err) {
+          showToast(`复制失败，请手动选择复制`);
+        }
+      }
+
+      // 2. 密码显隐切换按钮
+      const toggleBtn = target.closest('.toggle-pwd-btn');
+      if (toggleBtn) {
+        const parent = toggleBtn.closest('.account-card') || toggleBtn.parentElement?.parentElement;
+        const input = parent?.querySelector('.password-field');
         if (input) {
           if (input.type === 'password') {
             input.type = 'text';
-            btn.textContent = '🔒';
+            toggleBtn.textContent = '🔒';
           } else {
             input.type = 'password';
-            btn.textContent = '👁️';
+            toggleBtn.textContent = '👁️';
           }
         }
-      });
-    });
+        return;
+      }
 
-    // 刷新账号按键逻辑
-    const refreshBtn = document.getElementById('refresh-accounts-btn');
-    refreshBtn?.addEventListener('click', () => {
-      showToast('正在从 Cloudflare Worker 实时请求最新正常账号...');
+      // 3. 刷新按钮点击处理
+      const refreshBtn = target.closest('#refresh-accounts-btn');
+      if (refreshBtn) {
+        showToast('正在从探针中心同步最新正常账号...');
+        return;
+      }
     });
-  });
+  }
+
+  // 跨浏览器、跨 Hydration 阶段双重唤醒
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAccountPoolEvents);
+  } else {
+    initAccountPoolEvents();
+  }
 </script>
