@@ -13,12 +13,12 @@ export default function WebRtcTestPage() {
         <ChevronRight className="h-3 w-3 text-slate-400" />
         <Link href="/tools/network-health/" className="hover:text-brand-600 transition-colors">网络测试</Link>
         <ChevronRight className="h-3 w-3 text-slate-400" />
-        <span className="font-bold text-slate-900">WebRTC Leak Test</span>
+        <span className="font-bold text-slate-900">WebRTC 泄露检测</span>
       </nav>
 
       <header className="mb-8">
         <h1 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
-          WebRTC Leak Test - 检测真实 IP 是否泄露
+          WebRTC 真实 IP 泄露检测 (WebRTC Leak Test)
         </h1>
         <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
           WebRTC 允许浏览器建立 P2P 实时媒体通信。即使你已经连接了常规代理，网页依然可以通过底层的 STUN 探测绕过代理直接获取你真实的本地局域网与公网出口 IP。

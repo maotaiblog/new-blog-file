@@ -13,12 +13,12 @@ export default function VpnSpeedTestPage() {
         <ChevronRight className="h-3 w-3 text-slate-400" />
         <Link href="/tools/network-health/" className="hover:text-brand-600 transition-colors">网络测试</Link>
         <ChevronRight className="h-3 w-3 text-slate-400" />
-        <span className="font-bold text-slate-900">VPN Speed Test</span>
+        <span className="font-bold text-slate-900">网络带宽测速</span>
       </nav>
 
       <header className="mb-8">
         <h1 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
-          VPN Speed Test - VPN 下载上传速度与带宽测试
+          VPN 下载上传速度与带宽测速 (VPN Speed Test)
         </h1>
         <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
           在线测量你在当前网络及 VPN / 代理环境下的实际下载吞吐速率 (Mbps)、往返延迟与抖动。科学理解跨境网络真实速度表现，告别虚假测速跑分幻象。

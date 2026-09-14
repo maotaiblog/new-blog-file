@@ -13,12 +13,12 @@ export default function VpnLeakTestPage() {
         <ChevronRight className="h-3 w-3 text-slate-400" />
         <Link href="/tools/network-health/" className="hover:text-brand-600 transition-colors">网络测试</Link>
         <ChevronRight className="h-3 w-3 text-slate-400" />
-        <span className="font-bold text-slate-900">VPN Leak Test</span>
+        <span className="font-bold text-slate-900">VPN 隐私体检</span>
       </nav>
 
       <header className="mb-8">
         <h1 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
-          VPN Leak Test - IP、DNS 与 WebRTC 泄露检测
+          VPN 隐私泄露综合体检 (VPN Leak Test)
         </h1>
         <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
           当你开启 VPN 或代理软件时，许多用户认为连接代理即可实现全面隐匿，但实际上，系统 DNS 配置不当、WebRTC 协议漏洞或 IPv6 双栈旁路都可能悄然出卖你的真实物理身份。

@@ -145,7 +145,7 @@ export default function Header() {
                 </span>
               </span>
               <span className="text-[10px] font-mono tracking-wider text-slate-400 whitespace-nowrap">
-                GLOBAL NETWORK ACCELERATOR
+                全球网络性能与隐私实验室
               </span>
             </div>
           </Link>
@@ -178,7 +178,7 @@ export default function Header() {
                     >
                       <div className="text-brand-600 font-bold">🩺</div>
                       <div>
-                        <div className="text-xs font-black text-brand-700 whitespace-nowrap">Network Health Score</div>
+                        <div className="text-xs font-black text-brand-700 whitespace-nowrap">网络健康度体检 (Health Score)</div>
                         <div className="text-[10px] text-slate-500 whitespace-nowrap">全功能网络健康度综合体检</div>
                       </div>
                     </Link>
@@ -191,7 +191,7 @@ export default function Header() {
                     >
                       <span>📍</span>
                       <div>
-                        <div className="text-xs font-bold text-slate-900 whitespace-nowrap">What Is My IP</div>
+                        <div className="text-xs font-bold text-slate-900 whitespace-nowrap">公网 IP 查询 (What Is My IP)</div>
                         <div className="text-[10px] text-slate-400 whitespace-nowrap">查看我的公网 IP 与运营商</div>
                       </div>
                     </Link>
@@ -202,7 +202,7 @@ export default function Header() {
                     >
                       <span>🛡️</span>
                       <div>
-                        <div className="text-xs font-bold text-slate-900 whitespace-nowrap">DNS Leak Test</div>
+                        <div className="text-xs font-bold text-slate-900 whitespace-nowrap">DNS 泄露检测 (DNS Leak)</div>
                         <div className="text-[10px] text-slate-400 whitespace-nowrap">检测 DNS 是否遭运营商监听</div>
                       </div>
                     </Link>
@@ -213,7 +213,7 @@ export default function Header() {
                     >
                       <span>🔒</span>
                       <div>
-                        <div className="text-xs font-bold text-slate-900 whitespace-nowrap">WebRTC Leak Test</div>
+                        <div className="text-xs font-bold text-slate-900 whitespace-nowrap">WebRTC 泄露检测 (WebRTC)</div>
                         <div className="text-[10px] text-slate-400 whitespace-nowrap">检测浏览器真实 IP 穿透暴露</div>
                       </div>
                     </Link>
@@ -224,7 +224,7 @@ export default function Header() {
                     >
                       <span>⚡</span>
                       <div>
-                        <div className="text-xs font-bold text-slate-900 whitespace-nowrap">Ping Test</div>
+                        <div className="text-xs font-bold text-slate-900 whitespace-nowrap">延迟与丢包测试 (Ping Test)</div>
                         <div className="text-[10px] text-slate-400 whitespace-nowrap">网络往返延迟与丢包抖动测试</div>
                       </div>
                     </Link>
@@ -235,7 +235,7 @@ export default function Header() {
                     >
                       <span>🔍</span>
                       <div>
-                        <div className="text-xs font-bold text-slate-900 whitespace-nowrap">VPN Leak Test</div>
+                        <div className="text-xs font-bold text-slate-900 whitespace-nowrap">VPN 隐私体检 (VPN Leak)</div>
                         <div className="text-[10px] text-slate-400 whitespace-nowrap">IP/DNS/WebRTC 综合 4 重体检</div>
                       </div>
                     </Link>
@@ -246,7 +246,7 @@ export default function Header() {
                     >
                       <span>🚀</span>
                       <div>
-                        <div className="text-xs font-bold text-slate-900 whitespace-nowrap">VPN Speed Test</div>
+                        <div className="text-xs font-bold text-slate-900 whitespace-nowrap">网络带宽测速 (Speed Test)</div>
                         <div className="text-[10px] text-slate-400 whitespace-nowrap">实际下载速率与带宽吞吐测速</div>
                       </div>
                     </Link>

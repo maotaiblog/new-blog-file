@@ -76,12 +76,12 @@ export default function DnsLeakTestPage() {
         <ChevronRight className="h-3 w-3 text-slate-400" />
         <Link href="/tools/network-health/" className="hover:text-brand-600 transition-colors">网络测试</Link>
         <ChevronRight className="h-3 w-3 text-slate-400" />
-        <span className="font-bold text-slate-900">DNS Leak Test</span>
+        <span className="font-bold text-slate-900">DNS 泄露检测</span>
       </nav>
 
       <header className="mb-8">
         <h1 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
-          DNS Leak Test - 检测 DNS 是否泄露
+          DNS 泄露与运营商劫持检测 (DNS Leak Test)
         </h1>
         <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
           在线检测使用 VPN 或代理时是否存在 DNS 泄露风险。检测当前实际负责为你解析域名的 DNS 服务器 IP 与运营商归属，防止本地宽带运营商通过明文 DNS 记录你的上网历史与真实物理位置。

@@ -78,7 +78,7 @@ export default function NetworkHealthWidget({ compact = false }: { compact?: boo
   const [data, setData] = useState<NetworkHealthState>({
     engineState: "idle",
     currentStepIndex: 0,
-    stepStatusText: "Not tested",
+    stepStatusText: "未检测",
     score: null,
     perfScore: null,
     privacyScore: null,
@@ -511,7 +511,7 @@ export default function NetworkHealthWidget({ compact = false }: { compact?: boo
                     ? "bg-amber-50 text-amber-700 border-amber-200 animate-pulse" 
                     : (data.score !== null && data.score >= 90 ? "bg-emerald-50 text-emerald-600 border-emerald-200" : "bg-blue-50 text-brand-600 border-brand-200"))
             }`}>
-              {data.engineState === "idle" ? "Not tested (未检测)" : (data.engineState === "testing" ? data.stepStatusText : data.stepStatusText)}
+              {data.engineState === "idle" ? "未检测 (Not tested)" : (data.engineState === "testing" ? data.stepStatusText : data.stepStatusText)}
             </span>
           </div>
 
@@ -662,7 +662,7 @@ export default function NetworkHealthWidget({ compact = false }: { compact?: boo
             (data.engineState === "testing" ? "bg-amber-50 text-amber-700 border-amber-200" :
             (data.score !== null && data.score >= 90 ? "bg-emerald-50 text-emerald-600 border-emerald-200" : "bg-blue-50 text-brand-600 border-brand-200"))
           }`}>
-            {data.engineState === "idle" ? "Not tested (未检测)" : data.stepStatusText}
+            {data.engineState === "idle" ? "未检测 (Not tested)" : data.stepStatusText}
           </div>
 
           {data.engineState !== "idle" && data.availableWeightsTotal > 0 && (
@@ -682,12 +682,12 @@ export default function NetworkHealthWidget({ compact = false }: { compact?: boo
                 <Zap className="h-4 w-4 text-amber-500" />
               </div>
               <div className="text-2xl font-black font-mono text-slate-900">
-                {data.perfScore !== null ? `${data.perfScore} / 40` : "Not tested"}
+                {data.perfScore !== null ? `${data.perfScore} / 40` : "未检测"}
               </div>
             </div>
             <div className="mt-3 text-[11px] text-slate-500 space-y-0.5">
               <div>HTTP RTT 均值: {data.httpRttAvg !== null ? `${data.httpRttAvg} ms` : "—"}</div>
-              <div>Min / Max: {data.httpRttMin !== null ? `${data.httpRttMin} / ${data.httpRttMax} ms` : "—"}</div>
+              <div>最低 / 最高: {data.httpRttMin !== null ? `${data.httpRttMin} / ${data.httpRttMax} ms` : "—"}</div>
             </div>
           </div>
 
@@ -699,7 +699,7 @@ export default function NetworkHealthWidget({ compact = false }: { compact?: boo
                 <Lock className="h-4 w-4 text-emerald-500" />
               </div>
               <div className="text-2xl font-black font-mono text-slate-900">
-                {data.privacyScore !== null ? `${data.privacyScore} / 40` : "Not tested"}
+                {data.privacyScore !== null ? `${data.privacyScore} / 40` : "未检测"}
               </div>
             </div>
             <div className="mt-3 text-[11px] text-slate-500 space-y-0.5">
@@ -716,7 +716,7 @@ export default function NetworkHealthWidget({ compact = false }: { compact?: boo
                 <Activity className="h-4 w-4 text-brand-500" />
               </div>
               <div className="text-2xl font-black font-mono text-slate-900">
-                {data.stabilityScore !== null ? `${data.stabilityScore} / 20` : "Not tested"}
+                {data.stabilityScore !== null ? `${data.stabilityScore} / 20` : "未检测"}
               </div>
             </div>
             <div className="mt-3 text-[11px] text-slate-500 space-y-0.5">
@@ -761,7 +761,7 @@ export default function NetworkHealthWidget({ compact = false }: { compact?: boo
             </div>
             <div className="text-right sm:text-right">
               <div className="font-mono font-black text-slate-800">
-                {data.publicIp || "Not tested"}
+                {data.publicIp || "未检测"}
               </div>
               {data.apparentLocation && (
                 <div className="text-[11px] text-slate-500">{data.apparentLocation} ({data.ipFamily})</div>
@@ -782,7 +782,7 @@ export default function NetworkHealthWidget({ compact = false }: { compact?: boo
               <div className="font-bold">
                 {data.dnsStatus !== "not_tested" ? (
                   data.dnsStatus === "safe" ? <span className="text-emerald-600">正常</span> : <span className="text-amber-600">异常/受限</span>
-                ) : "Not tested"}
+                ) : "未检测"}
               </div>
               <div className="text-[11px] text-slate-500">{data.dnsDetails}</div>
             </div>
@@ -805,7 +805,7 @@ export default function NetworkHealthWidget({ compact = false }: { compact?: boo
                   ) : (
                     <span className="text-rose-600">存在 IP 旁路泄露风险</span>
                   )
-                ) : "Not tested"}
+                ) : "未检测"}
               </div>
               <div className="text-[11px] text-slate-500">{data.webrtcDetails}</div>
             </div>
@@ -822,7 +822,7 @@ export default function NetworkHealthWidget({ compact = false }: { compact?: boo
             </div>
             <div className="text-right sm:text-right">
               <div className="font-mono font-black text-slate-800">
-                {data.httpRttAvg !== null ? `${data.httpRttAvg} ms` : "Not tested"}
+                {data.httpRttAvg !== null ? `${data.httpRttAvg} ms` : "未检测"}
               </div>
               {data.httpRttSamples.length > 0 && (
                 <div className="text-[11px] text-slate-500">
@@ -843,7 +843,7 @@ export default function NetworkHealthWidget({ compact = false }: { compact?: boo
             </div>
             <div className="text-right sm:text-right">
               <div className="font-mono font-black text-slate-800">
-                {data.httpFailureRate !== null ? `${data.httpFailureRate}%` : "Not tested"}
+                {data.httpFailureRate !== null ? `${data.httpFailureRate}%` : "未检测"}
               </div>
               <div className="text-[11px] text-slate-400">
                 {data.httpFailureRate !== null ? (data.httpFailureRate === 0 ? "5 次请求全量响应" : `丢失 ${Math.round(data.httpFailureRate * 0.05)} 次`) : "未触发"}

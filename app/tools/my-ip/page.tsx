@@ -68,12 +68,12 @@ export default function MyIpPage() {
         <span className="text-slate-400">/</span>
         <Link href="/tools/network-health/" className="hover:text-brand-600 transition-colors">网络测试</Link>
         <span className="text-slate-400">/</span>
-        <span className="font-bold text-slate-900">What Is My IP</span>
+        <span className="font-bold text-slate-900">公网 IP 查询</span>
       </nav>
 
       <header className="mb-8">
         <h1 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
-          What Is My IP? 查看我的 IP 地址与网络指纹
+          公网 IP 查询与网络指纹检测 (What Is My IP)
         </h1>
         <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
           实时探测你当前设备向外部互联网汇报的公网 IP 地址、运营商 (ISP) 归属与自治系统号 (ASN)。同时支持在浏览器中直接发起全国与全球节点分布式延迟测速。
@@ -87,7 +87,7 @@ export default function MyIpPage() {
             <div className="text-xs font-bold text-slate-400 mb-1">当前公网出口 IP 地址</div>
             <div className="flex items-center gap-3">
               <span className="text-2xl sm:text-4xl font-black font-mono text-slate-900">
-                {ip || (loading ? "正在探测中..." : "Not tested")}
+                {ip || (loading ? "正在探测中..." : "未检测")}
               </span>
               {ip && ip !== "未成功获取公网 IP" && (
                 <button

@@ -13,12 +13,12 @@ export default function PingTestPage() {
         <ChevronRight className="h-3 w-3 text-slate-400" />
         <Link href="/tools/network-health/" className="hover:text-brand-600 transition-colors">网络测试</Link>
         <ChevronRight className="h-3 w-3 text-slate-400" />
-        <span className="font-bold text-slate-900">Ping Test</span>
+        <span className="font-bold text-slate-900">延迟与丢包测试</span>
       </nav>
 
       <header className="mb-8">
         <h1 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
-          Ping Test - 网络延迟、抖动与丢包率测试
+          网络延迟、抖动与丢包率测试 (Ping Test)
         </h1>
         <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
           通过向国内外多个主流 CDN 边缘节点发送连续多轮 HTTP 请求，精确测算往返时间 (Min / Max / Avg RTT)、延迟抖动差值 (Jitter) 与丢包率，真实还原链路在游戏、会议与出海业务下的通信表现。

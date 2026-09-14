@@ -110,8 +110,8 @@ export default function HomePage() {
                       <div className="text-[11px] text-slate-400">实时交互检测模式</div>
                     </div>
                   </div>
-                  <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-mono font-bold text-slate-600 border border-slate-200">
-                    STANDBY
+                  <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-bold text-slate-600 border border-slate-200">
+                    待命就绪
                   </span>
                 </div>
 
@@ -177,7 +177,7 @@ export default function HomePage() {
                 <div className="h-12 w-12 rounded-2xl bg-blue-50 flex items-center justify-center text-brand-600 mb-4">
                   <Globe className="h-6 w-6" />
                 </div>
-                <h3 className="text-lg font-black text-slate-900">What Is My IP</h3>
+                <h3 className="text-lg font-black text-slate-900">公网 IP 查询 (What Is My IP)</h3>
                 <p className="mt-2 text-xs text-slate-500 font-medium leading-relaxed">
                   查看当前本地公网出口 IPv4/IPv6、运营商 ASN 归属与物理地理位置。
                 </p>
@@ -194,7 +194,7 @@ export default function HomePage() {
                 <div className="h-12 w-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 mb-4">
                   <Server className="h-6 w-6" />
                 </div>
-                <h3 className="text-lg font-black text-slate-900">DNS Leak Test</h3>
+                <h3 className="text-lg font-black text-slate-900">DNS 泄露检测 (DNS Leak)</h3>
                 <p className="mt-2 text-xs text-slate-500 font-medium leading-relaxed">
                   检测域名解析是否被本地运营商明文监听，验证加密隧道防污染能力。
                 </p>
@@ -211,7 +211,7 @@ export default function HomePage() {
                 <div className="h-12 w-12 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600 mb-4">
                   <Lock className="h-6 w-6" />
                 </div>
-                <h3 className="text-lg font-black text-slate-900">WebRTC Leak Test</h3>
+                <h3 className="text-lg font-black text-slate-900">WebRTC 泄露检测 (WebRTC)</h3>
                 <p className="mt-2 text-xs text-slate-500 font-medium leading-relaxed">
                   通过浏览器底层 STUN 协议嗅探，防止真实局域网与公网 IP 旁路泄露。
                 </p>
@@ -228,7 +228,7 @@ export default function HomePage() {
                 <div className="h-12 w-12 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-600 mb-4">
                   <Zap className="h-6 w-6" />
                 </div>
-                <h3 className="text-lg font-black text-slate-900">Ping Test</h3>
+                <h3 className="text-lg font-black text-slate-900">网络延迟测试 (Ping Test)</h3>
                 <p className="mt-2 text-xs text-slate-500 font-medium leading-relaxed">
                   多轮发包测量国内外主流 CDN 节点的往返延迟 (Min/Max/Avg)、抖动与丢包。
                 </p>
@@ -245,7 +245,7 @@ export default function HomePage() {
                 <div className="h-12 w-12 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-600 mb-4">
                   <Layers className="h-6 w-6" />
                 </div>
-                <h3 className="text-lg font-black text-slate-900">VPN Leak Test</h3>
+                <h3 className="text-lg font-black text-slate-900">VPN 隐私体检 (VPN Leak)</h3>
                 <p className="mt-2 text-xs text-slate-500 font-medium leading-relaxed">
                   综合交叉审计 IPv4 真实身份、DNS 解析归属、WebRTC 穿透与 IPv6 旁路。
                 </p>
@@ -262,7 +262,7 @@ export default function HomePage() {
                 <div className="h-12 w-12 rounded-2xl bg-cyan-50 flex items-center justify-center text-cyan-600 mb-4">
                   <Gauge className="h-6 w-6" />
                 </div>
-                <h3 className="text-lg font-black text-slate-900">VPN Speed Test</h3>
+                <h3 className="text-lg font-black text-slate-900">网络带宽测速 (Speed Test)</h3>
                 <p className="mt-2 text-xs text-slate-500 font-medium leading-relaxed">
                   测量真实下载吞吐带宽 (Mbps)，科学理解光纤距离与加密协议对速度的影响。
                 </p>

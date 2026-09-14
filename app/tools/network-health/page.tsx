@@ -13,12 +13,12 @@ export default function NetworkHealthPage() {
         <ChevronRight className="h-3 w-3 text-slate-400" />
         <Link href="/tools/network-health/" className="hover:text-brand-600 transition-colors">网络测试</Link>
         <ChevronRight className="h-3 w-3 text-slate-400" />
-        <span className="font-bold text-slate-900">Network Health Score</span>
+        <span className="font-bold text-slate-900">网络健康度体检</span>
       </nav>
 
       <header className="mb-8">
         <h1 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
-          Network Health Score - 全功能网络健康度综合体检
+          全功能网络健康度综合体检 (Network Health Score)
         </h1>
         <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
           猫太实验室网络诊断核心聚合平台。由浏览器客户端发起真实探测，结合公网 IP 归属、DNS 解析响应、WebRTC IP 泄露检测、边缘 HTTP RTT 往返延迟与请求丢包率，基于 Available Metrics Weighting 动态可用加权模型生成真实客观的健康度评分。未测试项目真实标示 Not tested，杜绝虚构数字。
@@ -96,7 +96,7 @@ export default function NetworkHealthPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
             <Link href="/tools/my-ip/" className="p-4 rounded-2xl border border-slate-200 hover:border-brand-500 hover:bg-brand-50/20 transition-all flex flex-col justify-between">
               <div>
-                <div className="font-bold text-slate-900 text-sm">What Is My IP?</div>
+                <div className="font-bold text-slate-900 text-sm">公网 IP 查询 (What Is My IP)</div>
                 <div className="text-slate-500 mt-1">查看我的公网出口 IP、运营商与地理归属</div>
               </div>
               <div className="mt-3 text-brand-600 font-bold flex items-center gap-1">
@@ -106,7 +106,7 @@ export default function NetworkHealthPage() {
 
             <Link href="/tools/dns-leak-test/" className="p-4 rounded-2xl border border-slate-200 hover:border-brand-500 hover:bg-brand-50/20 transition-all flex flex-col justify-between">
               <div>
-                <div className="font-bold text-slate-900 text-sm">DNS Leak Test</div>
+                <div className="font-bold text-slate-900 text-sm">DNS 泄露检测 (DNS Leak)</div>
                 <div className="text-slate-500 mt-1">检测域名解析是否遭本地宽带运营商劫持</div>
               </div>
               <div className="mt-3 text-brand-600 font-bold flex items-center gap-1">
@@ -116,7 +116,7 @@ export default function NetworkHealthPage() {
 
             <Link href="/tools/webrtc-test/" className="p-4 rounded-2xl border border-slate-200 hover:border-brand-500 hover:bg-brand-50/20 transition-all flex flex-col justify-between">
               <div>
-                <div className="font-bold text-slate-900 text-sm">WebRTC Leak Test</div>
+                <div className="font-bold text-slate-900 text-sm">WebRTC 泄露检测 (WebRTC)</div>
                 <div className="text-slate-500 mt-1">探测浏览器底层 STUN 是否绕过代理泄露真实 IP</div>
               </div>
               <div className="mt-3 text-brand-600 font-bold flex items-center gap-1">
@@ -126,7 +126,7 @@ export default function NetworkHealthPage() {
 
             <Link href="/tools/ping-test/" className="p-4 rounded-2xl border border-slate-200 hover:border-brand-500 hover:bg-brand-50/20 transition-all flex flex-col justify-between">
               <div>
-                <div className="font-bold text-slate-900 text-sm">Ping Test</div>
+                <div className="font-bold text-slate-900 text-sm">网络延迟测试 (Ping Test)</div>
                 <div className="text-slate-500 mt-1">多轮发包测量往返延迟、抖动与丢包率</div>
               </div>
               <div className="mt-3 text-brand-600 font-bold flex items-center gap-1">
@@ -136,7 +136,7 @@ export default function NetworkHealthPage() {
 
             <Link href="/tools/vpn-leak-test/" className="p-4 rounded-2xl border border-slate-200 hover:border-brand-500 hover:bg-brand-50/20 transition-all flex flex-col justify-between">
               <div>
-                <div className="font-bold text-slate-900 text-sm">VPN Leak Test</div>
+                <div className="font-bold text-slate-900 text-sm">VPN 隐私体检 (VPN Leak)</div>
                 <div className="text-slate-500 mt-1">4 大隐私泄露向量交叉审计 (IP/DNS/WebRTC/IPv6)</div>
               </div>
               <div className="mt-3 text-brand-600 font-bold flex items-center gap-1">
@@ -146,7 +146,7 @@ export default function NetworkHealthPage() {
 
             <Link href="/tools/vpn-speed-test/" className="p-4 rounded-2xl border border-slate-200 hover:border-brand-500 hover:bg-brand-50/20 transition-all flex flex-col justify-between">
               <div>
-                <div className="font-bold text-slate-900 text-sm">VPN Speed Test</div>
+                <div className="font-bold text-slate-900 text-sm">网络带宽测速 (Speed Test)</div>
                 <div className="text-slate-500 mt-1">分块拉取 CDN 资源测试实际下载吞吐速率 (Mbps)</div>
               </div>
               <div className="mt-3 text-brand-600 font-bold flex items-center gap-1">
