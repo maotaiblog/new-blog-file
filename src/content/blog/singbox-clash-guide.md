@@ -35,3 +35,8 @@ readTime: "8分钟"
 
 - **Clash Verge Rev**：在设置中开启 `TUN Mode`，并将 Stack 设置为 `Mixed` 或 `gVisor`。
 - **权限授予**：确保在 Windows/macOS 中授予系统网卡路由写入权限。
+
+---
+
+## 🔗 进阶阅读与隐私保护
+在配置客户端规则集与 TUN 模式时，如需深入了解传输加密原理、DNS 防污染与 WebRTC 防泄露机制，请参阅专题指南：[VPN 原理与现代代理协议网络隐私防护全景指南](/blog/vpn-guide/)。若遇到连接超时或规则不生效，可进一步查阅 [网络节点报错排障自救指南](/blog/agent-troubleshooting-sop-2026/)。

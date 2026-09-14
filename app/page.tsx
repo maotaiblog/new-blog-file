@@ -1,145 +1,142 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { 
-  Zap, 
   Activity, 
   Wifi, 
   CheckCircle2, 
-  AlertTriangle, 
   ArrowRight, 
   Gamepad2, 
   Building2, 
   Code2, 
-  GraduationCap, 
-  Lock,
+  ShieldCheck,
   RotateCw,
+  Globe,
+  Lock,
+  Layers,
+  Gauge,
+  HelpCircle,
+  BookOpen,
   Trophy,
-  Apple
+  Server,
+  Zap,
+  ArrowUpDown
 } from "lucide-react";
+import NetworkHealthWidget from "@/components/tools/NetworkHealthWidget";
 
 export default function HomePage() {
-  const [scanning, setScanning] = useState(false);
-  const [scanned, setScanned] = useState(true);
-
-  const handleStartScan = () => {
-    setScanning(true);
-    setScanned(false);
-    setTimeout(() => {
-      setScanning(false);
-      setScanned(true);
-    }, 2000);
+  const scrollToScanner = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const el = document.getElementById("scanner");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
-    <div className="w-full">
-      {/* Screen 1: Hero Section */}
+    <div className="w-full relative">
+      {/* Screen 1: Hero Section - 定位为网络性能与隐私测试实验室 */}
       <section className="relative overflow-hidden pt-8 pb-16 md:pt-16 md:pb-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
             
-            {/* 左侧：文案与核心 CTA */}
+            {/* 左侧：核心文案与 CTA */}
             <div className="lg:col-span-7 flex flex-col items-start">
               <div className="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-brand-50 px-3.5 py-1.5 text-xs font-bold text-brand-600 mb-6">
                 <span className="h-2 w-2 rounded-full bg-brand-500 animate-pulse"></span>
-                <span>2026 企业级 SD-WAN 全球智能专线部署</span>
+                <span>猫太网络实验室 · 真实数据驱动的跨境测试平台</span>
               </div>
 
               <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 leading-tight">
-                全球专线网络加速 <br />
-                <span className="text-brand-600">稳定、低延迟、安全无界</span>
+                网络性能与隐私测试实验室
               </h1>
 
               <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-medium">
-                毫秒级智能路由调度，保护网络 IP 隐私。专为跨境电商出海、外服游戏加速、免费 Apple ID 与开发者开源社区打造。
+                免费检测 IP、DNS、WebRTC、延迟、丢包与网络健康状态，帮助你判断当前网络环境，并理解 VPN、机场与专线网络的真实性能。
               </p>
 
-              {/* CTA 按键组 */}
+              {/* 3 个符合用户意图的核心 CTA */}
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Link
-                  href="/rank"
-                  className="flex items-center gap-2 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-pink-500/25 hover:opacity-90 active:scale-95 transition-all"
+                <button
+                  onClick={scrollToScanner}
+                  className="flex items-center gap-2 rounded-2xl bg-brand-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-brand-500/25 hover:bg-brand-700 active:scale-95 transition-all cursor-pointer"
                 >
-                  <Trophy className="h-4 w-4" />
-                  <span>🏆 查看 2026 机场推荐大盘</span>
-                </Link>
-
-                <Link
-                  href="/apple-id"
-                  className="flex items-center gap-2 rounded-2xl bg-purple-600 px-6 py-3.5 text-sm font-bold text-white shadow-md hover:bg-purple-700 transition-all"
-                >
-                  <Apple className="h-4 w-4" />
-                  <span>🍎 免费美区 Apple ID</span>
-                </Link>
+                  <Activity className="h-4 w-4" />
+                  <span>立即检测我的网络</span>
+                </button>
 
                 <a
-                  href="#scanner"
-                  className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-3.5 text-sm font-bold text-slate-700 shadow-saas-card hover:bg-slate-50 transition-all"
+                  href="#tools"
+                  className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-3.5 text-sm font-bold text-slate-700 shadow-saas-card hover:bg-slate-50 active:scale-95 transition-all cursor-pointer"
                 >
-                  <Activity className="h-4 w-4 text-brand-600" />
-                  <span>测测我的网络状态</span>
+                  <Gauge className="h-4 w-4 text-brand-600" />
+                  <span>查看网络测试工具</span>
                 </a>
+
+                <Link
+                  href="/blog/airport-recommendation/"
+                  className="flex items-center gap-2 rounded-2xl bg-slate-100 px-5 py-3.5 text-sm font-bold text-slate-700 hover:bg-slate-200 active:scale-95 transition-all cursor-pointer"
+                >
+                  <Trophy className="h-4 w-4 text-amber-500" />
+                  <span>查看 VPN / 机场评测</span>
+                </Link>
               </div>
 
-              {/* 信任徽章 */}
-              <div className="mt-8 flex items-center gap-6 text-xs text-slate-500 font-semibold border-t border-slate-200/60 pt-6">
+              {/* 真实准则说明 */}
+              <div className="mt-8 flex flex-wrap items-center gap-6 text-xs text-slate-500 font-semibold border-t border-slate-200/60 pt-6">
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-500" /> 零日志加密保护
+                  <CheckCircle2 className="h-4 w-4 text-emerald-500" /> 纯前端真实探测
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-500" /> SLA 99.9% 稳定率
+                  <CheckCircle2 className="h-4 w-4 text-emerald-500" /> 无虚构打分与假数据
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-500" /> 24/7 分布式探针
+                  <CheckCircle2 className="h-4 w-4 text-emerald-500" /> 公开白皮书评测准则
                 </span>
               </div>
             </div>
 
-            {/* 右侧：真实 UI 视觉卡片（产品 Dashboard 缩略图） */}
+            {/* 右侧：产品化网络诊断面板预览 */}
             <div className="lg:col-span-5">
               <div className="relative rounded-3xl border border-slate-200/80 bg-white p-6 shadow-saas-hover backdrop-blur-xl">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-3 w-3 items-center justify-center">
-                      <span className="absolute inline-flex h-3 w-3 animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-                      <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
+                  <div className="flex items-center gap-2.5">
+                    <div className="p-2 rounded-xl bg-brand-50 text-brand-600">
+                      <ShieldCheck className="h-4 w-4" />
                     </div>
-                    <span className="text-xs font-bold text-slate-900">当前网络加密加速中</span>
+                    <div>
+                      <div className="text-xs font-bold text-slate-900">网络诊断与安全嗅探</div>
+                      <div className="text-[11px] text-slate-400">实时交互检测模式</div>
+                    </div>
                   </div>
-                  <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-mono font-bold text-emerald-600 border border-emerald-200">
-                    PROTECTED
+                  <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-mono font-bold text-slate-600 border border-slate-200">
+                    STANDBY
                   </span>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 mb-4">
-                  <div className="rounded-2xl bg-slate-50 p-3.5 border border-slate-100">
-                    <span className="text-[11px] font-bold text-slate-400">最佳推荐榜首</span>
-                    <div className="mt-1 text-sm font-black text-slate-900 flex items-center gap-1.5">
-                      <span>🥇 暮光加速 (IEPL)</span>
-                    </div>
+                <div className="space-y-3 text-xs mb-4">
+                  <div className="flex items-center justify-between rounded-xl bg-slate-50 p-3 border border-slate-100">
+                    <span className="font-semibold text-slate-600">公网 IP 暴露检测</span>
+                    <span className="font-mono text-slate-500">点击下方按钮探测</span>
                   </div>
-                  <div className="rounded-2xl bg-slate-50 p-3.5 border border-slate-100">
-                    <span className="text-[11px] font-bold text-slate-400">实时网络延迟</span>
-                    <div className="mt-1 text-sm font-black text-emerald-600 font-mono flex items-center gap-1">
-                      <Zap className="h-4 w-4" />
-                      <span>18 ms</span>
-                    </div>
+                  <div className="flex items-center justify-between rounded-xl bg-slate-50 p-3 border border-slate-100">
+                    <span className="font-semibold text-slate-600">WebRTC P2P 穿透</span>
+                    <span className="font-mono text-slate-500">等待 STUN 握手</span>
+                  </div>
+                  <div className="flex items-center justify-between rounded-xl bg-slate-50 p-3 border border-slate-100">
+                    <span className="font-semibold text-slate-600">往返延迟与抖动</span>
+                    <span className="font-mono text-slate-500">多轮 RTT 发包测算</span>
                   </div>
                 </div>
 
-                <div className="space-y-2.5 text-xs">
-                  <div className="flex items-center justify-between rounded-xl bg-slate-50 p-3 border border-slate-100">
-                    <span className="font-semibold text-slate-600">安全防火墙状态</span>
-                    <span className="font-bold text-slate-900 flex items-center gap-1">
-                      <Lock className="h-3.5 w-3.5 text-brand-600" /> 已开启 AES-256
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between rounded-xl bg-slate-50 p-3 border border-slate-100">
-                    <span className="font-semibold text-slate-600">DNS / WebRTC 防泄露</span>
-                    <span className="font-bold text-emerald-600">已保护 (Zero Leak)</span>
-                  </div>
-                </div>
+                <button
+                  onClick={scrollToScanner}
+                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-slate-900 py-3 text-xs font-bold text-white hover:bg-slate-800 transition-all cursor-pointer"
+                >
+                  <Activity className="h-3.5 w-3.5 text-brand-400" />
+                  <span>开始网络环境体检</span>
+                </button>
               </div>
             </div>
 
@@ -147,118 +144,239 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Screen 2 & 3: 免费网络与隐私体检 (88/100 健康分) */}
-      <section id="scanner" className="py-16 bg-white border-y border-slate-200/80">
+      {/* Screen 2: 真正的 Network Health 产品入口 (真实浏览器交互检测) */}
+      <section id="scanner" className="py-16 bg-surface-bg border-y border-slate-200/80">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">你的网络环境安全且高效吗？</h2>
-            <p className="mt-2 text-sm text-slate-500 font-medium">
-              无需登录，3 秒内完成本地 IP、运营商 DNS 解析与网络延迟综合健康检测。
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">你的网络环境健康吗？</h2>
+            <p className="mt-2 text-sm text-slate-600 font-medium">
+              免费检测公网 IP、DNS、WebRTC、延迟、丢包和基础网络风险。无需登录，测试完成后即时呈现三维健康评分。
             </p>
           </div>
 
-          <div className="mx-auto max-w-4xl rounded-3xl border border-slate-200 bg-surface-bg p-6 sm:p-8 shadow-saas-card">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-              
-              {/* 左侧：88 / 100 动态健康分 */}
-              <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-white border border-slate-100 w-full md:w-64 shrink-0 shadow-sm">
-                <span className="text-xs font-bold text-slate-400">网络综合健康评分</span>
-                
-                <div className="relative my-3 flex h-28 w-28 items-center justify-center rounded-full border-8 border-brand-500 text-brand-600">
-                  <span className="text-3xl font-black font-mono">88</span>
-                  <span className="text-xs font-bold text-slate-400 absolute bottom-3">/ 100</span>
-                </div>
+          {/* 挂载真实 NetworkHealthWidget 紧凑组件 */}
+          <NetworkHealthWidget compact={true} />
+        </div>
+      </section>
 
-                <span className="rounded-full bg-emerald-50 px-3 py-0.5 text-xs font-extrabold text-emerald-600 border border-emerald-200">
-                  健康状态：良好
-                </span>
+      {/* Screen 3: 免费网络隐私与性能测试工具矩阵 */}
+      <section id="tools" className="py-20 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">免费网络隐私与性能测试工具</h2>
+            <p className="mt-2 text-sm text-slate-500 font-medium">
+              无需登录即可检查你的 IP、DNS、WebRTC、网络延迟、丢包与 VPN 泄露风险。
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            {/* 1. What Is My IP */}
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-saas-card hover:shadow-saas-hover transition-all flex flex-col justify-between">
+              <div>
+                <div className="h-12 w-12 rounded-2xl bg-blue-50 flex items-center justify-center text-brand-600 mb-4">
+                  <Globe className="h-6 w-6" />
+                </div>
+                <h3 className="text-lg font-black text-slate-900">What Is My IP</h3>
+                <p className="mt-2 text-xs text-slate-500 font-medium leading-relaxed">
+                  查看当前本地公网出口 IPv4/IPv6、运营商 ASN 归属与物理地理位置。
+                </p>
               </div>
+              <Link href="/tools/my-ip/" className="mt-6 inline-flex items-center justify-between text-xs font-bold text-brand-600 hover:text-brand-700">
+                <span>进入 IP 检测工具</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
 
-              {/* 右侧：指标诊断项 */}
-              <div className="flex-1 w-full space-y-3">
-                <div className="flex items-center justify-between rounded-xl bg-white p-3.5 border border-slate-200">
-                  <div className="flex items-center gap-3">
-                    <Wifi className="h-5 w-5 text-brand-600" />
-                    <div>
-                      <div className="text-xs font-bold text-slate-900">公网 IP & 运营商检测</div>
-                      <div className="text-[11px] font-mono text-slate-400">114.242.xxx.xxx (中国电信 · 北京)</div>
-                    </div>
-                  </div>
-                  <span className="flex items-center gap-1 text-xs font-bold text-emerald-600">
-                    <CheckCircle2 className="h-4 w-4" /> 正常
-                  </span>
+            {/* 2. DNS Leak Test */}
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-saas-card hover:shadow-saas-hover transition-all flex flex-col justify-between">
+              <div>
+                <div className="h-12 w-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 mb-4">
+                  <Server className="h-6 w-6" />
                 </div>
+                <h3 className="text-lg font-black text-slate-900">DNS Leak Test</h3>
+                <p className="mt-2 text-xs text-slate-500 font-medium leading-relaxed">
+                  检测域名解析是否被本地运营商明文监听，验证加密隧道防污染能力。
+                </p>
+              </div>
+              <Link href="/tools/dns-leak-test/" className="mt-6 inline-flex items-center justify-between text-xs font-bold text-emerald-600 hover:text-emerald-700">
+                <span>进入 DNS 泄露检测</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
 
-                <div className="flex items-center justify-between rounded-xl bg-white p-3.5 border border-slate-200">
-                  <div className="flex items-center gap-3">
-                    <Zap className="h-5 w-5 text-brand-600" />
-                    <div>
-                      <div className="text-xs font-bold text-slate-900">国际网络延迟 (Ping)</div>
-                      <div className="text-[11px] text-slate-400">跨国专线平均延迟: <span className="font-mono text-emerald-600 font-bold">18 ms</span></div>
-                    </div>
-                  </div>
-                  <span className="flex items-center gap-1 text-xs font-bold text-emerald-600">
-                    <CheckCircle2 className="h-4 w-4" /> 极优
-                  </span>
+            {/* 3. WebRTC Leak Test */}
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-saas-card hover:shadow-saas-hover transition-all flex flex-col justify-between">
+              <div>
+                <div className="h-12 w-12 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600 mb-4">
+                  <Lock className="h-6 w-6" />
                 </div>
+                <h3 className="text-lg font-black text-slate-900">WebRTC Leak Test</h3>
+                <p className="mt-2 text-xs text-slate-500 font-medium leading-relaxed">
+                  通过浏览器底层 STUN 协议嗅探，防止真实局域网与公网 IP 旁路泄露。
+                </p>
+              </div>
+              <Link href="/tools/webrtc-test/" className="mt-6 inline-flex items-center justify-between text-xs font-bold text-purple-600 hover:text-purple-700">
+                <span>进入 WebRTC 检测</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
 
-                <div className="flex items-center justify-between rounded-xl bg-white p-3.5 border border-slate-200">
-                  <div className="flex items-center gap-3">
-                    <AlertTriangle className="h-5 w-5 text-amber-500" />
-                    <div>
-                      <div className="text-xs font-bold text-slate-900">WebRTC 真实 IP 暴露风险</div>
-                      <div className="text-[11px] text-slate-500">未开启代理加密时真实 IP 易被浏览器暴露</div>
-                    </div>
-                  </div>
-                  <span className="flex items-center gap-1 text-xs font-bold text-amber-600">
-                    <AlertTriangle className="h-4 w-4" /> 存在风险
-                  </span>
+            {/* 4. Ping Test */}
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-saas-card hover:shadow-saas-hover transition-all flex flex-col justify-between">
+              <div>
+                <div className="h-12 w-12 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-600 mb-4">
+                  <Zap className="h-6 w-6" />
                 </div>
+                <h3 className="text-lg font-black text-slate-900">Ping Test</h3>
+                <p className="mt-2 text-xs text-slate-500 font-medium leading-relaxed">
+                  多轮发包测量国内外主流 CDN 节点的往返延迟 (Min/Max/Avg)、抖动与丢包。
+                </p>
+              </div>
+              <Link href="/tools/ping-test/" className="mt-6 inline-flex items-center justify-between text-xs font-bold text-amber-600 hover:text-amber-700">
+                <span>进入延迟与丢包测试</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
 
-                <div className="pt-2 flex gap-3">
-                  <button
-                    onClick={handleStartScan}
-                    disabled={scanning}
-                    className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-slate-900 py-3 text-xs font-bold text-white hover:bg-slate-800 transition-all cursor-pointer"
-                  >
-                    <RotateCw className={`h-4 w-4 ${scanning ? "animate-spin" : ""}`} />
-                    <span>{scanning ? "正在检测中..." : "重新检测我的网络"}</span>
-                  </button>
+            {/* 5. VPN Leak Test */}
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-saas-card hover:shadow-saas-hover transition-all flex flex-col justify-between">
+              <div>
+                <div className="h-12 w-12 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-600 mb-4">
+                  <Layers className="h-6 w-6" />
+                </div>
+                <h3 className="text-lg font-black text-slate-900">VPN Leak Test</h3>
+                <p className="mt-2 text-xs text-slate-500 font-medium leading-relaxed">
+                  综合交叉审计 IPv4 真实身份、DNS 解析归属、WebRTC 穿透与 IPv6 旁路。
+                </p>
+              </div>
+              <Link href="/tools/vpn-leak-test/" className="mt-6 inline-flex items-center justify-between text-xs font-bold text-rose-600 hover:text-rose-700">
+                <span>进入 4 重泄露体检</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
 
-                  <Link
-                    href="/rank"
-                    className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-brand-600 py-3 text-xs font-bold text-white hover:bg-brand-700 shadow-md shadow-brand-500/20"
-                  >
-                    <span>一键开启专线修复</span>
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
+            {/* 6. VPN Speed Test */}
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-saas-card hover:shadow-saas-hover transition-all flex flex-col justify-between">
+              <div>
+                <div className="h-12 w-12 rounded-2xl bg-cyan-50 flex items-center justify-center text-cyan-600 mb-4">
+                  <Gauge className="h-6 w-6" />
+                </div>
+                <h3 className="text-lg font-black text-slate-900">VPN Speed Test</h3>
+                <p className="mt-2 text-xs text-slate-500 font-medium leading-relaxed">
+                  测量真实下载吞吐带宽 (Mbps)，科学理解光纤距离与加密协议对速度的影响。
+                </p>
+              </div>
+              <Link href="/tools/vpn-speed-test/" className="mt-6 inline-flex items-center justify-between text-xs font-bold text-cyan-600 hover:text-cyan-700">
+                <span>进入带宽速率测试</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+
+          </div>
+
+          {/* 聚合核心卡片：Network Health */}
+          <div className="mt-8 rounded-3xl border border-brand-200 bg-brand-50/40 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <div className="p-3.5 rounded-2xl bg-brand-600 text-white shadow-md">
+                <Activity className="h-6 w-6" />
+              </div>
+              <div>
+                <div className="text-lg font-black text-slate-900">Network Health Score (网络健康总览)</div>
+                <div className="text-xs text-slate-600 font-medium mt-0.5">
+                  将上述所有测试项统一聚合为 0-100 分综合健康指数，全面诊断性能、隐私与稳定性。
                 </div>
               </div>
+            </div>
 
+            <Link
+              href="/tools/network-health/"
+              className="shrink-0 flex items-center gap-2 rounded-2xl bg-brand-600 px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-md hover:bg-brand-700 active:scale-95 transition-all"
+            >
+              <span>查看全维体检中心</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Screen 4: Network Knowledge 权威知识精选 */}
+      <section className="py-20 bg-slate-50 border-t border-slate-200/80">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">如何理解 VPN、机场与专线网络</h2>
+            <p className="mt-2 text-sm text-slate-500 font-medium">
+              深入浅出的技术解析，帮助你厘清底层网络原理与科学选型标准。
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-saas-card">
+              <span className="text-[10px] font-mono font-bold text-brand-600 bg-brand-50 px-2 py-0.5 rounded-full">核心概念</span>
+              <h3 className="text-base font-black text-slate-900 mt-3">VPN 与 代理/机场有什么本质区别？</h3>
+              <p className="mt-2 text-xs text-slate-500 leading-relaxed">
+                VPN 基于系统虚拟网卡 (TUN) 实现全局流量加密；代理/机场基于应用层分流，更适合轻量跨境加速。
+              </p>
+              <Link href="/blog/vpn-guide/" className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-brand-600 hover:underline">
+                阅读详解 <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-saas-card">
+              <span className="text-[10px] font-mono font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">线路架构</span>
+              <h3 className="text-base font-black text-slate-900 mt-3">IEPL 专线与公网 BGP 隧道的延迟差异</h3>
+              <p className="mt-2 text-xs text-slate-500 leading-relaxed">
+                IEPL 采用点对点物理内网直通，避开公网晚高峰国际出口 QOS 丢包，晚间延迟波动极小。
+              </p>
+              <Link href="/blog/network-guide/" className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-emerald-600 hover:underline">
+                阅读详解 <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-saas-card">
+              <span className="text-[10px] font-mono font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded-full">协议演进</span>
+              <h3 className="text-base font-black text-slate-900 mt-3">VLESS、Trojan 与 Hysteria 2 协议机制</h3>
+              <p className="mt-2 text-xs text-slate-500 leading-relaxed">
+                详解现代代理协议如何伪装 TLS 流量，以及基于 UDP 的单边加速协议在弱网环境下的抗丢包机制。
+              </p>
+              <Link href="/blog/clash-guide/" className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-purple-600 hover:underline">
+                阅读详解 <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-saas-card">
+              <span className="text-[10px] font-mono font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">业务解锁</span>
+              <h3 className="text-base font-black text-slate-900 mt-3">为什么流媒体与 AI 会封锁机房 IP？</h3>
+              <p className="mt-2 text-xs text-slate-500 leading-relaxed">
+                Netflix、ChatGPT 等平台通过 IP 欺诈分 (Fraud Score) 与机房 ASN 黑名单，严格限制数据中心托管 IP。
+              </p>
+              <Link href="/methodology/" className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-amber-600 hover:underline">
+                阅读详解 <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Screen 4 & 5: 场景化解决方案 */}
-      <section className="py-20">
+      {/* Screen 5: 真实网络场景与性能解决方案 */}
+      <section className="py-20 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">场景化加速解决方案</h2>
-            <p className="mt-2 text-sm text-slate-500 font-medium">针对不同业务场景进行智能 QoS 选路调度</p>
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">针对不同网络场景的测试与诊断</h2>
+            <p className="mt-2 text-sm text-slate-500 font-medium">根据具体业务链路需求，精准定位性能瓶颈</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-saas-card hover:shadow-saas-hover transition-all">
               <div className="h-12 w-12 rounded-2xl bg-blue-50 flex items-center justify-center text-brand-600 mb-4">
                 <Gamepad2 className="h-6 w-6" />
               </div>
-              <h3 className="text-base font-black text-slate-900">外服游戏低延迟加速</h3>
+              <h3 className="text-base font-black text-slate-900">外服游戏低延迟保障</h3>
               <p className="mt-2 text-xs text-slate-500 font-medium leading-relaxed">
-                Steam、Epic 外服游戏直连专线，解决高延迟与丢包难题。
+                Steam、PlayStation、外服联机对 Ping 延迟与网络抖动极度敏感。
               </p>
-              <Link href="/rank" className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-brand-600 hover:underline">
-                查看推荐加速大盘 <ArrowRight className="h-3.5 w-3.5" />
+              <Link href="/tools/ping-test/" className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-brand-600 hover:underline">
+                运行游戏延迟 Ping 诊断 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
 
@@ -268,10 +386,10 @@ export default function HomePage() {
               </div>
               <h3 className="text-base font-black text-slate-900">跨境电商与出海办公</h3>
               <p className="mt-2 text-xs text-slate-500 font-medium leading-relaxed">
-                Shopify、Amazon 卖家后台与海外 SaaS 工具无卡顿访问。
+                Shopify、Amazon 卖家后台及海外 SaaS 需要高度稳定的 IP 纯净度与 DNS 解析安全。
               </p>
-              <Link href="/rank" className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-emerald-600 hover:underline">
-                查看出海选型大盘 <ArrowRight className="h-3.5 w-3.5" />
+              <Link href="/tools/network-health/" className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-emerald-600 hover:underline">
+                运行全维网络健康体检 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
 
@@ -279,25 +397,44 @@ export default function HomePage() {
               <div className="h-12 w-12 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600 mb-4">
                 <Code2 className="h-6 w-6" />
               </div>
-              <h3 className="text-base font-black text-slate-900">开发者与开源社区加速</h3>
+              <h3 className="text-base font-black text-slate-900">开发者与开源社区访问</h3>
               <p className="mt-2 text-xs text-slate-500 font-medium leading-relaxed">
-                GitHub Clone/Push 极速无阻，Docker 镜像与 npm 依赖秒级拉取。
+                GitHub Clone/Push、Docker 镜像拉取与 npm 依赖解析常遭遇 SSL 握手超时或 DNS 污染。
               </p>
-              <Link href="/blog" className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-purple-600 hover:underline">
-                查看开发者配置教程 <ArrowRight className="h-3.5 w-3.5" />
+              <Link href="/blog/vpn-troubleshooting/" className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-purple-600 hover:underline">
+                查看连接故障排查手册 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-saas-card hover:shadow-saas-hover transition-all">
-              <div className="h-12 w-12 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-600 mb-4">
-                <GraduationCap className="h-6 w-6" />
-              </div>
-              <h3 className="text-base font-black text-slate-900">学术科研文献检索</h3>
-              <p className="mt-2 text-xs text-slate-500 font-medium leading-relaxed">
-                IEEE Xplore、Nature、Google Scholar 等全球权威学术数据库顺畅检索。
+      {/* Screen 6: Methodology & Trust 区域 */}
+      <section className="py-16 bg-slate-50 border-t border-slate-200/80">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl border border-slate-200 bg-white p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="space-y-2">
+              <span className="text-xs font-bold text-brand-600">透明度与真实性准则</span>
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900">
+                我们如何进行网络测试与机场评测？
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed">
+                猫太实验室公开完整的 10 大标准化测试准则与 5 维加权算法，所有评测数据均来源于真实客户端探测环境，方便读者随时对照与独立复核。
               </p>
-              <Link href="/blog" className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-amber-600 hover:underline">
-                查看学术检索指南 <ArrowRight className="h-3.5 w-3.5" />
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3 shrink-0">
+              <Link
+                href="/methodology/"
+                className="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-xs font-bold text-slate-800 hover:bg-slate-50 active:scale-95 transition-all"
+              >
+                评测方法论 (Methodology)
+              </Link>
+              <Link
+                href="/whitepaper/"
+                className="rounded-2xl bg-brand-600 px-5 py-3 text-xs font-bold text-white shadow-md hover:bg-brand-700 active:scale-95 transition-all"
+              >
+                评分白皮书
               </Link>
             </div>
           </div>

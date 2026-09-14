@@ -4,12 +4,15 @@ import Footer from "@/components/layout/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "猫太博客 🌸 | 全球跨境网络专线加速 & 免费网络诊断工具箱",
-  description: "猫太博客关注企业级 SD-WAN 全球专线网络加速、免费美区 Apple ID 共享池、IEPL/IPLC 专线测评大盘与网络隐私保护。",
-  keywords: ["猫太博客", "2026机场推荐", "跨境加速", "免费美区Apple ID", "网络延迟测试", "DNS泄露检测"],
+  title: "猫太博客 🌸 | 全球网络隐私安全、性能量化与专线加速实验室",
+  description: "猫太博客专注于网络隐私安全、跨境网络性能量化、VPN 与专线架构解析、2026 稳定机场评测及分布式网络诊断工具箱。",
+  metadataBase: new URL("https://maotaiblog.com"),
+  alternates: {
+    canonical: "https://maotaiblog.com",
+  },
   openGraph: {
-    title: "猫太博客 🌸 | 全球跨境网络专线加速",
-    description: "企业级 SD-WAN 全球专线网络加速与免费网络隐私诊断工具箱。",
+    title: "猫太博客 🌸 | 全球网络隐私安全、性能量化与专线加速实验室",
+    description: "专注于网络隐私安全、跨境网络性能量化、VPN 架构解析与网络诊断工具箱。",
     url: "https://maotaiblog.com",
     siteName: "猫太博客",
     images: [
@@ -21,6 +24,11 @@ export const metadata: Metadata = {
     ],
     locale: "zh_CN",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "猫太博客 🌸 | 全球网络隐私安全与专线加速实验室",
+    description: "专注于网络隐私安全、跨境网络性能量化与网络诊断工具箱。",
   },
 };
 
@@ -34,10 +42,11 @@ export default function RootLayout({
     "@type": "WebSite",
     "name": "猫太博客",
     "url": "https://maotaiblog.com",
-    "description": "关注跨境网络加速、IEPL/IPLC 专线测评、免费美区 Apple ID 与数字游民生产力指南。",
+    "description": "专注于网络隐私、跨境网络性能量化、VPN/专线架构解析与网络测试工具箱。",
     "publisher": {
       "@type": "Organization",
       "name": "猫太博客",
+      "url": "https://maotaiblog.com",
       "logo": {
         "@type": "ImageObject",
         "url": "https://maotaiblog.com/logo.png"

@@ -84,7 +84,7 @@ readTime: "35分钟"
 ```
 
 ### 2.1 IPLC 与 IEPL 专线：极致稳定梯子的物理保障
-- **IPLC（International Private Leased Circuit，国际私人租用线路）**：属于 OSI 三层（网络层）点对点内网专线。数据包直接运行在电信/联通的内网电路中，不经过 GFW 公网防火墙检测，因此具备 **0 封锁、0 丢包** 的物理特性。
+- **IPLC（International Private Leased Circuit，国际私人租用线路）**：属于 OSI 三层（网络层）点对点内网专线。数据包直接运行在电信/联通的内网电路中，不经过 GFW 公网防火墙检测，因此具备 **0 封锁、极低丢包** 的物理特性。
 - **IEPL（International Ethernet Private Line，国际以太网专线）**：属于 OSI 二层（数据链路层）以太网专线，相比 IPLC 具备更底层的硬件隔离与更低的协议头开销。在晚高峰（20:00-23:00）时，真 IEPL 专线的抖动（Jitter）可以控制在 $2\text{ms}$ 以内，是联机游戏与 4K 无损直播的首选。
 
 ### 2.2 BGP 隧道中转：高性价比机场的平衡之选

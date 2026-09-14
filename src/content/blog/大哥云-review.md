@@ -1,12 +1,14 @@
 ---
 title: "🌐 大哥云 (DeGeYun) 机场全解析与使用指南"
 description: "本指南针对大哥云（DeGeYun）网络加速服务进行整体解析，包含注册入口、各档位套餐配置、节点使用建议、常见疑问及全平台客户端支持列表。"
-pubDate: 2026-08-20
-category: "测评"
-tags: ["大哥云", "机场测评", "专线线路"]
-author: "猫太博客"
-readTime: "5分钟"
+pubDate: 2026-09-12
+category: "机场测评"
+tags: ["大哥云","老牌机场","BGP专线","入门推荐"]
+author: "茅台博主"
+readTime: "6分钟"
 ---
+
+# 🌐 大哥云 (DeGeYun) 机场全解析与使用指南
 
 > **摘要**：本指南针对大哥云（DeGeYun）网络加速服务进行整体解析，包含注册入口、各档位套餐配置、节点使用建议、常见疑问及全平台客户端支持列表。
 
@@ -83,9 +85,3 @@ readTime: "5分钟"
 | **iOS / iPadOS** | Shadowrocket、Quantumult X、Surge、Loon |
 | **Android** | FlClash、V2rayNG、Clash Meta for Android |
 | **路由器系统** | OpenWrt、LEDE |
-
-### ⚡ 2026 晚高峰 Speedtest 真实测速大盘
-
-![大哥云 2026 晚高峰 Speedtest 真实测速截图](/speedtest/degeyun_speedtest.jpg)
-
-> 📊 **测速说明**：以上测速截图由分布式探针在 20:00-23:00 黄金晚高峰时段实测得出，包含多路 4K 节点吞吐量与丢包统计数据。

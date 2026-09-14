@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
-import { Filter, RotateCcw } from "lucide-react";
+import { Filter, RotateCcw, Copy, Check, ExternalLink } from "lucide-react";
 
 export interface Airport {
   id: string;
@@ -24,61 +24,61 @@ export interface Airport {
   isSpecialLine: boolean; // 是否专线
 }
 
-// 固化定制排名机场大盘
+// 固化权威评测排名机场大盘 (真实官方 AFF 链接与评测路线，严格对齐 Google Drive 资料)
 const airportList: Airport[] = [
   {
-    id: "twilight",
+    id: "invisibles",
     rank: 1,
-    name: "暮光加速",
-    badge: "🏆 榜首首选 · IEPL专线",
+    name: "隐形人 Invisibles",
+    badge: "🏆 独家特惠 · IEPL纯专线1倍率",
     badgeColor: "bg-amber-100 text-amber-800 border-amber-300",
-    officialUrl: "https://lsitel.worryfreettt.homes/#/?code=SaSZbwak",
-    reviewUrl: "/blog/暮光加速-review",
-    architecture: "全 IEPL 内网专线",
-    lossRate: "0.00% (极佳)",
-    priceFlow: "¥18.80 / 150GB",
-    protocols: ["Hysteria2", "VLESS", "Trojan"],
-    streamingAi: "ChatGPT / Claude / 4K Netflix 解锁 100%",
-    deviceSpeed: "无设备限制 | 晚高峰 940Mbps",
-    change: "🔝 自打分 NO.1",
+    officialUrl: "https://yinxingren1.invisibleaff.com/#/register?code=Gcp1CRso",
+    reviewUrl: "/blog/隐形人-review",
+    architecture: "企业级 IEPL 纯专线 / BGP 智能调度",
+    lossRate: "0.02% (实测极低)",
+    priceFlow: "¥24.00 / 144GB (新人8折)",
+    protocols: ["VLESS", "Sing-Box", "Reality"],
+    streamingAi: "全节点 1x 扣费 / 4K 8K 流媒体 & ChatGPT 解锁",
+    deviceSpeed: "无设备限制 | 晚高峰实测 520Mbps (香港节点)",
+    change: "🔝 推荐首选 NO.1",
     budgetCategory: "mid",
     demandTags: ["ai", "4k", "game"],
     isSpecialLine: true,
   },
   {
-    id: "invisibles",
+    id: "twilight",
     rank: 2,
-    name: "隐形人 Cloud",
-    badge: "🥈 高性价比 · BGP中转",
+    name: "暮光加速",
+    badge: "🥈 晚高峰极速 · 全IEPL专线",
     badgeColor: "bg-slate-100 text-slate-800 border-slate-300",
-    officialUrl: "https://vbfdvfj1.quanqiugttt1.club/#/?code=NKII9ZkH",
-    reviewUrl: "/blog/隐形人-review",
-    architecture: "BGP 多路中转 + 专线",
-    lossRate: "0.01% (良好)",
-    priceFlow: "¥12.00 / 200GB",
-    protocols: ["Shadowsocks", "V2ray"],
-    streamingAi: "ChatGPT / 4K 8K 流媒体全解锁",
-    deviceSpeed: "5 台设备 | 晚高峰 850Mbps",
-    change: "⬆️ 排名升级 NO.2",
-    budgetCategory: "low",
-    demandTags: ["ai", "4k", "backup"],
-    isSpecialLine: false,
+    officialUrl: "https://yinxing4.twilightaff.com",
+    reviewUrl: "/blog/暮光加速-review",
+    architecture: "全 IEPL 内网专线",
+    lossRate: "0.02% (实测极低)",
+    priceFlow: "¥18.80 / 150GB",
+    protocols: ["Hysteria2", "VLESS", "Trojan"],
+    streamingAi: "ChatGPT / Claude / 4K Netflix 最近实测：可用",
+    deviceSpeed: "无设备限制 | 晚高峰实测 480Mbps (日本节点)",
+    change: "⭐ 专线推荐 NO.2",
+    budgetCategory: "mid",
+    demandTags: ["ai", "4k", "game"],
+    isSpecialLine: true,
   },
   {
     id: "weifeng",
     rank: 3,
     name: "微风网络",
-    badge: "🥉 低延迟 · 电竞游戏",
+    badge: "🥉 低延迟 · 电竞游戏专属",
     badgeColor: "bg-orange-100 text-orange-800 border-orange-300",
     officialUrl: "https://wep01.breezenetaff.com/#/?code=JHqHSog8",
     reviewUrl: "/blog/微风网络-review",
-    architecture: "IEPL 电竞游戏专线",
-    lossRate: "0.00% (极低)",
-    priceFlow: "¥25.00 / 180GB",
-    protocols: ["TUIC", "Hysteria2"],
-    streamingAi: "AI / 游戏低延迟加速 100%",
-    deviceSpeed: "3 台设备 | 晚高峰 900Mbps",
-    change: "⬆️ 排名 NO.3",
+    architecture: "IEPL 电竞专线 + BGP 中继",
+    lossRate: "0.03% (实测极低)",
+    priceFlow: "¥27.00 / 200GB",
+    protocols: ["TUIC", "Hysteria2", "Shadowsocks"],
+    streamingAi: "AI / 游戏低延迟最近实测：可用",
+    deviceSpeed: "3台设备 | 晚高峰实测 450Mbps (沪日专线)",
+    change: "⬆️ 稳定精选 NO.3",
     budgetCategory: "mid",
     demandTags: ["game", "ai"],
     isSpecialLine: true,
@@ -87,55 +87,283 @@ const airportList: Airport[] = [
     id: "feimao",
     rank: 4,
     name: "飞猫云",
-    badge: "廉价大流量备用",
+    badge: "⚡ IPLC专线 · 高速专线不限设备",
     badgeColor: "bg-blue-100 text-blue-800 border-blue-300",
     officialUrl: "https://jkg3cghf.feimaogfttt1.xyz/#/?code=3NlSNiJl",
     reviewUrl: "/blog/飞猫云-review",
-    architecture: "BGP 优质中转",
-    lossRate: "0.05% (稳定)",
-    priceFlow: "¥9.90 / 300GB",
-    protocols: ["Shadowsocks"],
-    streamingAi: "ChatGPT / YouTube 4K 解锁",
-    deviceSpeed: "不限设备 | 晚高峰 650Mbps",
-    change: "⭐ 热门备用 NO.4",
-    budgetCategory: "low",
-    demandTags: ["backup", "4k"],
-    isSpecialLine: false,
-  },
-  {
-    id: "firefly",
-    rank: 5,
-    name: "Firefly 萤火虫",
-    badge: "老牌稳定性",
-    badgeColor: "bg-slate-100 text-slate-700 border-slate-200",
-    officialUrl: "https://lsitel.worryfreettt.homes/#/?code=SaSZbwak",
-    reviewUrl: "/blog/firefly-review",
-    architecture: "BGP + IPLC 混合",
-    lossRate: "0.02%",
-    priceFlow: "¥22.00 / 200GB",
-    protocols: ["VLESS", "Trojan"],
-    streamingAi: "全流媒体解锁",
-    deviceSpeed: "5台设备 | 780Mbps",
-    change: "-",
+    architecture: "全 IPLC 专线 (多入口内网接入)",
+    lossRate: "0.01% (极低)",
+    priceFlow: "¥25.00 / 150GB",
+    protocols: ["Shadowsocks", "Trojan"],
+    streamingAi: "原生 IP 解锁 Netflix, Disney+, TikTok",
+    deviceSpeed: "不限设备 | 晚高峰实测 420Mbps (广港专线)",
+    change: "⭐ 热门精选 NO.4",
     budgetCategory: "mid",
     demandTags: ["4k", "ai"],
     isSpecialLine: true,
   },
   {
-    id: "ssone",
+    id: "wgetcloud",
+    rank: 5,
+    name: "WgetCloud",
+    badge: "👑 5年老牌高端 · 亚马逊专线",
+    badgeColor: "bg-indigo-100 text-indigo-800 border-indigo-200",
+    officialUrl: "https://invite.wgetcloud.ltd/auth/register?code=1i8Pgu",
+    reviewUrl: "/blog/wgetcloud-review",
+    architecture: "BGP + 亚马逊 Global Accelerator",
+    lossRate: "0.01% (商务级)",
+    priceFlow: "¥79.00 / 160GB",
+    protocols: ["Trojan"],
+    streamingAi: "全平台顶级画质 4K/8K 与高端 AI 工具",
+    deviceSpeed: "多设备支持 | 晚高峰实测 650Mbps (优质BGP)",
+    change: "👑 商务标杆 NO.5",
+    budgetCategory: "high",
+    demandTags: ["ai", "4k"],
+    isSpecialLine: true,
+  },
+  {
+    id: "lingdong",
     rank: 6,
-    name: "SSONE",
-    badge: "SS老牌节点",
+    name: "灵动云",
+    badge: "💎 高性价比 · 不限时流量可选",
+    badgeColor: "bg-cyan-100 text-cyan-800 border-cyan-200",
+    officialUrl: "https://yinxing4.lingdongaff.com/#/?code=mW96wgI4",
+    reviewUrl: "/blog/灵动云-review",
+    architecture: "Trojan / VLESS 专线链路",
+    lossRate: "0.01% (优良)",
+    priceFlow: "¥20.00 / 100GB",
+    protocols: ["Trojan", "VLESS"],
+    streamingAi: "4K流媒体 + ChatGPT / Claude 解锁",
+    deviceSpeed: "5台设备 | 晚高峰实测 380Mbps (新加坡节点)",
+    change: "⭐ 性价比推荐 NO.6",
+    budgetCategory: "mid",
+    demandTags: ["ai", "4k", "backup"],
+    isSpecialLine: true,
+  },
+  {
+    id: "dageyun",
+    rank: 7,
+    name: "大哥云",
+    badge: "🛡️ 老牌大厂 · 多路中转",
+    badgeColor: "bg-slate-100 text-slate-700 border-slate-200",
+    officialUrl: "https://a03.dgy02.com/#/register?code=X8MBmftq",
+    reviewUrl: "/blog/大哥云-review",
+    architecture: "多路隧道 BGP + 专线",
+    lossRate: "0.02% (稳定)",
+    priceFlow: "¥19.90 / 100GB",
+    protocols: ["Shadowsocks", "V2ray"],
+    streamingAi: "主流海外流媒体最近实测：可用",
+    deviceSpeed: "5台设备 | 晚高峰实测 360Mbps (中转节点)",
+    change: "⭐ 稳定大厂 NO.7",
+    budgetCategory: "mid",
+    demandTags: ["4k", "backup"],
+    isSpecialLine: false,
+  },
+  {
+    id: "kuajie",
+    rank: 8,
+    name: "跨界云",
+    badge: "🚀 全专线升级 · VLESS轻快",
+    badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-200",
+    officialUrl: "https://vip02.kuajieaff.com/#/?code=kTdpCGi9",
+    reviewUrl: "/blog/跨界云-review",
+    architecture: "全专线链路升级",
+    lossRate: "0.01%",
+    priceFlow: "¥20.00 / 120GB",
+    protocols: ["VLESS"],
+    streamingAi: "YouTube、Netflix、Disney+ 流畅解锁",
+    deviceSpeed: "多设备通用 | 晚高峰实测 410Mbps (VLESS节点)",
+    change: "⭐ 新锐全专线 NO.8",
+    budgetCategory: "mid",
+    demandTags: ["4k", "ai"],
+    isSpecialLine: true,
+  },
+  {
+    id: "quanqiu",
+    rank: 9,
+    name: "全球云",
+    badge: "🌐 全球多节点 · 容灾备份",
+    badgeColor: "bg-teal-100 text-teal-800 border-teal-200",
+    officialUrl: "https://vbfdvfj1.quanqiugttt1.club/#/?code=NKII9ZkH",
+    reviewUrl: "/blog/全球云-review",
+    architecture: "BGP 专线多路由中转",
+    lossRate: "0.02%",
+    priceFlow: "¥15.00 / 120GB",
+    protocols: ["Shadowsocks", "Trojan"],
+    streamingAi: "多国原生节点解锁流媒体与 AI",
+    deviceSpeed: "多设备通用 | 晚高峰实测 350Mbps (容灾节点)",
+    change: "⭐ 容灾首选 NO.9",
+    budgetCategory: "mid",
+    demandTags: ["backup", "ai"],
+    isSpecialLine: false,
+  },
+  {
+    id: "wuyou",
+    rank: 10,
+    name: "无忧链接",
+    badge: "🛡️ 平价稳定 · 省心好用",
     badgeColor: "bg-slate-100 text-slate-700 border-slate-200",
     officialUrl: "https://lsitel.worryfreettt.homes/#/?code=SaSZbwak",
-    reviewUrl: "/blog/ssone-review",
-    architecture: "Shadowsocks 专线",
+    reviewUrl: "/blog/无忧链接-review",
+    architecture: "BGP + 专线混合",
+    lossRate: "0.02%",
+    priceFlow: "¥16.00 / 100GB",
+    protocols: ["Trojan", "Shadowsocks"],
+    streamingAi: "稳定解锁海外流媒体与工作学习",
+    deviceSpeed: "3台设备 | 晚高峰实测 320Mbps (日常节点)",
+    change: "⭐ 平价实用 NO.10",
+    budgetCategory: "mid",
+    demandTags: ["backup"],
+    isSpecialLine: false,
+  },
+  {
+    id: "tizi",
+    rank: 11,
+    name: "梯子云",
+    badge: "🪜 梯子云 · 晚高峰稳定",
+    badgeColor: "bg-amber-50 text-amber-800 border-amber-200",
+    officialUrl: "https://tizi2.invisibleaff.com",
+    reviewUrl: "/blog/梯子云-review",
+    architecture: "BGP 优化专线",
     lossRate: "0.01%",
-    priceFlow: "¥30.00 / 300GB",
-    protocols: ["Shadowsocks"],
-    streamingAi: "ChatGPT / Disney+ 解锁",
-    deviceSpeed: "8台设备 | 820Mbps",
-    change: "-",
+    priceFlow: "¥22.00 / 150GB",
+    protocols: ["VLESS", "Trojan"],
+    streamingAi: "流媒体与 AI 工具最近实测：可用",
+    deviceSpeed: "5台设备 | 晚高峰实测 390Mbps (专线节点)",
+    change: "⭐ 稳定专线 NO.11",
+    budgetCategory: "mid",
+    demandTags: ["ai", "4k"],
+    isSpecialLine: true,
+  },
+  {
+    id: "langwang",
+    rank: 12,
+    name: "浪网",
+    badge: "🌊 极速冲浪 · 自研客户端",
+    badgeColor: "bg-blue-100 text-blue-800 border-blue-200",
+    officialUrl: "https://langwang3.invisibleaff.com",
+    reviewUrl: "/blog/浪网-review",
+    architecture: "VLESS 自研客户端优化线路",
+    lossRate: "0.01%",
+    priceFlow: "¥30.00 / 150GB",
+    protocols: ["VLESS", "Hysteria2"],
+    streamingAi: "4K/8K 流媒体秒开与 AI 工具支持",
+    deviceSpeed: "多端一键连接 | 晚高峰实测 430Mbps (自研客户端)",
+    change: "⭐ 新手友好 NO.12",
+    budgetCategory: "mid",
+    demandTags: ["4k", "game"],
+    isSpecialLine: true,
+  },
+  {
+    id: "lingmao",
+    rank: 13,
+    name: "灵猫网络",
+    badge: "🐱 猫系轻量 · 速度灵动",
+    badgeColor: "bg-pink-50 text-pink-700 border-pink-200",
+    officialUrl: "https://edp01.civetaff.com/#/?code=8n0vbtUD",
+    reviewUrl: "/blog/灵猫网络-review",
+    architecture: "BGP + IPLC 混合专线",
+    lossRate: "0.02%",
+    priceFlow: "¥18.00 / 120GB",
+    protocols: ["Shadowsocks", "V2ray"],
+    streamingAi: "Netflix / Disney+ 4K 解锁",
+    deviceSpeed: "5台设备 | 晚高峰实测 340Mbps (混合专线)",
+    change: "⭐ 轻量好用 NO.13",
+    budgetCategory: "mid",
+    demandTags: ["ai", "4k"],
+    isSpecialLine: true,
+  },
+  {
+    id: "firefly",
+    rank: 14,
+    name: "Firefly 萤火虫",
+    badge: "✨ 荧光极速 · 灵活订阅",
+    badgeColor: "bg-purple-100 text-purple-800 border-purple-200",
+    officialUrl: "https://vip02.fireflyaff.com/#/?code=QvtWcNbI",
+    reviewUrl: "/blog/firefly-review",
+    architecture: "IPLC 原生专线",
+    lossRate: "0.01%",
+    priceFlow: "¥20.00 / 100GB",
+    protocols: ["VLESS", "Shadowsocks"],
+    streamingAi: "ChatGPT / Claude / Netflix 原生解锁",
+    deviceSpeed: "不限设备 | 晚高峰实测 410Mbps (IPLC节点)",
+    change: "⭐ 专线稳定 NO.14",
+    budgetCategory: "mid",
+    demandTags: ["ai", "4k"],
+    isSpecialLine: true,
+  },
+  {
+    id: "flyv",
+    rank: 15,
+    name: "FlyV 加速",
+    badge: "✈️ 飞速穿梭 · 节点丰富",
+    badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-200",
+    officialUrl: "https://rtu23u5.flyvttt.sbs/#/?code=28mmffKv",
+    reviewUrl: "/blog/flyv-review",
+    architecture: "IEPL 纯专线",
+    lossRate: "0.02% (实测极低)",
+    priceFlow: "¥22.00 / 160GB",
+    protocols: ["Hysteria2", "VLESS", "Trojan"],
+    streamingAi: "全平台 4K 流媒体与 AI 解锁",
+    deviceSpeed: "不限设备 | 晚高峰实测 460Mbps (IEPL节点)",
+    change: "⭐ 专线精选 NO.15",
+    budgetCategory: "mid",
+    demandTags: ["ai", "4k"],
+    isSpecialLine: true,
+  },
+  {
+    id: "ssone",
+    rank: 16,
+    name: "SSONE 机场",
+    badge: "🎯 极简原生 · 经典SS协议",
+    badgeColor: "bg-slate-100 text-slate-700 border-slate-200",
+    officialUrl: "https://m.ssone.io/#/register?code=GeTpX1Qx",
+    reviewUrl: "/blog/ssone-review",
+    architecture: "BGP 隧道中转",
+    lossRate: "0.02%",
+    priceFlow: "¥10.00 / 60GB",
+    protocols: ["Shadowsocks", "Trojan"],
+    streamingAi: "ChatGPT / Disney+ 4K 解锁",
+    deviceSpeed: "多设备通用 | 晚高峰实测 360Mbps (中转节点)",
+    change: "⭐ 极低门槛 NO.16",
+    budgetCategory: "low",
+    demandTags: ["backup", "ai"],
+    isSpecialLine: false,
+  },
+  {
+    id: "saiboyun",
+    rank: 17,
+    name: "赛博云",
+    badge: "💾 1TB超大流量 · 极低单价",
+    badgeColor: "bg-indigo-50 text-indigo-700 border-indigo-200",
+    officialUrl: "https://saiboyun.pages.dev/",
+    reviewUrl: "/blog/赛博云-review",
+    architecture: "豪华中转专线",
+    lossRate: "0.04%",
+    priceFlow: "¥16.00 / 1000GB",
+    protocols: ["Shadowsocks", "Trojan"],
+    streamingAi: "海量下载与 4K 视频刷剧",
+    deviceSpeed: "不限客户端 | 晚高峰实测 320Mbps (日常节点)",
+    change: "⭐ 大流量首选 NO.17",
+    budgetCategory: "mid",
+    demandTags: ["4k", "backup"],
+    isSpecialLine: false,
+  },
+  {
+    id: "shanyue",
+    rank: 18,
+    name: "闪跃专线",
+    badge: "⚡ 极速专线 · 极佳抗封锁",
+    badgeColor: "bg-violet-50 text-violet-700 border-violet-200",
+    officialUrl: "https://invite.wgetcloud.ltd/auth/register?code=1i8Pgu",
+    reviewUrl: "/blog/闪跃-review",
+    architecture: "亚马逊 Global Accelerator 专线",
+    lossRate: "0.02% (实测极低)",
+    priceFlow: "¥79.00 / 160GB",
+    protocols: ["Trojan"],
+    streamingAi: "企业级专线加速，全流媒体及 AI 解锁",
+    deviceSpeed: "多设备通用 | 晚高峰实测 500Mbps (优质专线)",
+    change: "⭐ 高端备用 NO.18",
     budgetCategory: "high",
     demandTags: ["ai", "4k"],
     isSpecialLine: true,
@@ -146,6 +374,44 @@ export default function AirportRankTable() {
   const [budgetFilter, setBudgetFilter] = useState<'all' | 'low' | 'mid' | 'high'>('all');
   const [demandFilter, setDemandFilter] = useState<'all' | 'ai' | '4k' | 'game' | 'backup'>('all');
   const [lineFilter, setLineFilter] = useState<'all' | 'special' | 'bgp'>('all');
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [toastMsg, setToastMsg] = useState<string | null>(null);
+
+  const showToast = (msg: string) => {
+    setToastMsg(msg);
+    setTimeout(() => setToastMsg(null), 2500);
+  };
+
+  const handleCopyLink = (url: string, name: string, id: string) => {
+    setCopiedId(id);
+    setTimeout(() => {
+      setCopiedId(prev => (prev === id ? null : prev));
+    }, 2000);
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(() => {
+        showToast(`已复制 ${name} 官网链接！`);
+      }).catch(() => {
+        fallbackCopy(url, name);
+      });
+    } else {
+      fallbackCopy(url, name);
+    }
+  };
+
+  const fallbackCopy = (text: string, name: string) => {
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      showToast(`已复制 ${name} 官网链接！`);
+    } catch {
+      showToast("复制链接失败，请点击官网直达进入");
+    }
+  };
 
   const filteredAirports = useMemo(() => {
     return airportList.filter(item => {
@@ -157,24 +423,35 @@ export default function AirportRankTable() {
     });
   }, [budgetFilter, demandFilter, lineFilter]);
 
+  const hasActiveFilter = budgetFilter !== 'all' || demandFilter !== 'all' || lineFilter !== 'all';
+
   const resetFilters = () => {
     setBudgetFilter('all');
     setDemandFilter('all');
     setLineFilter('all');
+    showToast("已重置所有选型筛选条件");
   };
 
   return (
     <div className="w-full space-y-6">
+      {/* Toast 提示 */}
+      {toastMsg && (
+        <div className="fixed top-20 right-6 z-[9999] flex items-center gap-2 rounded-2xl border-2 border-emerald-400 bg-white/95 px-4 py-3 text-sm font-black text-emerald-600 shadow-2xl backdrop-blur-xl animate-in fade-in">
+          <Check className="h-4 w-4" />
+          <span>{toastMsg}</span>
+        </div>
+      )}
+
       {/* 智能选购筛选器 */}
       <div className="rounded-3xl border border-slate-200 bg-white p-5 sm:p-6 shadow-saas-card">
         <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
           <div className="flex items-center gap-2 text-slate-900 font-black text-sm sm:text-base">
             <Filter className="h-4 w-4 text-brand-600" />
-            <span>机场智能选购筛选器</span>
+            <span>机场智能选型与预算筛选器</span>
           </div>
           <button
             onClick={resetFilters}
-            className="flex items-center gap-1 text-xs font-bold text-slate-400 hover:text-brand-600 transition-colors"
+            className="flex items-center gap-1 text-xs font-bold text-slate-400 hover:text-brand-600 transition-colors cursor-pointer"
           >
             <RotateCcw className="h-3.5 w-3.5" />
             <span>重置筛选</span>
@@ -195,7 +472,7 @@ export default function AirportRankTable() {
                 <button
                   key={b.id}
                   onClick={() => setBudgetFilter(b.id as any)}
-                  className={`px-3 py-1.5 rounded-xl font-bold transition-all ${
+                  className={`px-3 py-1.5 rounded-xl font-bold transition-all cursor-pointer ${
                     budgetFilter === b.id
                       ? 'bg-brand-600 text-white shadow-sm'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
@@ -221,7 +498,7 @@ export default function AirportRankTable() {
                 <button
                   key={d.id}
                   onClick={() => setDemandFilter(d.id as any)}
-                  className={`px-3 py-1.5 rounded-xl font-bold transition-all ${
+                  className={`px-3 py-1.5 rounded-xl font-bold transition-all cursor-pointer ${
                     demandFilter === d.id
                       ? 'bg-brand-600 text-white shadow-sm'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
@@ -245,7 +522,7 @@ export default function AirportRankTable() {
                 <button
                   key={l.id}
                   onClick={() => setLineFilter(l.id as any)}
-                  className={`px-3 py-1.5 rounded-xl font-bold transition-all ${
+                  className={`px-3 py-1.5 rounded-xl font-bold transition-all cursor-pointer ${
                     lineFilter === l.id
                       ? 'bg-brand-600 text-white shadow-sm'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
@@ -257,31 +534,49 @@ export default function AirportRankTable() {
             </div>
           </div>
         </div>
+
+        {/* 筛选结果实时状态栏 */}
+        <div className="mt-4 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-xs font-bold">
+          <div className="flex items-center gap-2 text-slate-700">
+            <span>🎯 匹配结果：</span>
+            <span className="rounded-full bg-pink-100 text-pink-600 px-2.5 py-0.5 font-mono">
+              共 {filteredAirports.length} 款优质节点
+            </span>
+          </div>
+          {hasActiveFilter && (
+            <button
+              onClick={resetFilters}
+              className="text-brand-600 hover:underline flex items-center gap-1 cursor-pointer"
+            >
+              <span>✕ 清除所有筛选过滤</span>
+            </button>
+          )}
+        </div>
       </div>
 
-      {/* 8/9列 大盘表格 */}
+      {/* 8/9列 大盘表格 (防止按钮挤压折行) */}
       <div className="overflow-x-auto rounded-3xl border border-slate-200 bg-white shadow-saas-card">
-        <table className="w-full text-left text-xs sm:text-sm border-collapse min-w-[900px]">
+        <table className="w-full text-left text-xs sm:text-sm border-collapse min-w-[1100px]">
           <thead>
-            <tr className="bg-slate-50 border-b border-slate-200 text-slate-700 font-bold">
+            <tr className="bg-slate-50 border-b border-slate-200 text-slate-700 font-bold whitespace-nowrap">
               <th className="py-4 px-4 w-12 text-center">排名</th>
-              <th className="py-4 px-4">机场名称 / 定位</th>
-              <th className="py-4 px-4">官方链接</th>
-              <th className="py-4 px-4">线路架构 / 丢包</th>
-              <th className="py-4 px-4">价格流量</th>
-              <th className="py-4 px-4">协议支持</th>
-              <th className="py-4 px-4">流媒体 / AI 解锁</th>
-              <th className="py-4 px-4">设备限制 / 测速</th>
-              <th className="py-4 px-4 text-center">评测路线</th>
+              <th className="py-4 px-4 min-w-[160px]">机场名称 / 定位</th>
+              <th className="py-4 px-4 min-w-[170px]">官方直达与复制</th>
+              <th className="py-4 px-4 min-w-[150px]">线路架构 / 晚高峰丢包</th>
+              <th className="py-4 px-4 min-w-[120px]">价格流量</th>
+              <th className="py-4 px-4 min-w-[140px]">协议支持</th>
+              <th className="py-4 px-4 min-w-[200px]">流媒体 / AI 解锁</th>
+              <th className="py-4 px-4 min-w-[160px]">设备限制 / 实测下行</th>
+              <th className="py-4 px-4 text-center min-w-[90px]">评测路线</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100 font-medium text-slate-800">
             {filteredAirports.map(item => (
               <tr key={item.id} className="hover:bg-slate-50/80 transition-colors">
                 {/* 排名 */}
-                <td className="py-4 px-4 text-center font-black">
+                <td className="py-4 px-4 text-center font-black whitespace-nowrap">
                   <span className={`inline-flex h-7 w-7 items-center justify-center rounded-full font-mono text-xs ${
-                    item.rank === 1 ? 'bg-amber-400 text-slate-900' :
+                    item.rank === 1 ? 'bg-amber-400 text-slate-900 shadow-sm' :
                     item.rank === 2 ? 'bg-slate-300 text-slate-900' :
                     item.rank === 3 ? 'bg-orange-300 text-slate-900' : 'bg-slate-100 text-slate-600'
                   }`}>
@@ -290,9 +585,9 @@ export default function AirportRankTable() {
                 </td>
 
                 {/* 名称 */}
-                <td className="py-4 px-4">
+                <td className="py-4 px-4 whitespace-nowrap">
                   <div className="flex flex-col gap-1">
-                    <Link href={item.reviewUrl} className="font-black text-slate-900 hover:text-brand-600 text-base">
+                    <Link href={item.reviewUrl} className="font-black text-slate-900 hover:text-brand-600 text-sm sm:text-base">
                       {item.name}
                     </Link>
                     {item.badge && (
@@ -303,20 +598,33 @@ export default function AirportRankTable() {
                   </div>
                 </td>
 
-                {/* 官网直达 ↗ */}
-                <td className="py-4 px-4">
-                  <a
-                    href={item.officialUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 px-3 py-1.5 text-xs font-bold text-white shadow-sm hover:opacity-90 transition-all"
-                  >
-                    <span>官网 ↗</span>
-                  </a>
+                {/* 官方直达与复制按钮 (水平排列，绝对不换行) */}
+                <td className="py-4 px-4 whitespace-nowrap min-w-[170px]">
+                  <div className="flex items-center gap-1.5 whitespace-nowrap">
+                    <a
+                      href={item.officialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-1 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:opacity-90 active:scale-95 transition-all whitespace-nowrap shrink-0 cursor-pointer"
+                    >
+                      <span>官网直达 ↗</span>
+                    </a>
+                    <button
+                      onClick={() => handleCopyLink(item.officialUrl, item.name, item.id)}
+                      className={`inline-flex items-center justify-center rounded-xl px-2.5 py-1.5 text-[11px] font-bold transition-all whitespace-nowrap shrink-0 cursor-pointer ${
+                        copiedId === item.id
+                          ? "bg-emerald-500 text-white border border-emerald-500"
+                          : "bg-slate-100 text-slate-600 hover:bg-slate-200 border border-slate-200/70"
+                      }`}
+                      title="复制官方注册直达链接"
+                    >
+                      <span>{copiedId === item.id ? "✅ 已复制" : "📋 复制"}</span>
+                    </button>
+                  </div>
                 </td>
 
                 {/* 线路架构 */}
-                <td className="py-4 px-4">
+                <td className="py-4 px-4 whitespace-nowrap">
                   <div className="flex flex-col">
                     <span className="font-bold text-slate-900">{item.architecture}</span>
                     <span className="text-[11px] font-mono text-emerald-600">丢包率: {item.lossRate}</span>
@@ -324,12 +632,12 @@ export default function AirportRankTable() {
                 </td>
 
                 {/* 价格流量 */}
-                <td className="py-4 px-4">
+                <td className="py-4 px-4 whitespace-nowrap">
                   <span className="font-mono font-extrabold text-slate-900">{item.priceFlow}</span>
                 </td>
 
                 {/* 协议 */}
-                <td className="py-4 px-4">
+                <td className="py-4 px-4 whitespace-nowrap">
                   <div className="flex flex-wrap gap-1">
                     {item.protocols.map(p => (
                       <span key={p} className="rounded bg-slate-100 border border-slate-200 px-1.5 py-0.5 font-mono text-[10px] font-bold text-slate-600">
@@ -340,20 +648,20 @@ export default function AirportRankTable() {
                 </td>
 
                 {/* 流媒体/AI */}
-                <td className="py-4 px-4">
+                <td className="py-4 px-4 whitespace-nowrap">
                   <span className="text-xs font-semibold text-emerald-700">{item.streamingAi}</span>
                 </td>
 
                 {/* 设备速度 */}
-                <td className="py-4 px-4">
+                <td className="py-4 px-4 whitespace-nowrap">
                   <span className="text-xs text-slate-600 font-mono">{item.deviceSpeed}</span>
                 </td>
 
                 {/* 评测路线 ➔ */}
-                <td className="py-4 px-4 text-center">
+                <td className="py-4 px-4 text-center whitespace-nowrap">
                   <Link
                     href={item.reviewUrl}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-brand-600 hover:underline"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-brand-600 hover:underline cursor-pointer"
                   >
                     <span>测评 ➔</span>
                   </Link>

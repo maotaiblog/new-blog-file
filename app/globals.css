@@ -56,15 +56,23 @@ body {
 }
 
 .markdown-body table {
-  @apply w-full text-left text-xs sm:text-sm my-6 border-collapse overflow-hidden rounded-2xl border border-slate-200 shadow-sm;
+  @apply w-full text-left text-xs sm:text-sm my-6 border-collapse rounded-xl border border-slate-200 shadow-sm overflow-x-auto block sm:table;
 }
 
 .markdown-body th {
-  @apply bg-slate-100 p-3 font-bold text-slate-900 border-b border-slate-200;
+  @apply bg-slate-100 p-3.5 font-bold text-slate-900 border-b border-slate-200 whitespace-nowrap;
 }
 
 .markdown-body td {
-  @apply p-3 border-b border-slate-100 text-slate-700;
+  @apply p-3.5 border-b border-slate-100 text-slate-700;
+}
+
+.markdown-body tbody tr:nth-child(even) {
+  @apply bg-slate-50/50;
+}
+
+.markdown-body tbody tr:hover {
+  @apply bg-brand-50/30 transition-colors;
 }
 
 .markdown-body a {
