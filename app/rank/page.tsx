@@ -92,12 +92,18 @@ export default function RankPage() {
       {
         "@type": "ListItem",
         "position": 4,
+        "name": "榴莲云 LiulianYun",
+        "url": "https://maotaiblog.com/blog/榴莲云-review/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
         "name": "飞猫云",
         "url": "https://maotaiblog.com/blog/飞猫云-review/"
       },
       {
         "@type": "ListItem",
-        "position": 5,
+        "position": 6,
         "name": "WgetCloud",
         "url": "https://maotaiblog.com/blog/wgetcloud-review/"
       }
@@ -170,7 +176,7 @@ export default function RankPage() {
               🏆 2026 机场推荐与稳定专线选购对比大盘
             </h1>
             <p className="mt-2 text-xs sm:text-sm text-slate-600 font-medium max-w-3xl leading-relaxed">
-              基于公开信息、套餐参数及本站已记录的测试结果整理。针对隐形人、暮光加速、微风网络、飞猫云等主流服务商提供晚高峰链路表现、协议支持与流媒体 AI 解锁可用性横向对比。
+              基于公开信息、套餐参数及本站已记录的测试结果整理。针对隐形人、暮光加速、微风网络、榴莲云、飞猫云等主流服务商提供晚高峰链路表现、协议支持与流媒体 AI 解锁可用性横向对比。
             </p>
           </div>
 
