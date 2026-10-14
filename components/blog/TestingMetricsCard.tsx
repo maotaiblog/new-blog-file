@@ -46,8 +46,8 @@ export default function TestingMetricsCard({ isAirportReview }: Props) {
         </div>
       </div>
 
-      <p className="mt-3 text-[11px] text-slate-400 leading-relaxed">
-        * 本文指标基于猫太实验室自动化探针实测采集。由于各地区本地 ISP QoS 策略不同，实际速率以您本地运行测速工具为准。严禁任何伪造或虚构测速数据。
+      <p className="mt-3 text-[11px] text-slate-500 leading-relaxed">
+        * 本文数据基于猫太评测团队在特定网络与时间窗口下的抽样实测记录，并结合服务商官方公开参数整理。缺少第三方可验证测试来源的指标一律标为<strong>【待验证/暂无实测】</strong>，杜绝示例数据写成实时实测。实际网络质量受本地宽带与运营商路由影响，建议先选月付试用。
       </p>
     </div>
   );

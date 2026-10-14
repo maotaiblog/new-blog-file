@@ -37,7 +37,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPostData(params.slug);
   if (!post) return { title: "文章未找到 - 猫太博客" };
 
-  const canonicalUrl = `https://maotaiblog.com/blog/${post.slug}`;
+  const canonicalUrl = `https://maotaiblog.com/blog/${post.slug}/`;
+  const heroImageUrl = post.heroImage
+    ? (post.heroImage.startsWith('http') ? post.heroImage : `https://maotaiblog.com${post.heroImage}`)
+    : 'https://maotaiblog.com/gallery/retro-cat-girl.jpg';
 
   return {
     title: `${post.title} - 猫太博客`,
@@ -52,14 +55,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       publishedTime: post.pubDate,
       modifiedTime: post.updatedDate || post.pubDate,
-      authors: ["猫太博客技术评测团队"],
+      authors: [post.author || "茅台博主"],
       tags: post.tags,
       siteName: "猫太博客",
+      images: [
+        {
+          url: heroImageUrl,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${post.title} - 猫太博客`,
       description: post.description,
+      images: [heroImageUrl],
     },
   };
 }
@@ -78,6 +90,10 @@ export default async function BlogPostPage({ params }: Props) {
   const airportName = isAirportReview ? post.title.split(/\s|\(|（/)[0].replace(/[^\u4e00-\u9fa5a-zA-Z0-9]/g, '') : undefined;
   const nextStepAction = getNextStepByTopic(topic?.id || "network", airportName);
 
+  const heroImageUrl = post.heroImage
+    ? (post.heroImage.startsWith('http') ? post.heroImage : `https://maotaiblog.com${post.heroImage}`)
+    : 'https://maotaiblog.com/gallery/retro-cat-girl.jpg';
+
   // Schema: Article + BreadcrumbList
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -87,25 +103,25 @@ export default async function BlogPostPage({ params }: Props) {
         "@type": "ListItem",
         "position": 1,
         "name": "首页",
-        "item": "https://maotaiblog.com"
+        "item": "https://maotaiblog.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "博客技术测评",
-        "item": "https://maotaiblog.com/blog"
+        "item": "https://maotaiblog.com/blog/"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": topic?.name || "专题指南",
-        "item": `https://maotaiblog.com${topic?.pillarSlug || "/blog"}`
+        "item": `https://maotaiblog.com${topic?.pillarSlug || "/blog/"}`
       },
       {
         "@type": "ListItem",
         "position": 4,
         "name": post.title,
-        "item": `https://maotaiblog.com/blog/${post.slug}`
+        "item": `https://maotaiblog.com/blog/${post.slug}/`
       }
     ]
   };
@@ -115,20 +131,22 @@ export default async function BlogPostPage({ params }: Props) {
     "@type": "TechArticle",
     "headline": post.title,
     "description": post.description,
+    "image": [heroImageUrl],
     "datePublished": post.pubDate,
     "dateModified": post.updatedDate || post.pubDate,
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://maotaiblog.com/blog/${post.slug}`
+      "@id": `https://maotaiblog.com/blog/${post.slug}/`
     },
     "author": {
-      "@type": "Organization",
-      "name": "猫太博客技术评测组",
-      "url": "https://maotaiblog.com/about"
+      "@type": "Person",
+      "name": post.author || "茅台博主",
+      "url": "https://maotaiblog.com/about/"
     },
     "publisher": {
       "@type": "Organization",
       "name": "猫太博客",
+      "url": "https://maotaiblog.com/",
       "logo": {
         "@type": "ImageObject",
         "url": "https://maotaiblog.com/logo.png"
@@ -217,6 +235,16 @@ export default async function BlogPostPage({ params }: Props) {
         {/* 目录导览 TOC */}
         {post.headings && post.headings.length > 0 && (
           <ArticleTOC headings={post.headings} />
+        )}
+
+        {/* 商业推广披露与合规声明 */}
+        {isAirportReview && (
+          <div className="mb-6 rounded-2xl border border-slate-200 bg-slate-50/60 p-3.5 text-xs text-slate-500 flex items-center gap-2.5">
+            <span className="font-bold text-slate-700 shrink-0">⚖️ 推广披露：</span>
+            <span className="text-[11px] leading-relaxed">
+              本文包含服务商 Affiliate 推广链接（已声明 <code className="bg-slate-200 px-1 py-0.5 rounded font-mono text-[10px]">rel=&quot;sponsored nofollow&quot;</code>）。测试数据基于独立实测记录与公开套餐参数，评测保持独立与客观。
+            </span>
+          </div>
         )}
 
         {/* 评测基准环境说明 (仅针对评测类) */}

@@ -1,6 +1,5 @@
-"use client";
-
 import React from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { 
   Activity, 
@@ -25,18 +24,57 @@ import {
 } from "lucide-react";
 import NetworkHealthWidget from "@/components/tools/NetworkHealthWidget";
 
+export const metadata: Metadata = {
+  title: "2026机场推荐与稳定专线选购评测实验室 | 猫太博客",
+  description: "猫太博客 2026 机场推荐大盘：专注主流 IPLC/IEPL 专线机场晚高峰测速、4K流媒体与 ChatGPT 解锁评测，提供真实可信的机场推荐、网络隐私诊断工具与客户端配置指南。",
+  alternates: {
+    canonical: "https://maotaiblog.com/",
+  },
+  openGraph: {
+    title: "2026机场推荐与稳定专线选购评测实验室 | 猫太博客",
+    description: "专注主流 IPLC/IEPL 专线机场晚高峰测速、4K流媒体与 ChatGPT 解锁评测，提供真实客观的机场推荐与网络诊断工具。",
+    url: "https://maotaiblog.com/",
+    siteName: "猫太博客",
+    images: [
+      {
+        url: "https://maotaiblog.com/gallery/retro-cat-girl.jpg",
+        width: 1200,
+        height: 630,
+        alt: "2026机场推荐与专线网络评测",
+      },
+    ],
+    locale: "zh_CN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "2026机场推荐与稳定专线选购评测实验室 | 猫太博客",
+    description: "专注主流 IPLC/IEPL 专线机场晚高峰测速、4K流媒体与 ChatGPT 解锁评测。",
+    images: ["https://maotaiblog.com/gallery/retro-cat-girl.jpg"],
+  },
+};
+
 export default function HomePage() {
-  const scrollToScanner = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const el = document.getElementById("scanner");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "2026 专线机场推荐与网络性能测试实验室",
+    "url": "https://maotaiblog.com/",
+    "description": "专注主流 IPLC/IEPL 专线机场晚高峰测速、4K流媒体与 ChatGPT 解锁测试，提供真实可信的机场评测、网络诊断工具与客户端配置指南。",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "猫太博客",
+      "url": "https://maotaiblog.com/"
     }
   };
 
   return (
     <div className="w-full relative">
-      {/* Screen 1: Hero Section - 定位为网络性能与隐私测试实验室 */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+      />
+      {/* Screen 1: Hero Section - 首页核心聚焦 2026 专线机场推荐与网络测试实验室 */}
       <section className="relative overflow-hidden pt-8 pb-16 md:pt-16 md:pb-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
@@ -49,22 +87,22 @@ export default function HomePage() {
               </div>
 
               <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 leading-tight">
-                网络性能与隐私测试实验室
+                2026 专线机场推荐与网络性能测试实验室
               </h1>
 
               <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-medium">
-                免费检测 IP、DNS、WebRTC、延迟、丢包与网络健康状态，帮助你判断当前网络环境，并理解 VPN、机场与专线网络的真实性能。
+                免费检测 IP、DNS、WebRTC、延迟、丢包与网络健康状态，基于真实测试数据为您提供客观的 2026 专线机场推荐、IEPL/IPLC 链路对比与跨平台客户端配置指南。
               </p>
 
               {/* 3 个符合用户意图的核心 CTA */}
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <button
-                  onClick={scrollToScanner}
+                <a
+                  href="#scanner"
                   className="flex items-center gap-2 rounded-2xl bg-brand-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-brand-500/25 hover:bg-brand-700 active:scale-95 transition-all cursor-pointer"
                 >
                   <Activity className="h-4 w-4" />
                   <span>立即检测我的网络</span>
-                </button>
+                </a>
 
                 <a
                   href="#tools"
@@ -130,13 +168,13 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <button
-                  onClick={scrollToScanner}
+                <a
+                  href="#scanner"
                   className="w-full flex items-center justify-center gap-2 rounded-xl bg-slate-900 py-3 text-xs font-bold text-white hover:bg-slate-800 transition-all cursor-pointer"
                 >
                   <Activity className="h-3.5 w-3.5 text-brand-400" />
                   <span>开始网络环境体检</span>
-                </button>
+                </a>
               </div>
             </div>
 

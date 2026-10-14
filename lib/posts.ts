@@ -23,6 +23,8 @@ export interface PostData {
   category: string;
   tags?: string[];
   readTime?: string;
+  heroImage?: string;
+  author?: string;
   contentHtml?: string;
   headings?: HeadingItem[];
   topic?: TopicCluster;
@@ -52,6 +54,8 @@ export function getSortedPostsData(): PostData[] {
       const category = matterResult.data.category || '机场测评';
       const tags = matterResult.data.tags || [];
       const topic = getTopicBySlug(slug, category, tags);
+      const heroImage = matterResult.data.heroImage || '/gallery/retro-cat-girl.jpg';
+      const author = matterResult.data.author || '茅台博主';
 
       return {
         slug,
@@ -62,6 +66,8 @@ export function getSortedPostsData(): PostData[] {
         category,
         tags,
         readTime: matterResult.data.readTime || '6分钟',
+        heroImage,
+        author,
         topic
       };
     });
@@ -113,11 +119,19 @@ export async function getPostData(slug: string): Promise<PostData | null> {
   const fileContents = fs.readFileSync(fullPath, 'utf-8');
   const matterResult = matter(fileContents);
 
+  // 清理任何残留的引用标签与异常标记
+  let cleanContent = matterResult.content.replace(/\[cite:[^\]]*\]/g, '');
+
+  // 移除 Markdown 顶部的重复 H1 标题，避免与页面模板内置的 <h1>{post.title}</h1> 冲突
+  cleanContent = cleanContent.replace(/^\s*#\s+[^\r\n]+(\r?\n)*/, '');
+  // 将正文中可能残留的其他顶级 # 标题平滑降级为 ##，严格保证全页仅有一个唯一语义 H1
+  cleanContent = cleanContent.replace(/^#\s+/gm, '## ');
+
   // 提取 Markdown 中的 h2 和 h3 标题作为目录 TOC
   const headings: HeadingItem[] = [];
   const headingRegex = /^(#{2,3})\s+(.+)$/gm;
   let match;
-  while ((match = headingRegex.exec(matterResult.content)) !== null) {
+  while ((match = headingRegex.exec(cleanContent)) !== null) {
     const level = match[1].length;
     const rawText = match[2].trim();
     // 清理 markdown 标签或格式
@@ -125,9 +139,6 @@ export async function getPostData(slug: string): Promise<PostData | null> {
     const id = cleanText.toLowerCase().replace(/[^a-zA-Z0-9\u4e00-\u9fa5]+/g, '-').replace(/^-|-$/g, '') || `section-${headings.length}`;
     headings.push({ id, text: cleanText, level });
   }
-
-  // 清理任何残留的引用标签与异常标记
-  const cleanContent = matterResult.content.replace(/\[cite:[^\]]*\]/g, '');
 
   const processedContent = await remark()
     .use(remarkGfm)
@@ -137,11 +148,18 @@ export async function getPostData(slug: string): Promise<PostData | null> {
 
   // 为 h2, h3 自动注入 id 属性以便锚点跳转
   headings.forEach(h => {
-    // 匹配 <h2>...h.text...</h2> 并注入 id
     const tag = `h${h.level}`;
     const escapedText = h.text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
     const regex = new RegExp(`<${tag}>([\\s\\S]*?` + escapedText + `[\\s\\S]*?)<\/${tag}>`, 'i');
     contentHtml = contentHtml.replace(regex, `<${tag} id="${h.id}">$1</${tag}>`);
+  });
+
+  // 对所有外部链接自动注入 target="_blank" 与 rel="nofollow sponsored noopener noreferrer"
+  contentHtml = contentHtml.replace(/<a\s+href="(https?:\/\/[^"]+)"/gi, (match, url) => {
+    if (url.includes('maotaiblog.com')) {
+      return `<a href="${url}"`;
+    }
+    return `<a href="${url}" target="_blank" rel="nofollow sponsored noopener noreferrer"`;
   });
 
   const pubDate = matterResult.data.pubDate
@@ -154,6 +172,8 @@ export async function getPostData(slug: string): Promise<PostData | null> {
   const category = matterResult.data.category || '机场测评';
   const tags = matterResult.data.tags || [];
   const topic = getTopicBySlug(slug, category, tags);
+  const heroImage = matterResult.data.heroImage || '/gallery/retro-cat-girl.jpg';
+  const author = matterResult.data.author || '茅台博主';
 
   return {
     slug,
@@ -164,6 +184,8 @@ export async function getPostData(slug: string): Promise<PostData | null> {
     category,
     tags,
     readTime: matterResult.data.readTime || '6分钟',
+    heroImage,
+    author,
     contentHtml,
     headings,
     topic
