@@ -20,13 +20,13 @@ import {
 
 export const metadata: Metadata = {
   title: "技术测评、网络知识与 VPN 指南 - 猫太博客",
-  description: "围绕网络性能、网络隐私、VPN、代理协议与网络故障排查，提供技术测评、使用指南、测试工具与方法论。",
+  description: "浏览猫太博客的网络技术文章：按网络性能、隐私安全、VPN、代理协议与故障排查查找指南和服务商评测，并通过相关测试工具及公开方法核对文章中的结论。",
   alternates: {
     canonical: "https://maotaiblog.com/blog/",
   },
   openGraph: {
     title: "技术测评、网络知识与 VPN 指南 - 猫太博客",
-    description: "围绕网络性能、网络隐私、VPN、代理协议与网络故障排查，提供技术测评、使用指南、测试工具与方法论。",
+    description: "浏览猫太博客的网络技术文章：按网络性能、隐私安全、VPN、代理协议与故障排查查找指南和服务商评测，并通过相关测试工具及公开方法核对文章中的结论。",
     url: "https://maotaiblog.com/blog/",
     type: "website",
     siteName: "猫太博客",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "技术测评、网络知识与 VPN 指南 - 猫太博客",
-    description: "围绕网络性能、网络隐私、VPN、代理协议与网络故障排查，提供技术测评、使用指南、测试工具与方法论。",
+    description: "浏览猫太博客的网络技术文章：按网络性能、隐私安全、VPN、代理协议与故障排查查找指南和服务商评测，并通过相关测试工具及公开方法核对文章中的结论。",
   }
 };
 

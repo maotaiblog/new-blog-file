@@ -1,7 +1,8 @@
 ---
 title: "自托管 Docker 生产力工具箱极简实践"
-description: "精选 10 款极简干净的 Self-Hosted Docker 服务，打造完全属于自己的私人云端数据中心。"
+description: "从 Vaultwarden、Uptime Kuma 和 Memos 等工具入手，了解自托管 Docker 服务能解决的密码管理、服务监控与个人笔记需求，并按文章步骤搭建私人云端工具箱。"
 pubDate: 2026-08-25
+updatedDate: 2026-10-15
 category: "自托管"
 tags: ["Docker", "Self-Hosted", "生产力"]
 author: "猫太博客"

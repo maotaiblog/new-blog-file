@@ -1,7 +1,8 @@
 ---
 title: "Sing-box 与 Clash Verge 1.9+ 极速导入配置教程"
-description: "详细拆解 Sing-box 核心分流规则集与 Clash Verge Rev 的 TUN 模式开启技巧，实现全平台零感极速冲浪。"
+description: "了解 Sing-box 与 Clash Verge Rev 的订阅导入、规则集分流和 TUN 模式配置流程，核对常见 DNS 与路由设置，按设备和使用场景排查连接问题。"
 pubDate: 2026-08-22
+updatedDate: 2026-10-15
 category: "教程"
 tags: ["Sing-box", "Clash", "配置教程"]
 author: "猫太博客"

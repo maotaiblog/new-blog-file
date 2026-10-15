@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "WebRTC Leak Test - 检测真实 IP 是否泄露 - 猫太博客",
-  description: "在线检测浏览器 WebRTC 漏洞是否绕过 VPN 或代理直接泄露本地真实局域网与公网 IP。提供各大浏览器禁用 WebRTC 修复指南。",
+  description: "运行浏览器 WebRTC 泄露检测，查看 STUN 探测是否暴露本地或公网 IP，并结合当前 VPN 或代理设置理解结果。页面提供浏览器隐私设置和进一步排查的参考步骤。",
   alternates: {
     canonical: "https://maotaiblog.com/tools/webrtc-test/",
   },

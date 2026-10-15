@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "跨越数字鸿沟：中国苹果用户外区 Apple ID 全景指南与免费资源 - 猫太博客",
-  description: "全面剖析中国苹果用户外区 Apple ID 痛点：安全法则、防锁机注意事项、二毛博主免费共享资源与独立账号注册保姆级指南。",
+  description: "了解外区 Apple ID 的使用边界与账号安全：比较美区、港区和日区 App Store 的选择，阅读共享账号登录注意事项，并查看独立注册账号的长期替代方案与资源入口。",
   alternates: {
     canonical: "https://maotaiblog.com/apple-id",
   },

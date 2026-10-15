@@ -6,7 +6,9 @@
     "dev": "next dev -p 4321",
     "build": "next build",
     "start": "next start -p 4321",
-    "lint": "next lint"
+    "lint": "next lint",
+    "indexnow": "node scripts/submit-indexnow.mjs",
+    "audit:seo": "node scripts/audit-seo.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

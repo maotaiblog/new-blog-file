@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "2026 机场推荐与稳定专线选购对比大盘 - 猫太博客",
-    description: "基于公开参数与晚高峰样本实测，整理主流 IPLC/IEPL 专线与 BGP 中继机场的节点延迟、丢包表现与流媒体 AI 解锁支持横向对比。",
+  description: "比较主流 IEPL/IPLC 专线与 BGP 中继服务商的公开套餐参数、节点覆盖和晚高峰测试样本。查看延迟、丢包与流媒体及 AI 服务可用性，并按评测方法核对数据来源。",
     url: "https://maotaiblog.com/rank/",
     type: "website",
     siteName: "猫太博客",

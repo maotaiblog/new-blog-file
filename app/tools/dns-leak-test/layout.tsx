@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "DNS Leak Test - 检测 DNS 是否泄露 - 猫太博客",
-  description: "在线检测使用 VPN 或代理时是否存在 DNS 泄露风险。检测当前实际 DNS 解析服务器 IP 与归属，防止运营商窃听或网站定位。",
+  description: "使用猫太博客的 DNS 泄露检测工具查看浏览器当前使用的解析服务器及其 IP 归属，判断 VPN 或代理连接是否仍使用本地运营商 DNS，并阅读结果解释与后续排查步骤。",
   alternates: {
     canonical: "https://maotaiblog.com/tools/dns-leak-test/",
   },

@@ -146,6 +146,11 @@ export async function getPostData(slug: string): Promise<PostData | null> {
     .process(cleanContent);
   let contentHtml = processedContent.toString();
 
+  // 文章模板已经输出页面唯一的 H1。也覆盖 Setext 标题（===）等 Markdown 写法。
+  contentHtml = contentHtml
+    .replace(/<h1(\s[^>]*)?>/gi, '<h2$1>')
+    .replace(/<\/h1>/gi, '</h2>');
+
   // 为 h2, h3 自动注入 id 属性以便锚点跳转
   headings.forEach(h => {
     const tag = `h${h.level}`;

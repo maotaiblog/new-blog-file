@@ -5,7 +5,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "猫太博客 🌸 | 全球网络隐私安全、性能量化与专线加速实验室",
-  description: "猫太博客专注于网络隐私安全、跨境网络性能量化、VPN 与专线架构解析、2026 稳定机场评测及分布式网络诊断工具箱。",
+  description: "猫太博客提供免费 IP、DNS、WebRTC、延迟和网络健康检测工具，并发布 VPN、代理协议与 IEPL/IPLC 专线知识、服务商评测及公开的测试方法，帮助读者核对网络性能与隐私风险。",
   metadataBase: new URL("https://maotaiblog.com"),
   alternates: {
     canonical: "https://maotaiblog.com",

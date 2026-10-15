@@ -4,7 +4,7 @@ import { FileText, ChevronRight, ArrowRight, ShieldCheck, Trophy } from "lucide-
 
 export const metadata: Metadata = {
   title: "机场评测与定量打分体系方法论白皮书 - 猫太实验室",
-  description: "猫太博客官方评测标准。详细公布 5 大核心维度打分公式、自动化探针采集方法与零虚假测速准则。",
+  description: "阅读猫太实验室的机场评测方法论：了解线路、性能、解锁、价格与稳定性等维度的评分口径，以及测试时段、探针环境和数据复核方式，便于比较不同服务商的结果。",
   alternates: {
     canonical: "https://maotaiblog.com/whitepaper/airport-evaluation-methodology/",
   }

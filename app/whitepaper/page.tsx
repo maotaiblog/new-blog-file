@@ -18,7 +18,7 @@ import {
 
 export const metadata: Metadata = {
   title: "网络性能与机场评测白皮书中心 - 猫太实验室权威知识库",
-  description: "猫太网络科学白皮书中心：收录《机场评测与定量打分体系白皮书》、物理专线传输模型、公网 IP 欺诈分审计、现代化代理协议演进与全球延迟基准标准。",
+  description: "在猫太网络科学白皮书中心查阅机场评测与定量打分体系、专线传输模型、公网 IP 与 WebRTC 风险审计，以及代理协议和延迟基准资料，并按公开方法核对评测指标。",
   alternates: {
     canonical: "https://maotaiblog.com/whitepaper/",
   },

@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Activity, ShieldAlert, CheckCircle2, FileText } from "lucide-react";
+import { Activity, FileText } from "lucide-react";
 
 interface Props {
   isAirportReview?: boolean;
@@ -16,7 +16,7 @@ export default function TestingMetricsCard({ isAirportReview }: Props) {
       <div className="flex items-center justify-between border-b border-slate-200/80 pb-3 mb-4">
         <div className="flex items-center gap-2">
           <Activity className="h-4 w-4 text-brand-600" />
-          <span className="text-xs font-bold text-slate-900">实测基准与测试环境声明</span>
+          <span className="text-xs font-bold text-slate-900">评测数据说明与复核方法</span>
         </div>
         <Link
           href="/whitepaper/airport-evaluation-methodology"
@@ -29,25 +29,25 @@ export default function TestingMetricsCard({ isAirportReview }: Props) {
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
         <div className="bg-white p-3 rounded-xl border border-slate-100">
-          <span className="text-[10px] text-slate-400 font-mono block">测试探针网络</span>
-          <span className="font-bold text-slate-800">中国电信/联通 1000M</span>
+          <span className="text-[10px] text-slate-400 font-mono block">线路与入口</span>
+          <span className="font-bold text-slate-800">以正文标注的条件为准</span>
         </div>
         <div className="bg-white p-3 rounded-xl border border-slate-100">
-          <span className="text-[10px] text-slate-400 font-mono block">主要协议验证</span>
-          <span className="font-bold text-slate-800">VLESS / Trojan / SS</span>
+          <span className="text-[10px] text-slate-400 font-mono block">性能样本</span>
+          <span className="font-bold text-slate-800">核对测试日期与时段</span>
         </div>
         <div className="bg-white p-3 rounded-xl border border-slate-100">
-          <span className="text-[10px] text-slate-400 font-mono block">测试时间窗口</span>
-          <span className="font-bold text-slate-800">晚高峰 20:00 - 23:00</span>
+          <span className="text-[10px] text-slate-400 font-mono block">访问能力</span>
+          <span className="font-bold text-slate-800">留意地区与服务版本</span>
         </div>
         <div className="bg-white p-3 rounded-xl border border-slate-100">
-          <span className="text-[10px] text-slate-400 font-mono block">流媒体与AI审计</span>
-          <span className="font-bold text-emerald-600">双向原生解锁验证</span>
+          <span className="text-[10px] text-slate-400 font-mono block">套餐信息</span>
+          <span className="font-bold text-slate-800">以服务商当前页面为准</span>
         </div>
       </div>
 
       <p className="mt-3 text-[11px] text-slate-500 leading-relaxed">
-        * 本文数据基于猫太评测团队在特定网络与时间窗口下的抽样实测记录，并结合服务商官方公开参数整理。缺少第三方可验证测试来源的指标一律标为<strong>【待验证/暂无实测】</strong>，杜绝示例数据写成实时实测。实际网络质量受本地宽带与运营商路由影响，建议先选月付试用。
+        * 本文可能同时引用服务商公开参数和特定环境下的测试样本，请以正文标出的来源、日期和条件判断每项结论。未给出测试条件或原始记录的数字不应视为可复现的长期保证；实际网络质量会随本地宽带、路由和时段变化。
       </p>
     </div>
   );

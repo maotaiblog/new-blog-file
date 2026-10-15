@@ -1,7 +1,8 @@
 ---
 title: "2026 极其稳定的 IEPL/IPLC 独立专线选型测评"
-description: "深入解析直连、公网 BGP 中转与企业级 IEPL/IPLC 专线在晚高峰吞吐与 AI 原生 IP 解锁中的真实抓包对比。"
+description: "比较直连、公网 BGP 中转与 IEPL/IPLC 专线的线路特点，了解晚高峰延迟、丢包和吞吐量应如何测试，并结合 AI 服务访问需求选择适合自己的网络方案。"
 pubDate: 2026-08-20
+updatedDate: 2026-10-15
 category: "测评"
 tags: ["专线测评", "IPLC", "AI解锁"]
 author: "猫太博客"

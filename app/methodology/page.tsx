@@ -18,7 +18,7 @@ import {
 
 export const metadata: Metadata = {
   title: "评测方法与网络测试准则 - 猫太博客",
-  description: "了解猫太博客如何进行网络延迟、丢包、稳定性、线路与隐私相关测试，以及机场评测的数据采集和评分方法。",
+  description: "查看猫太博客的网络测试方法：了解测试接入网络、硬件和时间窗口，以及延迟、丢包、稳定性与隐私指标的采集和评分口径，便于判断评测结果适用的条件。",
   alternates: {
     canonical: "https://maotaiblog.com/methodology/",
   },

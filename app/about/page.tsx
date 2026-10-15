@@ -5,7 +5,7 @@ import TrustClusterNav from "@/components/layout/TrustClusterNav";
 
 export const metadata: Metadata = {
   title: "关于猫太实验室 - 网络隐私、性能与出海技术量化",
-  description: "猫太博客定位与团队使命：专注跨境网络协议底层原理解析、晚高峰专线客观测评、网络隐私诊断工具研发与海外开发者赋能。",
+  description: "认识猫太博客及其网络性能与隐私实验室：了解站点关注的 VPN、代理协议、IEPL/IPLC 专线评测和免费诊断工具，以及公开测试方法、编辑准则与联系渠道。",
   alternates: {
     canonical: "https://maotaiblog.com/about/",
   },

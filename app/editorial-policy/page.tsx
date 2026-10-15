@@ -3,7 +3,7 @@ import TrustClusterNav from "@/components/layout/TrustClusterNav";
 
 export const metadata: Metadata = {
   title: "独立编辑准则与利益披露声明 - 猫太实验室",
-  description: "猫太实验室独立编辑政策与评测伦理准则：杜绝虚假打分与商业黑幕，客观记录实测数据，全面披露商业合作与佣金机制。",
+  description: "阅读猫太实验室的编辑政策：了解服务商评测如何处理利益冲突、推广链接与佣金披露，以及数据更正、复核和内容更新流程，判断文章结论的依据、适用范围与局限。",
   alternates: {
     canonical: "https://maotaiblog.com/editorial-policy/",
   },

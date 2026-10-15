@@ -202,7 +202,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="mt-4 flex flex-wrap items-center gap-y-2 gap-x-4 text-xs text-slate-500 font-medium">
             <span className="flex items-center gap-1 text-slate-700 font-bold">
               <UserCheck className="h-3.5 w-3.5 text-brand-600" />
-              <span>猫太评测组 · 审核发布</span>
+              <Link href="/about/" className="hover:underline">{post.author || "茅台博主"}</Link>
             </span>
             <span className="flex items-center gap-1 text-slate-400">
               <Calendar className="h-3.5 w-3.5" />
@@ -211,7 +211,7 @@ export default async function BlogPostPage({ params }: Props) {
             {post.updatedDate && (
               <span className="flex items-center gap-1 text-slate-400">
                 <RotateCw className="h-3.5 w-3.5 text-emerald-500" />
-                <span>实测更新: {post.updatedDate}</span>
+                <span>内容更新: {post.updatedDate}</span>
               </span>
             )}
             <span className="flex items-center gap-1 text-slate-400">
@@ -230,6 +230,12 @@ export default async function BlogPostPage({ params }: Props) {
               {post.description}
             </p>
           </div>
+          <p className="mt-3 text-xs text-slate-500 leading-relaxed">
+            数据与结论请结合正文中的来源和测试条件阅读；评测口径见
+            <Link href="/methodology/" className="text-brand-600 hover:underline">评测方法</Link>，
+            商业合作规则见
+            <Link href="/editorial-policy/" className="text-brand-600 hover:underline">编辑政策</Link>。
+          </p>
         </header>
 
         {/* 目录导览 TOC */}

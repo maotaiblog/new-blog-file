@@ -3,7 +3,7 @@ import TrustClusterNav from "@/components/layout/TrustClusterNav";
 
 export const metadata: Metadata = {
   title: "联系我们与技术反馈 - 猫太实验室",
-  description: "联系猫太博客评测团队：技术文章勘误、节点测试数据复核、网络测速探针接入与 Telegram 交流社群通道。",
+  description: "通过猫太博客联系页面反馈技术文章错误、申请复核服务商测试数据或咨询网络测速探针接入。页面汇总现有联系渠道，并说明提交更正、合作信息与补充证据的方式。",
   alternates: {
     canonical: "https://maotaiblog.com/contact/",
   },

@@ -125,9 +125,9 @@ export default function AccountPool() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
               </span>
-              <h1 className="text-xl sm:text-2xl font-black text-slate-900">
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900">
                 🍎 免费美区/外区 Apple ID 共享账号池
-              </h1>
+              </h2>
             </div>
             <p className="mt-1 text-xs sm:text-sm text-slate-500 font-medium">
               探针自动巡检机制维护中 • 实时自动下架已锁机异常节点

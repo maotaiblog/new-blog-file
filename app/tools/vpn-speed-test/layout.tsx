@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "VPN Speed Test - VPN 下载速度与带宽吞吐测试 - 猫太博客",
-  description: "在线测试 VPN / 代理环境下的实际下载带宽 (Mbps)、通信延迟、抖动与丢包率。科学客观评估跨境专线吞吐能力与节点负载。",
+  description: "使用在线测速工具观察 VPN 或代理连接的下载吞吐量、往返延迟、抖动与丢包表现。了解测试时间、设备和线路对 Mbps 结果的影响，便于重复测试并比较不同节点。",
   alternates: {
     canonical: "https://maotaiblog.com/tools/vpn-speed-test/",
   },

@@ -8,7 +8,7 @@ import { Wrench, ChevronRight, ArrowRight, AlertTriangle, CheckCircle2, HelpCirc
 
 export const metadata: Metadata = {
   title: "VPN 连接失败、延迟飙高与断流排障自救全景指南 - 猫太实验室",
-  description: "系统化排查代理连不上、节点超时、TLS 握手报错、DNS 污染与系统时间未同步等常见网络故障的标准 SOP 自救手册。",
+  description: "按步骤排查代理无法连接、节点超时、TLS 握手错误和 DNS 污染：先检查本地网络与系统时间，再核对客户端配置和订阅状态，并根据错误现象选择对应修复方法。",
   alternates: {
     canonical: "https://maotaiblog.com/blog/vpn-troubleshooting/",
   },
