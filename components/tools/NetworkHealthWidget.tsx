@@ -390,16 +390,12 @@ export default function NetworkHealthWidget({ compact = false }: { compact?: boo
     let privacyPts = 0;
     let privacyWeight = 0;
 
-    if (webrtcResStatus !== "not_tested") {
-      privacyWeight += 20;
-      const wPts = (webrtcResStatus === "safe" || webrtcResStatus === "blocked") ? 20 : 5;
-      privacyPts += wPts;
-    }
-    if (dnsResStatus !== "not_tested") {
-      privacyWeight += 20;
-      const dPts = dnsResStatus === "safe" ? 20 : 10;
-      privacyPts += dPts;
-    }
+    privacyWeight += 20;
+    const wPts = (webrtcResStatus === "safe" || webrtcResStatus === "blocked") ? 20 : 5;
+    privacyPts += wPts;
+    privacyWeight += 20;
+    const dPts = dnsResStatus === "safe" ? 20 : 10;
+    privacyPts += dPts;
     if (privacyWeight > 0) {
       availableWeights += privacyWeight;
       availablePoints += privacyPts;
