@@ -28,9 +28,15 @@ interface Props {
 
 export async function generateStaticParams() {
   const posts = getSortedPostsData();
-  return posts.map(post => ({
-    slug: post.slug,
-  }));
+  const params: { slug: string }[] = [];
+  posts.forEach(post => {
+    params.push({ slug: post.slug });
+    const encoded = encodeURIComponent(post.slug);
+    if (encoded !== post.slug) {
+      params.push({ slug: encoded });
+    }
+  });
+  return params;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
