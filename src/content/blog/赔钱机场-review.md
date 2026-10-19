@@ -13,7 +13,7 @@ heroImage: "/gallery/retro-cat-girl.jpg"
 
 ---
 
-> 💡 **官方直达入口**：👉 [**点击前往 赔钱机场 官方注册 / 体验**](https://github.com/DongGeJi)  
+> 💡 **官方直达入口**：👉 [**点击前往 赔钱机场 官方注册 / 体验**](https://pqjc.my)  
 > 📌 **亮点特性**：月付仅需 ¥1.99 起，提供 ¥14.9/1000GB 一次性不限时大容量流量包，全套餐不限在线设备数。
 
 ---
@@ -24,7 +24,7 @@ heroImage: "/gallery/retro-cat-girl.jpg"
 | :--- | :--- |
 | **服务名称** | **赔钱机场 (Peiqian Cloud)** |
 | **成立时间** | 2022 年运营至今 |
-| **官方直达** | [赔钱机场.com / GitHub 发布页](https://github.com/DongGeJi) |
+| **官方直达** | [pqjc.my](https://pqjc.my) |
 | **线路架构** | **三网高质量中转线路** (最高 20000Mbps 带宽) |
 | **计费与节点** | 包含常规中转高速节点及 **0.1x 超低倍率下载节点** |
 | **设备限制** | **不限制客户端登录与设备连接数** |
@@ -68,4 +68,4 @@ heroImage: "/gallery/retro-cat-girl.jpg"
 
 ---
 
-> 🔗 **官方注册直达**：[**访问 赔钱机场 官方发布地址**](https://github.com/DongGeJi)
+> 🔗 **官方注册直达**：[**访问 赔钱机场 官方网站 (pqjc.my)**](https://pqjc.my)

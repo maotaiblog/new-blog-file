@@ -70,7 +70,7 @@ const airportList: Airport[] = [
     name: "赔钱机场 Peiqian Cloud",
     badge: "🥉 极致超低价 · ¥1.99起/月",
     badgeColor: "bg-orange-100 text-orange-800 border-orange-300",
-    officialUrl: "https://github.com/DongGeJi",
+    officialUrl: "https://pqjc.my",
     reviewUrl: "/blog/赔钱机场-review",
     architecture: "三网高质量中转线路 (最高 20000Mbps)",
     lossRate: "0.03% (平价中转)",
