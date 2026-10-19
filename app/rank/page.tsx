@@ -74,44 +74,56 @@ export default function RankPage() {
       {
         "@type": "ListItem",
         "position": 1,
+        "name": "龙猫云 TotoroCloud",
+        "url": "https://maotaiblog.com/blog/龙猫云-review/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "榴莲云 LiulianYun",
+        "url": "https://maotaiblog.com/blog/榴莲云-review/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "赔钱机场 Peiqian Cloud",
+        "url": "https://maotaiblog.com/blog/赔钱机场-review/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
         "name": "隐形人 Invisibles",
         "url": "https://maotaiblog.com/blog/隐形人-review/"
       },
       {
         "@type": "ListItem",
-        "position": 2,
+        "position": 5,
         "name": "暮光加速",
         "url": "https://maotaiblog.com/blog/暮光加速-review/"
       },
       {
         "@type": "ListItem",
-        "position": 3,
+        "position": 6,
         "name": "微风网络",
         "url": "https://maotaiblog.com/blog/微风网络-review/"
       },
       {
         "@type": "ListItem",
-        "position": 4,
+        "position": 7,
         "name": "飞猫云",
         "url": "https://maotaiblog.com/blog/飞猫云-review/"
       },
       {
         "@type": "ListItem",
-        "position": 5,
+        "position": 8,
         "name": "WgetCloud",
         "url": "https://maotaiblog.com/blog/wgetcloud-review/"
       },
       {
         "@type": "ListItem",
-        "position": 6,
+        "position": 9,
         "name": "灵动云",
         "url": "https://maotaiblog.com/blog/灵动云-review/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 7,
-        "name": "榴莲云 LiulianYun",
-        "url": "https://maotaiblog.com/blog/榴莲云-review/"
       }
     ]
   };
@@ -182,7 +194,7 @@ export default function RankPage() {
               🏆 2026 机场推荐与稳定专线选购对比大盘
             </h1>
             <p className="mt-2 text-xs sm:text-sm text-slate-600 font-medium max-w-3xl leading-relaxed">
-              基于公开信息、套餐参数及本站已记录的测试结果整理。针对隐形人、暮光加速、微风网络、榴莲云、飞猫云等主流服务商提供晚高峰链路表现、协议支持与流媒体 AI 解锁可用性横向对比。
+              基于公开信息、套餐参数及本站已记录的测试结果整理。针对龙猫云、榴莲云、赔钱机场、隐形人、暮光加速、微风网络等主流服务商提供晚高峰链路表现、协议支持与流媒体 AI 解锁可用性横向对比。
             </p>
           </div>
 
