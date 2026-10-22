@@ -184,7 +184,7 @@ const airportList: Airport[] = [
     name: "灵动云",
     badge: "💎 高性价比 · 不限时流量可选",
     badgeColor: "bg-cyan-100 text-cyan-800 border-cyan-200",
-    officialUrl: "https://yinxing4.lingdongaff.com/#/?code=mW96wgI4",
+    officialUrl: "https://maotai.lingdongaff.com/#/?code=5ZV3GAM1",
     reviewUrl: "/blog/灵动云-review",
     architecture: "Trojan / VLESS 专线链路",
     lossRate: "0.01% (优良)",
