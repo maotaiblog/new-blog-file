@@ -25,7 +25,7 @@ readTime: "6分钟"
 | **节点覆盖** | 香港、台湾、新加坡、美国、日本、韩国等 |
 | **支持协议** | Shadowsocks、V2Ray、Trojan |
 | **线路架构** | BGP 隧道中转 |
-| **官网入口** | 👉 [点击直达 SSONE 官网注册页面](https://m.ssone.io/#/register?code=GeTpX1Qx) |
+| **官网入口** | 👉 点击直达 SSONE 官网注册页面（暂未开放） |
 
 ---
 

@@ -23,7 +23,7 @@ readTime: "6分钟"
 | **支付方式** | 微信支付、支付宝 |
 | **客户端支持** | 支持通用订阅，不限制客户端，可用 Clash Verge Rev、Shadowrocket (小火箭) 等主流工具 |
 | **解锁支持** | 宣称支持 Netflix、Disney+、HBO、Hulu 及 ChatGPT、Gemini 等 AI 工具 |
-| **官网入口** | 👉 [点击直达无忧链接官网](https://lsitel.worryfreettt.homes/#/?code=SaSZbwak) |
+| **官网入口** | 👉 点击直达无忧链接官网（暂未开放） |
 
 ---
 

@@ -24,7 +24,7 @@ readTime: "6分钟"
 | **支付方式** | USDT、微信支付、支付宝 |
 | **设备限制** | 不限制客户端及设备连接数量 |
 | **解锁支持** | 支持 YouTube、Netflix、Disney+、HBO 等流媒体，以及 ChatGPT、Gemini、Meta AI、Claude、Grok 等 AI 服务 |
-| **注册入口** | 👉 [点击直达 Firefly 官网注册页面](https://vip02.fireflyaff.com/#/?code=QvtWcNbI) |
+| **注册入口** | 👉 点击直达 Firefly 官网注册页面（暂未开放） |
 
 ---
 

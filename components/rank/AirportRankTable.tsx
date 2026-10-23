@@ -89,7 +89,7 @@ const airportList: Airport[] = [
     name: "隐形人 Invisibles",
     badge: "⭐ 独家特惠 · IEPL纯专线1倍率",
     badgeColor: "bg-amber-50 text-amber-800 border-amber-200",
-    officialUrl: "https://yinxingren1.invisibleaff.com/#/register?code=Gcp1CRso",
+    officialUrl: "",
     reviewUrl: "/blog/隐形人-review",
     architecture: "企业级 IEPL 纯专线 / BGP 智能调度",
     lossRate: "0.02% (实测极低)",
@@ -108,7 +108,7 @@ const airportList: Airport[] = [
     name: "暮光加速",
     badge: "⭐ 晚高峰极速 · 全IEPL专线",
     badgeColor: "bg-slate-100 text-slate-800 border-slate-300",
-    officialUrl: "https://yinxing4.twilightaff.com",
+    officialUrl: "",
     reviewUrl: "/blog/暮光加速-review",
     architecture: "全 IEPL 内网专线",
     lossRate: "0.02% (实测极低)",
@@ -127,7 +127,7 @@ const airportList: Airport[] = [
     name: "微风网络",
     badge: "⭐ 低延迟 · 电竞游戏专属",
     badgeColor: "bg-orange-100 text-orange-800 border-orange-300",
-    officialUrl: "https://wep01.breezenetaff.com/#/?code=JHqHSog8",
+    officialUrl: "",
     reviewUrl: "/blog/微风网络-review",
     architecture: "IEPL 电竞专线 + BGP 中继",
     lossRate: "0.03% (实测极低)",
@@ -146,7 +146,7 @@ const airportList: Airport[] = [
     name: "飞猫云",
     badge: "⚡ IPLC专线 · 高速专线不限设备",
     badgeColor: "bg-blue-100 text-blue-800 border-blue-300",
-    officialUrl: "https://jkg3cghf.feimaogfttt1.xyz/#/?code=3NlSNiJl",
+    officialUrl: "",
     reviewUrl: "/blog/飞猫云-review",
     architecture: "全 IPLC 专线 (多入口内网接入)",
     lossRate: "0.01% (极低)",
@@ -165,7 +165,7 @@ const airportList: Airport[] = [
     name: "WgetCloud",
     badge: "👑 5年老牌高端 · 亚马逊专线",
     badgeColor: "bg-indigo-100 text-indigo-800 border-indigo-200",
-    officialUrl: "https://invite.wgetcloud.ltd/auth/register?code=1i8Pgu",
+    officialUrl: "",
     reviewUrl: "/blog/wgetcloud-review",
     architecture: "BGP + 亚马逊 Global Accelerator",
     lossRate: "0.01% (商务级)",
@@ -184,7 +184,7 @@ const airportList: Airport[] = [
     name: "灵动云",
     badge: "💎 高性价比 · 不限时流量可选",
     badgeColor: "bg-cyan-100 text-cyan-800 border-cyan-200",
-    officialUrl: "https://maotai.lingdongaff.com/#/?code=5ZV3GAM1",
+    officialUrl: "",
     reviewUrl: "/blog/灵动云-review",
     architecture: "Trojan / VLESS 专线链路",
     lossRate: "0.01% (优良)",
@@ -203,7 +203,7 @@ const airportList: Airport[] = [
     name: "大哥云",
     badge: "🛡️ 老牌大厂 · 多路中转",
     badgeColor: "bg-slate-100 text-slate-700 border-slate-200",
-    officialUrl: "https://a03.dgy02.com/#/register?code=X8MBmftq",
+    officialUrl: "",
     reviewUrl: "/blog/大哥云-review",
     architecture: "多路隧道 BGP + 专线",
     lossRate: "0.02% (稳定)",
@@ -222,7 +222,7 @@ const airportList: Airport[] = [
     name: "跨界云",
     badge: "🚀 全专线升级 · VLESS轻快",
     badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-200",
-    officialUrl: "https://vip02.kuajieaff.com/#/?code=kTdpCGi9",
+    officialUrl: "",
     reviewUrl: "/blog/跨界云-review",
     architecture: "全专线链路升级",
     lossRate: "0.01%",
@@ -241,7 +241,7 @@ const airportList: Airport[] = [
     name: "全球云",
     badge: "🌐 全球多节点 · 容灾备份",
     badgeColor: "bg-teal-100 text-teal-800 border-teal-200",
-    officialUrl: "https://vbfdvfj1.quanqiugttt1.club/#/?code=NKII9ZkH",
+    officialUrl: "",
     reviewUrl: "/blog/全球云-review",
     architecture: "BGP 专线多路由中转",
     lossRate: "0.02%",
@@ -260,7 +260,7 @@ const airportList: Airport[] = [
     name: "无忧链接",
     badge: "🛡️ 平价稳定 · 省心好用",
     badgeColor: "bg-slate-100 text-slate-700 border-slate-200",
-    officialUrl: "https://lsitel.worryfreettt.homes/#/?code=SaSZbwak",
+    officialUrl: "",
     reviewUrl: "/blog/无忧链接-review",
     architecture: "BGP + 专线混合",
     lossRate: "0.02%",
@@ -279,7 +279,7 @@ const airportList: Airport[] = [
     name: "梯子云",
     badge: "🪜 梯子云 · 晚高峰稳定",
     badgeColor: "bg-amber-50 text-amber-800 border-amber-200",
-    officialUrl: "https://tizi2.invisibleaff.com",
+    officialUrl: "",
     reviewUrl: "/blog/梯子云-review",
     architecture: "BGP 优化专线",
     lossRate: "0.01%",
@@ -298,7 +298,7 @@ const airportList: Airport[] = [
     name: "浪网",
     badge: "🌊 极速冲浪 · 自研客户端",
     badgeColor: "bg-blue-100 text-blue-800 border-blue-200",
-    officialUrl: "https://langwang3.invisibleaff.com",
+    officialUrl: "",
     reviewUrl: "/blog/浪网-review",
     architecture: "VLESS 自研客户端优化线路",
     lossRate: "0.01%",
@@ -317,7 +317,7 @@ const airportList: Airport[] = [
     name: "灵猫网络",
     badge: "🐱 猫系轻量 · 速度灵动",
     badgeColor: "bg-pink-50 text-pink-700 border-pink-200",
-    officialUrl: "https://edp01.civetaff.com/#/?code=8n0vbtUD",
+    officialUrl: "",
     reviewUrl: "/blog/灵猫网络-review",
     architecture: "BGP + IPLC 混合专线",
     lossRate: "0.02%",
@@ -336,7 +336,7 @@ const airportList: Airport[] = [
     name: "Firefly 萤火虫",
     badge: "✨ 荧光极速 · 灵活订阅",
     badgeColor: "bg-purple-100 text-purple-800 border-purple-200",
-    officialUrl: "https://vip02.fireflyaff.com/#/?code=QvtWcNbI",
+    officialUrl: "",
     reviewUrl: "/blog/firefly-review",
     architecture: "IPLC 原生专线",
     lossRate: "0.01%",
@@ -355,7 +355,7 @@ const airportList: Airport[] = [
     name: "FlyV 加速",
     badge: "✈️ 飞速穿梭 · 节点丰富",
     badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-200",
-    officialUrl: "https://rtu23u5.flyvttt.sbs/#/?code=28mmffKv",
+    officialUrl: "",
     reviewUrl: "/blog/flyv-review",
     architecture: "IEPL 纯专线",
     lossRate: "0.02% (实测极低)",
@@ -374,7 +374,7 @@ const airportList: Airport[] = [
     name: "SSONE 机场",
     badge: "🎯 极简原生 · 经典SS协议",
     badgeColor: "bg-slate-100 text-slate-700 border-slate-200",
-    officialUrl: "https://m.ssone.io/#/register?code=GeTpX1Qx",
+    officialUrl: "",
     reviewUrl: "/blog/ssone-review",
     architecture: "BGP 隧道中转",
     lossRate: "0.02%",
@@ -393,7 +393,7 @@ const airportList: Airport[] = [
     name: "赛博云",
     badge: "💾 1TB超大流量 · 极低单价",
     badgeColor: "bg-indigo-50 text-indigo-700 border-indigo-200",
-    officialUrl: "https://saiboyun.pages.dev/",
+    officialUrl: "",
     reviewUrl: "/blog/赛博云-review",
     architecture: "豪华中转专线",
     lossRate: "0.04%",
@@ -412,7 +412,7 @@ const airportList: Airport[] = [
     name: "闪跃专线",
     badge: "⚡ 极速专线 · 极佳抗封锁",
     badgeColor: "bg-violet-50 text-violet-700 border-violet-200",
-    officialUrl: "https://invite.wgetcloud.ltd/auth/register?code=1i8Pgu",
+    officialUrl: "",
     reviewUrl: "/blog/闪跃-review",
     architecture: "亚马逊 Global Accelerator 专线",
     lossRate: "0.02% (实测极低)",
@@ -670,27 +670,35 @@ export default function AirportRankTable() {
 
                 {/* 官方直达与复制按钮 (水平排列，绝对不换行，推广链接添加 rel="nofollow sponsored noopener noreferrer") */}
                 <td className="py-4 px-4 whitespace-nowrap min-w-[170px]">
-                  <div className="flex items-center gap-1.5 whitespace-nowrap">
-                    <a
-                      href={item.officialUrl}
-                      target="_blank"
-                      rel="nofollow sponsored noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-1 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:opacity-90 active:scale-95 transition-all whitespace-nowrap shrink-0 cursor-pointer"
-                    >
-                      <span>官网直达 ↗</span>
-                    </a>
-                    <button
-                      onClick={() => handleCopyLink(item.officialUrl, item.name, item.id)}
-                      className={`inline-flex items-center justify-center rounded-xl px-2.5 py-1.5 text-[11px] font-bold transition-all whitespace-nowrap shrink-0 cursor-pointer ${
-                        copiedId === item.id
-                          ? "bg-emerald-500 text-white border border-emerald-500"
-                          : "bg-slate-100 text-slate-600 hover:bg-slate-200 border border-slate-200/70"
-                      }`}
-                      title="复制官方注册直达链接"
-                    >
-                      <span>{copiedId === item.id ? "✅ 已复制" : "📋 复制"}</span>
-                    </button>
-                  </div>
+                  {item.officialUrl ? (
+                    <div className="flex items-center gap-1.5 whitespace-nowrap">
+                      <a
+                        href={item.officialUrl}
+                        target="_blank"
+                        rel="nofollow sponsored noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-1 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:opacity-90 active:scale-95 transition-all whitespace-nowrap shrink-0 cursor-pointer"
+                      >
+                        <span>官网直达 ↗</span>
+                      </a>
+                      <button
+                        onClick={() => handleCopyLink(item.officialUrl, item.name, item.id)}
+                        className={`inline-flex items-center justify-center rounded-xl px-2.5 py-1.5 text-[11px] font-bold transition-all whitespace-nowrap shrink-0 cursor-pointer ${
+                          copiedId === item.id
+                            ? "bg-emerald-500 text-white border border-emerald-500"
+                            : "bg-slate-100 text-slate-600 hover:bg-slate-200 border border-slate-200/70"
+                        }`}
+                        title="复制官方注册直达链接"
+                      >
+                        <span>{copiedId === item.id ? "✅ 已复制" : "📋 复制"}</span>
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-1.5 whitespace-nowrap">
+                      <span className="inline-flex items-center justify-center rounded-xl bg-slate-50 border border-slate-200/70 px-3 py-1.5 text-xs font-medium text-slate-400">
+                        仅供参考对比
+                      </span>
+                    </div>
+                  )}
                 </td>
 
                 {/* 线路架构 */}

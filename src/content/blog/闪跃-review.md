@@ -24,7 +24,7 @@ readTime: "6分钟"
 | **技术架构** | BGP 服务器接入 + 亚马逊 Global Accelerator 专线，提供高达 10000Mbps 总线接入能力 |
 | **支持协议** | Trojan 协议 |
 | **节点覆盖** | 香港、日本、台湾、新加坡、美国、韩国、英国、俄罗斯、加拿大、印度尼西亚、印度、土耳其、巴西、德国、泰国、澳大利亚、马来西亚 |
-| **注册入口** | 👉 [点击直达 WgetCloud 官网注册页面](https://invite.wgetcloud.ltd/auth/register?code=1i8Pgu) |
+| **注册入口** | 👉 点击直达 WgetCloud 官网注册页面（暂未开放） |
 
 ---
 

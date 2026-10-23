@@ -25,7 +25,7 @@ readTime: "6分钟"
 | **解锁能力** | 奈飞、迪士尼+、油管满速；Bilibili 港澳台及 TVB 原生解锁；ChatGPT、Claude 等 AI 工具 |
 | **生态兼容** | Surge、Shadowrocket、Clash 系列及 Android 端 Surfboard |
 | **专属优惠码** | `fly20` |
-| **注册入口** | 👉 [点击直达 FlyV 官网注册页面](https://rtu23u5.flyvttt.sbs/#/?code=28mmffKv) |
+| **注册入口** | 👉 点击直达 FlyV 官网注册页面（暂未开放） |
 
 ---
 

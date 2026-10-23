@@ -14,7 +14,7 @@ readTime: "6分钟"
 
 ---
 
-> 💡 **官方直达入口**：👉 [**点击前往 隐形人 官网注册 / 测速体验**](https://yinxingren1.invisibleaff.com/#/register?code=Gcp1CRso)
+> 💡 **评测声明**：本站仅对该服务商提供客观技术测评与参数存档，暂不提供官方直达链接。
 
 
 
